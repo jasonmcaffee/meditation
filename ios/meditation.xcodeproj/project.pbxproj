@@ -15,6 +15,7 @@
 		1C6AA0638C93F6844879773F /* libPods-meditation-meditationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 306916C9ED658325B4DA51B4 /* libPods-meditation-meditationTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		96E5296729186E030003A44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E5296629186E030003A44F /* Assets.xcassets */; };
+		96E529692918B24F0003A44F /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 96E529682918B24F0003A44F /* assets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		76E9745F56D2A1848CE70343 /* Pods-meditation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meditation.debug.xcconfig"; path = "Target Support Files/Pods-meditation/Pods-meditation.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = meditation/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96E5296629186E030003A44F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		96E529682918B24F0003A44F /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../assets; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F28B2136310A8998AA33A03D /* libPods-meditation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-meditation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0D046112EBAF8B2F45A8E3 /* Pods-meditation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meditation.release.xcconfig"; path = "Target Support Files/Pods-meditation/Pods-meditation.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				96E5296629186E030003A44F /* Assets.xcassets */,
+				96E529682918B24F0003A44F /* assets */,
 				13B07FAE1A68108700A75B9A /* meditation */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* meditationTests */,
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				96E529692918B24F0003A44F /* assets in Resources */,
 				96E5296729186E030003A44F /* Assets.xcassets in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);

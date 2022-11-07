@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:chime - single medium 2.wav">
-   </FileRef>
-   <FileRef
       location = "group:meditation.xcodeproj">
    </FileRef>
    <FileRef
