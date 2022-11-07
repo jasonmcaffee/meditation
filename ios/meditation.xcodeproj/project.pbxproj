@@ -14,6 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1C6AA0638C93F6844879773F /* libPods-meditation-meditationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 306916C9ED658325B4DA51B4 /* libPods-meditation-meditationTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		96E5296729186E030003A44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E5296629186E030003A44F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		707F36FA72D30E37CAE120C1 /* Pods-meditation-meditationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meditation-meditationTests.release.xcconfig"; path = "Target Support Files/Pods-meditation-meditationTests/Pods-meditation-meditationTests.release.xcconfig"; sourceTree = "<group>"; };
 		76E9745F56D2A1848CE70343 /* Pods-meditation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meditation.debug.xcconfig"; path = "Target Support Files/Pods-meditation/Pods-meditation.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = meditation/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		96E5296629186E030003A44F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F28B2136310A8998AA33A03D /* libPods-meditation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-meditation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0D046112EBAF8B2F45A8E3 /* Pods-meditation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meditation.release.xcconfig"; path = "Target Support Files/Pods-meditation/Pods-meditation.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				96E5296629186E030003A44F /* Assets.xcassets */,
 				13B07FAE1A68108700A75B9A /* meditation */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* meditationTests */,
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				96E5296729186E030003A44F /* Assets.xcassets in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,8 +490,11 @@
 			baseConfigurationReference = 76E9745F56D2A1848CE70343 /* Pods-meditation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = A7L778FFNA;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = meditation/Info.plist;
@@ -501,10 +508,12 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.jasonmcaffee.meditation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasonmcaffee.meditation;
 				PRODUCT_NAME = meditation;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -514,8 +523,11 @@
 			baseConfigurationReference = FF0D046112EBAF8B2F45A8E3 /* Pods-meditation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = A7L778FFNA;
 				INFOPLIST_FILE = meditation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
@@ -528,9 +540,11 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.jasonmcaffee.meditation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasonmcaffee.meditation;
 				PRODUCT_NAME = meditation;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
