@@ -1,15 +1,18 @@
-
 const Sound = require('react-native-sound');
 // Enable playback in silence mode
 Sound.setCategory('Playback');
+//@ts-ignore use an alias due to TS having issue with value being same name as type Sound
+type S = Sound;
 
-//@ts-ignore
-function createSound(fileName: string): Sound{
-    return new Sound(fileName, Sound.MAIN_BUNDLE, (error: any) =>{
-        if(error){
-            console.log(`error in creating react native sound`, error);
-            return;
-        }
+function createSound(fileName: string): Promise<S>{
+    return new Promise<S>((resolve, reject)=>{
+       let s = new Sound(fileName, Sound.MAIN_BUNDLE, (error: any) =>{
+           if(error){
+               console.log(`error in creating react native sound`, error);
+               return reject(error);
+           }
+           resolve(s);
+       });
     });
 }
 
@@ -17,31 +20,25 @@ function createSound(fileName: string): Sound{
  * Note: you can't play the same sound instance more than once at a time, but you can play the same sound with multiple instances.
  */
 class AudioPlayer{
-    //@ts-ignore
-    chime: Sound;
-    //@ts-ignore
-    chime2: Sound;
-    count: number = 0;
-    constructor() {
-        this.chime = createSound('chime.mp3');
-        this.chime2 = createSound('chime.mp3');
+    chime: S;
 
-    }
-    async playChime(){
-        return playSound(this.chime);
-    }
-    async playChime2(){
-        return playSound(this.chime2);
+    constructor() {}
+
+    async playChime({volume} = {volume: 1}): Promise<S>{
+        const sound = await createSound('chime.mp3');
+        sound.setVolume(volume);
+        return playSound(sound);
     }
 }
 
 //await this if you want to know when the sound has been played completely. e.g. after 6 seconds.
 //@ts-ignore
 async function playSound(sound: Sound){
-    return new Promise<void>((resolve, reject) => {
+    // return sound.play();
+    return new Promise<S>((resolve, reject) => {
         sound.play((success: boolean)=>{
             if(success){
-                resolve();
+                resolve(sound);
             }else{
                 reject();
             }

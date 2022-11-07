@@ -1,4 +1,4 @@
-import React, {type PropsWithChildren, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     SafeAreaView,
     ScrollView,
@@ -9,10 +9,8 @@ import Button from "../common-components/Button";
 // @ts-ignore
 import * as styles from '../style/pages/time-page.scss';
 import timer from "../services/timer";
-import TrackPlayer, {Event} from 'react-native-track-player';
-import * as Track from 'react-native-track-player';
 import audioPlayer from "../services/audioPlayer";
-const TrackPlayer2 = Track.default;
+
 
 //todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
 //https://react-native-track-player.js.org/docs/basics/getting-started
@@ -29,7 +27,7 @@ const TimePage = () => {
         // await audioPlayer.playChime();
         audioPlayer.playChime();
         setTimeout(()=>{
-            audioPlayer.playChime2();
+            audioPlayer.playChime({volume: .5});
         }, 1000);
 
         setStartPauseText(timer.isRunning ? `Start` : 'Pause');
