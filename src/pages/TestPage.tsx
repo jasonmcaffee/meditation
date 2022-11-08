@@ -12,7 +12,7 @@ import timer from "../services/timer";
 import audioPlayer from "../services/audioPlayer";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 // @ts-ignore
-type Props = NativeStackScreenProps<RootStackParamList, 'Timer'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'Test'>;
 type RootStackParamList = {
     // Home: undefined;
     // Profile: { userId: string };
@@ -28,7 +28,7 @@ const TimePage = ({route, navigation}: Props) => {
 
     async function startPauseTimer(){
         //@ts-ignore
-        navigation.navigate('Test');
+        navigation.navigate('Timer');
         // await audioPlayer.playChime();
         audioPlayer.playChime();
         setTimeout(()=>{
@@ -60,12 +60,8 @@ const TimePage = ({route, navigation}: Props) => {
         <SafeAreaView style={styles.timePage}>
             <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <Div className={styles.timer}>
-                    <Div className={styles.timerTime}>
-                        <Text style={styles.timeText}>{timeString}</Text>
-                    </Div>
                     <Div className={styles.timerButtons}>
                         <Button className={styles.timerButton} onClick={startPauseTimer}><Text>{startPauseText}</Text></Button>
-                        <Button className={styles.timerButton} onClick={resetTimer}><Text>Reset</Text></Button>
                     </Div>
                 </Div>
             </ScrollView>

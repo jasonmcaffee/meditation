@@ -1,4 +1,4 @@
-import React, {type PropsWithChildren, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { useColorScheme, } from 'react-native';
 
 import { Colors, } from 'react-native/Libraries/NewAppScreen';
@@ -6,6 +6,7 @@ import { Colors, } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TimePage from "./src/pages/TimePage";
+import TestPage from "./src/pages/TestPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ const App = () => {
       <NavigationContainer>
           <Stack.Navigator>
               <Stack.Screen name={"Timer"}  component={TimePage} options={{ headerShown: false }} />
+              <Stack.Screen name={"Test"}  component={TestPage} options={{ headerShown: false }} />
           </Stack.Navigator>
       </NavigationContainer>
   );
