@@ -11,6 +11,8 @@ import IMeditationSession from "../models/IMeditationSession";
 import meditationSessionRepository from "../repository/meditationSessionRepository";
 import meditationSession from "../services/meditationSession";
 import {getFormattedDate, getFormattedDuration} from "../models/IMeditationSession";
+import IconButton from "../common-components/IconButton";
+import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
 // @ts-ignore
 type Props = NativeStackScreenProps<RootStackParamList, 'Sessions'>;
 type RootStackParamList = {};
@@ -18,12 +20,20 @@ type RootStackParamList = {};
 const MeditationSessionsPage = ({route, navigation}: Props) => {
     const [meditationSessions, setMeditationSessions] = useState([] as IMeditationSession[]);
     useEffect(()=>{
-        meditationSessionRepository.getMeditationSessions().then((sessions)=>{
-            console.log(`meditation sessions: `, sessions);
-            setMeditationSessions(sessions);
-        });
+        refreshMeditationSessions();
     }, []);
-    const sessionEls = createSessionEls(meditationSessions);
+
+    const onDeleteClicked = async (i: IMeditationSession) => {
+        await meditationSession.deleteMeditationSession(i);
+        await refreshMeditationSessions();
+    };
+
+    const refreshMeditationSessions = async () => {
+        const sessions = await meditationSession.getMeditationSessions();
+        setMeditationSessions(sessions);
+    };
+
+    const sessionEls = createSessionEls(meditationSessions, onDeleteClicked);
     return (
         <SafeAreaView style={styles.meditationSessionsPage}>
             <ScrollView contentInsetAdjustmentBehavior="automatic">
@@ -52,15 +62,16 @@ const MeditationSessionsPage = ({route, navigation}: Props) => {
     );
 };
 
-function createSessionEls(meditationSessions: IMeditationSession[]){
-    return meditationSessions.map(createSessionEl);
+function createSessionEls(meditationSessions: IMeditationSession[], onDelete: (i: IMeditationSession)=> Promise<void>){
+    return meditationSessions.map((i) => createSessionEl(i, onDelete));
 }
 
-function createSessionEl(meditationSession: IMeditationSession){
+function createSessionEl(meditationSession: IMeditationSession, onDelete: (i: IMeditationSession)=> Promise<void>){
     return <Div key={meditationSession.id}>
         <Text>Date: {getFormattedDate(meditationSession.dateMs)}</Text>
         <Text>Duration: { getFormattedDuration(meditationSession.durationMs)}</Text>
         <Text>Notes: {meditationSession.notes}</Text>
+        <IconButton icon={faTrash} onClick={()=> onDelete(meditationSession)}/>
     </Div>
 }
 

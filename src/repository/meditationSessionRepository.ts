@@ -33,6 +33,15 @@ class MeditationSessionRepository {
         await this.saveDataContainer(dataContainer);
     }
 
+    async deleteMeditationSession(meditationSession: IMeditationSession){
+        const dataContainer = await this.getDataContainer();
+        //should be upsert.
+        const index = dataContainer.meditationSessions.findIndex( s => s.id == meditationSession.id);
+        if(index < 0){ return console.log(`no meditation session exists.`) }
+        dataContainer.meditationSessions.splice(index, 1);
+        await this.saveDataContainer(dataContainer);
+    }
+
     async saveDataContainer(dataContainer: IDataContainer){
         const dataContainerString = JSON.stringify(dataContainer);
         await fileSystem.writeFile(dataContainerString, sessionsDataFilePath);

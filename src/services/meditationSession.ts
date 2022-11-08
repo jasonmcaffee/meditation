@@ -25,6 +25,9 @@ class MeditationSession{
         return session;
     }
 
+    async deleteMeditationSession(meditationSession: IMeditationSession){
+        return meditationSessionRepository.deleteMeditationSession(meditationSession);
+    }
 
 }
 
