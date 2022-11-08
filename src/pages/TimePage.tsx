@@ -11,7 +11,6 @@ import * as styles from '../style/pages/time-page.scss';
 import timer from "../services/timer";
 import audioPlayer from "../services/audioPlayer";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import fileSystem from "../services/fileSystem";
 import BottomNavigation from "../common-components/BottomNavigation";
 // @ts-ignore
 type Props = NativeStackScreenProps<RootStackParamList, 'Timer'>;
@@ -24,22 +23,11 @@ type RootStackParamList = {
 //https://react-native-track-player.js.org/docs/basics/getting-started
 //https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
 
-const testData = {
-    date: Date.now(),
-    duration: 123456,
-    description: 'some notes about the session',
-}
-
 const TimePage = ({route, navigation}: Props) => {
     const [timeString, setTimeString] = useState(timer.getFormattedTime());
     const [startPauseText, setStartPauseText] = useState('Start');
 
     async function startPauseTimer(){
-        // await fileSystem.writeFile(JSON.stringify(testData));
-        const readDataString = await fileSystem.readFile();
-        console.log(`readDataString: ${readDataString}`);
-        // @ts-ignore
-        navigation.navigate('Test');
         // await audioPlayer.playChime();
         audioPlayer.playChime();
         setTimeout(()=>{
@@ -56,8 +44,6 @@ const TimePage = ({route, navigation}: Props) => {
     }
 
     useEffect(()=>{
-
-
         const unregister = timer.onDurationUpdated((durationUpdateData) => {
             setTimeString(durationUpdateData.formattedDuration);
         });

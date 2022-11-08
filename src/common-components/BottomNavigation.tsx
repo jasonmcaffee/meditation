@@ -17,13 +17,13 @@ import * as styles from '../style/common-components/bottom-navigation.scss';
 const BottomNavigation = ({navigate}: {navigate: (to: string) => void}) =>{
     return (
         <Div className={styles.bottomNavigation}>
-            <Div onClick={()=> navigate('Test')}>
-                <FontAwesomeIcon style={styles.navigationIcon} icon={faDharmachakra} size={30}/>
-            </Div>
-            <Div onClick={()=> navigate('Test')}>
+            {/*<Div onClick={()=> navigate('Test')}>*/}
+            {/*    <FontAwesomeIcon style={styles.navigationIcon} icon={faDharmachakra} size={30}/>*/}
+            {/*</Div>*/}
+            <Div onClick={()=> navigate('Timer')}>
                 <FontAwesomeIcon style={styles.navigationIcon} icon={faOm} size={30}/>
             </Div>
-            <Div onClick={()=> navigate('Test')}>
+            <Div onClick={()=> navigate('Sessions')}>
                 <FontAwesomeIcon style={styles.navigationIcon} icon={faVihara} size={30}/>
             </Div>
         </Div>

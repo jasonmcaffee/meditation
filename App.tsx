@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TimePage from "./src/pages/TimePage";
 import TestPage from "./src/pages/TestPage";
+import MeditationSessionsPage from "./src/pages/MeditationSessionsPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,8 @@ const App = () => {
           <Stack.Navigator>
               <Stack.Screen name={"Timer"}  component={TimePage} options={{ headerShown: false }} />
               <Stack.Screen name={"Test"}  component={TestPage} options={{ headerShown: false }} />
+              <Stack.Screen name={"Sessions"}  component={MeditationSessionsPage} options={{ headerShown: false }} />
+
           </Stack.Navigator>
       </NavigationContainer>
   );

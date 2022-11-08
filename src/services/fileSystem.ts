@@ -1,21 +1,21 @@
 const RNFS = require('react-native-fs');
 
-
 class FileSystem{
     async readFilesAndDirectories(path=RNFS.MainBundlePath){
-
     }
 
-    async writeFile(data: string) {
-        const path = RNFS.DocumentDirectoryPath + '/test.txt';
-        // const dataAsJsonString = JSON.stringify(data);
-        await RNFS.writeFile(path, data, 'utf8');
+    async writeFile(data: string, path: string) {
+        // const path = RNFS.DocumentDirectoryPath + '/test.txt';
+        console.log(`writing file. path: ${path}, data: ${data}`);
+        return RNFS.writeFile(path, data, 'utf8');
     }
 
-    async readFile(){
-        const path = RNFS.DocumentDirectoryPath + '/test.txt';
-        const dataString = await RNFS.readFile(path, 'utf8');
-        return dataString;
+    async readFile(path: string){
+        // const path = RNFS.DocumentDirectoryPath + '/test.txt';
+        console.log(`reading file: ${path}`);
+        const result = await RNFS.readFile(path, 'utf8');
+        console.log(`read file: `, result);
+        return result;
     }
 }
 
