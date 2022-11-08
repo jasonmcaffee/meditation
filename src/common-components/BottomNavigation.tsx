@@ -1,9 +1,15 @@
-import React, {type PropsWithChildren} from 'react';
+import React from 'react';
 import {View, Text, Button} from "react-native";
-
-const BottomNavigation = () =>{
+import Div from "./Div";
+// @ts-ignore
+import * as styles from '../style/common-components/bottom-navigation.scss';
+const BottomNavigation = ({navigate}: {navigate: (to: string) => void}) =>{
     return (
-        <View></View>
+        <Div className={styles.bottomNavigation}>
+            <Div onClick={()=> navigate('Test')}>
+                <Text style={styles.bottomNavigationText}>Test</Text>
+            </Div>
+        </Div>
     )
 }
 

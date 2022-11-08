@@ -1,13 +1,38 @@
 const RNFS = require('react-native-fs');
 
-class FileSystem{
-    readFilesAndDirectories(path=RNFS.MainBundlePath){
 
+class FileSystem{
+    async readFilesAndDirectories(path=RNFS.MainBundlePath){
+
+    }
+
+    async writeFile(data: string) {
+        const path = RNFS.DocumentDirectoryPath + '/test.txt';
+        // const dataAsJsonString = JSON.stringify(data);
+        await RNFS.writeFile(path, data, 'utf8');
+    }
+
+    async readFile(){
+        const path = RNFS.DocumentDirectoryPath + '/test.txt';
+        const dataString = await RNFS.readFile(path, 'utf8');
+        return dataString;
     }
 }
 
 const fileSystem = new FileSystem();
 export default fileSystem;
+
+// const testData = {
+//     date: Date.now(),
+//     duration: 123456,
+//     description: 'some notes about the session',
+// }
+// const testDataString = JSON.stringify(testData);
+// console.log(`test data: ${testDataString}`);
+// const deserialized = JSON.parse(testDataString);
+// console.log(`deserialized: ${deserialized.duration}`, deserialized);
+
+
 
 // require the module
 // var RNFS = require('react-native-fs');
