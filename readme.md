@@ -28,6 +28,7 @@ For playing multiple sounds at once, React-Native-Sound is used.
 Add sound files to iOS/Android.
 - On iOS, drag and drop sound file into project in Xcode. Remember to check "Copy items if needed" option and "Add to targets".
 - On Android, put sound files in {project_root}/android/app/src/main/res/raw/. Just create the folder if it doesn't exist.
+- Quit Metro and run `npm run ios` again or you will get errors.
 
 ### React Native Track Player
 This lib is setup, but not used.  It only can play one track at a time, but it has lock screen display and some other nice functionality that may come in handy later.

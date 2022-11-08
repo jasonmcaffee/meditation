@@ -25,16 +25,22 @@ class AudioPlayer{
     constructor() {}
 
     async playChime({volume} = {volume: 1}): Promise<S>{
-        const sound = await createSound('chime.mp3');
+        return this.playFile({volume, fileName: 'chime-gentle-paced.mp3'});
+        // const sound = await createSound('chime.mp3');
+        // sound.setVolume(volume);
+        // return playSound(sound);
+    }
+
+    async playFile({volume, fileName} = {volume: 1, fileName: 'chime.mp3'}): Promise<S>{
+        const sound = await createSound(fileName);
         sound.setVolume(volume);
         return playSound(sound);
     }
 }
 
 //await this if you want to know when the sound has been played completely. e.g. after 6 seconds.
-//@ts-ignore
-async function playSound(sound: Sound){
-    // return sound.play();
+async function playSound(sound: S){
+    // return sound.play(); <-- not a promise.
     return new Promise<S>((resolve, reject) => {
         sound.play((success: boolean)=>{
             if(success){
