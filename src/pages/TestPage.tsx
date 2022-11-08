@@ -13,16 +13,9 @@ import audioPlayer from "../services/audioPlayer";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 // @ts-ignore
 type Props = NativeStackScreenProps<RootStackParamList, 'Test'>;
-type RootStackParamList = {
-    // Home: undefined;
-    // Profile: { userId: string };
-    // Feed: { sort: 'latest' | 'top' } | undefined;
-};
-//todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
-//https://react-native-track-player.js.org/docs/basics/getting-started
-//https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
+type RootStackParamList = {};
 
-const TimePage = ({route, navigation}: Props) => {
+const TestPage = ({route, navigation}: Props) => {
     const [timeString, setTimeString] = useState(timer.getFormattedTime());
     const [startPauseText, setStartPauseText] = useState('Start');
 
@@ -69,4 +62,4 @@ const TimePage = ({route, navigation}: Props) => {
     );
 };
 
-export default TimePage;
+export default TestPage;

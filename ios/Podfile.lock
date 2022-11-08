@@ -387,6 +387,8 @@ PODS:
     - RNSound/Core (= 0.11.2)
   - RNSound/Core (0.11.2):
     - React-Core
+  - RNSVG (13.5.0):
+    - React-Core
   - SocketRocket (0.6.0)
   - SwiftAudioEx (0.15.3)
   - Yoga (1.14.0)
@@ -457,6 +459,7 @@ DEPENDENCIES:
   - RNFS (from `../node_modules/react-native-fs`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSound (from `../node_modules/react-native-sound`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -555,6 +558,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSound:
     :path: "../node_modules/react-native-sound"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -610,6 +615,7 @@ SPEC CHECKSUMS:
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
   RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
   RNSound: 6c156f925295bdc83e8e422e7d8b38d33bc71852
+  RNSVG: 38ca962c970dbce1ca38991a5aebf26d163f9efb
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   SwiftAudioEx: 83eabba2940924fc1c0d5cb0896049921365229c
   Yoga: 1f02ef4ce4469aefc36167138441b27d988282b1

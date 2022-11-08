@@ -1,13 +1,30 @@
 import React from 'react';
 import {View, Text, Button} from "react-native";
 import Div from "./Div";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import {faHouse} from "@fortawesome/free-solid-svg-icons/faHouse";
+import {faStopwatch} from "@fortawesome/free-solid-svg-icons/faStopwatch";
+import {faCalendarDays} from "@fortawesome/free-solid-svg-icons/faCalendarDays";
+import {faCalendar} from "@fortawesome/free-regular-svg-icons/faCalendar";
+
+//dharma wheel
+import {faDharmachakra} from "@fortawesome/free-solid-svg-icons/faDharmachakra";
+import {faOm} from "@fortawesome/free-solid-svg-icons/faOm";
+import {faVihara} from "@fortawesome/free-solid-svg-icons/faVihara";
+
 // @ts-ignore
 import * as styles from '../style/common-components/bottom-navigation.scss';
 const BottomNavigation = ({navigate}: {navigate: (to: string) => void}) =>{
     return (
         <Div className={styles.bottomNavigation}>
             <Div onClick={()=> navigate('Test')}>
-                <Text style={styles.bottomNavigationText}>Test</Text>
+                <FontAwesomeIcon style={styles.navigationIcon} icon={faDharmachakra} size={30}/>
+            </Div>
+            <Div onClick={()=> navigate('Test')}>
+                <FontAwesomeIcon style={styles.navigationIcon} icon={faOm} size={30}/>
+            </Div>
+            <Div onClick={()=> navigate('Test')}>
+                <FontAwesomeIcon style={styles.navigationIcon} icon={faVihara} size={30}/>
             </Div>
         </Div>
     )
