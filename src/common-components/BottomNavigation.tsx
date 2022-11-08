@@ -20,14 +20,14 @@ const BottomNavigation = ({navigate}: {navigate: (to: string) => void}) =>{
             {/*<Div onClick={()=> navigate('Test')}>*/}
             {/*    <FontAwesomeIcon style={styles.navigationIcon} icon={faDharmachakra} size={30}/>*/}
             {/*</Div>*/}
-            <Div onClick={()=> navigate('Timer')}>
+            <Div className={styles.navigationItem}  onClick={()=> navigate('Timer')}>
                 <FontAwesomeIcon style={styles.navigationIcon} icon={faOm} size={30}/>
             </Div>
-            <Div onClick={()=> navigate('Sessions')}>
+            <Div className={styles.navigationItem} onClick={()=> navigate('Sessions')}>
                 <FontAwesomeIcon style={styles.navigationIcon} icon={faVihara} size={30}/>
             </Div>
         </Div>
-    )
+    );
 }
 
 export default BottomNavigation;

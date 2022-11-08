@@ -1,18 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import { SafeAreaView, ScrollView, Text,} from 'react-native';
-import Div from "../common-components/Div";
-import Button from "../common-components/Button";
+import {SafeAreaView, ScrollView, Text, TextInput,} from 'react-native';
+import Div from "../../common-components/Div";
+import Button from "../../common-components/Button";
 // @ts-ignore
 import * as styles from '../style/pages/meditation-sessions-page.scss';
 
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import BottomNavigation from "../common-components/BottomNavigation";
-import IMeditationSession from "../models/IMeditationSession";
-import meditationSessionRepository from "../repository/meditationSessionRepository";
-import meditationSession from "../services/meditationSession";
-import {getFormattedDate, getFormattedDuration} from "../models/IMeditationSession";
-import IconButton from "../common-components/IconButton";
+import BottomNavigation from "../../common-components/BottomNavigation";
+import IMeditationSession from "../../models/IMeditationSession";
+import meditationSessionRepository from "../../repository/meditationSessionRepository";
+import meditationSession from "../../services/meditationSession";
+import {getFormattedDate, getFormattedDuration} from "../../models/IMeditationSession";
+import IconButton from "../../common-components/IconButton";
 import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
+import Page from "../../common-components/Page";
 // @ts-ignore
 type Props = NativeStackScreenProps<RootStackParamList, 'Sessions'>;
 type RootStackParamList = {};
@@ -35,30 +36,24 @@ const MeditationSessionsPage = ({route, navigation}: Props) => {
 
     const sessionEls = createSessionEls(meditationSessions, onDeleteClicked);
     return (
-        <SafeAreaView style={styles.meditationSessionsPage}>
-            <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <Page navigation={navigation}>
+            <Div>
                 <Div>
-                    <Div>
-                        <Text>Meditation Session History</Text>
-                    </Div>
-                    <Div>
-                        {sessionEls}
-                    </Div>
-                    <Div onClick={async ()=>{
-                        await meditationSession.createAndSaveMeditationSession(15 * 60 * 1000, `good stuff`);
-                        //await meditationSessionRepository.saveMeditationSession(session);
-                        console.log(`meditation added`);
-                        meditationSessionRepository.getMeditationSessions().then(setMeditationSessions);
-                    }}>
-                        <Text>Create test session</Text>
-                    </Div>
+                    <Text>Meditation Session History</Text>
                 </Div>
-                <BottomNavigation navigate={(to) => {
-                    //@ts-ignore
-                    navigation.navigate(to);
-                }}/>
-            </ScrollView>
-        </SafeAreaView>
+                <Div>
+                    {sessionEls}
+                </Div>
+                <Div onClick={async ()=>{
+                    await meditationSession.createAndSaveMeditationSession(15 * 60 * 1000, `good stuff`);
+                    //await meditationSessionRepository.saveMeditationSession(session);
+                    console.log(`meditation added`);
+                    meditationSessionRepository.getMeditationSessions().then(setMeditationSessions);
+                }}>
+                    <Text>Create test session</Text>
+                </Div>
+            </Div>
+        </Page>
     );
 };
 
