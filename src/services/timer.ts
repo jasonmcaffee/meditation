@@ -76,5 +76,6 @@ function getDurationDataFromDurationMs(durationMs: number): IDurationUpdateData 
 function zeroFormat(time: number){
     return time > 9 ? time : `0${time}`;
 }
+
 const timer = new Timer();
 export default timer;

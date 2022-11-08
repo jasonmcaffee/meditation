@@ -1,4 +1,4 @@
-import IMeditationSession from "../models/MeditationSession";
+import IMeditationSession from "../models/IMeditationSession";
 import fileSystem from "../services/fileSystem";
 import IDataContainer from "../models/DataContainer";
 import RNFS from "react-native-fs";
@@ -8,7 +8,7 @@ const sessionsDataFilePath = RNFS.DocumentDirectoryPath + '/sessions.txt';
 class MeditationSessionRepository {
     async getMeditationSessions(): Promise<IMeditationSession[]>{
         const dataContainer = await this.getDataContainer();
-        const meditationSessions = dataContainer.meditationSessions.map(convertDataStringToMeditationSession);
+        const meditationSessions = dataContainer.meditationSessions;
         return meditationSessions;
     }
 
@@ -16,32 +16,20 @@ class MeditationSessionRepository {
         let dataString = await ensureSessionsFileExists(async ()=>{
             return await fileSystem.readFile(sessionsDataFilePath);
         });
-
-        // try{
-        //     dataString = await fileSystem.readFile(sessionsDataFilePath);
-        // }catch(e){
-        //     console.log(e);
-        //     // @ts-ignore
-        //     if(e.message.indexOf('no such file or directory') >= 0){
-        //         console.log(`file doesn't exist.`)
-        //         const dataContainer: IDataContainer = {
-        //             meditationSessions: [],
-        //         }
-        //         dataString = JSON.stringify(dataContainer);
-        //         await fileSystem.writeFile(dataString, sessionsDataFilePath);
-        //     }else{
-        //         throw e;
-        //     }
-        // }
-
         const dataContainer = convertDataStringToDataContainer(dataString);
         return dataContainer;
     }
 
     async saveMeditationSession(meditationSession: IMeditationSession){
         const dataContainer = await this.getDataContainer();
-        const meditationSessionString = JSON.stringify(meditationSession);
-        dataContainer.meditationSessions.push(meditationSessionString);
+        //should be upsert.
+        const index = dataContainer.meditationSessions.findIndex( s => s.id == meditationSession.id);
+        if(index < 0){
+            dataContainer.meditationSessions.push(meditationSession);
+        }
+        //we can probably assume by ref, but easy enough to just reset.
+        dataContainer.meditationSessions[index] = meditationSession;
+
         await this.saveDataContainer(dataContainer);
     }
 

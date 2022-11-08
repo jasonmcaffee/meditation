@@ -1,5 +1,5 @@
-import IMeditationSession from "./MeditationSession";
+import IMeditationSession from "./IMeditationSession";
 
 export default interface IDataContainer {
-    meditationSessions: string[],
+    meditationSessions: IMeditationSession[],
 }
