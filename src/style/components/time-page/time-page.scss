@@ -30,11 +30,30 @@
   flex-direction: row;
   padding: 25px;
   //justify-content: space-between;
+  color: black;
+}
+
+.timerButtonsColumn{
+  display: flex;
+  flex: 1;
+
 }
 
 .timerButton{
   display: flex;
-  flex: 1;
+  //flex: 1;
+  justify-content: center;//vertical
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  height: 70px;
+  width: 70px;
   margin: 5px;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.timerButtonIcon{
+  color: black;
 }
 

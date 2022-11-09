@@ -1,0 +1,5 @@
+Time page
+- use play button
+- Reset should be named finish
+-- show modal with notes to add for the session
+- use percentage width for clock display

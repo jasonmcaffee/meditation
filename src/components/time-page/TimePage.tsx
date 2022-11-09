@@ -13,6 +13,7 @@ import audioPlayer from "../../services/audioPlayer";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import BottomNavigation from "../../common-components/BottomNavigation";
 import Page from "../../common-components/Page";
+import IconButton from "../../common-components/IconButton";
 // @ts-ignore
 type Props = NativeStackScreenProps<RootStackParamList, 'Timer'>;
 type RootStackParamList = {
@@ -20,6 +21,8 @@ type RootStackParamList = {
     // Profile: { userId: string };
     // Feed: { sort: 'latest' | 'top' } | undefined;
 };
+import {faPause} from "@fortawesome/free-solid-svg-icons/faPause";
+import {faPlay} from "@fortawesome/free-solid-svg-icons/faPlay";
 //todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
 //https://react-native-track-player.js.org/docs/basics/getting-started
 //https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
@@ -50,7 +53,6 @@ const TimePage = ({route, navigation}: Props) => {
         });
         return ()=>{
             unregister();
-
         }
     }, []);
 
@@ -61,8 +63,12 @@ const TimePage = ({route, navigation}: Props) => {
                     <Text style={styles.timeText}>{timeString}</Text>
                 </Div>
                 <Div className={styles.timerButtons}>
-                    <Button className={styles.timerButton} onClick={startPauseTimer}><Text>{startPauseText}</Text></Button>
-                    <Button className={styles.timerButton} onClick={resetTimer}><Text>Reset</Text></Button>
+                    <Div className={styles.timerButtonsColumn}>
+                        <IconButton icon={timer.isRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={startPauseTimer}/>
+                    </Div>
+                    <Div className={styles.timerButtonsColumn}>
+                        <Button className={styles.timerButton} onClick={resetTimer}><Text>Finish</Text></Button>
+                    </Div>
                 </Div>
             </Div>
         </Page>
