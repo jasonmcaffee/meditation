@@ -5,9 +5,9 @@ import { Colors, } from 'react-native/Libraries/NewAppScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import TimePage from "./src/pages/TimePage";
-import TestPage from "./src/pages/TestPage";
-import MeditationSessionsPage from "./src/pages/MeditationSessionsPage";
+import TimePage from "./src/components/time-page/TimePage";
+import TestPage from "./src/components/TestPage";
+import MeditationSessionsPage from "./src/components/meditation-sessions-page/MeditationSessionsPage";
 
 const Stack = createNativeStackNavigator();
 

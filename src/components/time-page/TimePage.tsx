@@ -4,14 +4,15 @@ import {
     ScrollView,
     Text,
 } from 'react-native';
-import Div from "../common-components/Div";
-import Button from "../common-components/Button";
+import Div from "../../common-components/Div";
+import Button from "../../common-components/Button";
 // @ts-ignore
-import * as styles from '../style/pages/time-page.scss';
-import timer from "../services/timer";
-import audioPlayer from "../services/audioPlayer";
+import * as styles from '../../style/components/time-page/time-page.scss';
+import timer from "../../services/timer";
+import audioPlayer from "../../services/audioPlayer";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import BottomNavigation from "../common-components/BottomNavigation";
+import BottomNavigation from "../../common-components/BottomNavigation";
+import Page from "../../common-components/Page";
 // @ts-ignore
 type Props = NativeStackScreenProps<RootStackParamList, 'Timer'>;
 type RootStackParamList = {
@@ -54,23 +55,17 @@ const TimePage = ({route, navigation}: Props) => {
     }, []);
 
     return (
-        <SafeAreaView style={styles.timePage}>
-            <ScrollView contentInsetAdjustmentBehavior="automatic">
-                <Div className={styles.timer}>
-                    <Div className={styles.timerTime}>
-                        <Text style={styles.timeText}>{timeString}</Text>
-                    </Div>
-                    <Div className={styles.timerButtons}>
-                        <Button className={styles.timerButton} onClick={startPauseTimer}><Text>{startPauseText}</Text></Button>
-                        <Button className={styles.timerButton} onClick={resetTimer}><Text>Reset</Text></Button>
-                    </Div>
+        <Page navigation={navigation}>
+            <Div className={styles.timer}>
+                <Div className={styles.timerTime}>
+                    <Text style={styles.timeText}>{timeString}</Text>
                 </Div>
-                <BottomNavigation navigate={(to) => {
-                    //@ts-ignore
-                    navigation.navigate(to);
-                }}/>
-            </ScrollView>
-        </SafeAreaView>
+                <Div className={styles.timerButtons}>
+                    <Button className={styles.timerButton} onClick={startPauseTimer}><Text>{startPauseText}</Text></Button>
+                    <Button className={styles.timerButton} onClick={resetTimer}><Text>Reset</Text></Button>
+                </Div>
+            </Div>
+        </Page>
     );
 };
 

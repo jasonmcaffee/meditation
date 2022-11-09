@@ -7,7 +7,7 @@ import {
 import Div from "../common-components/Div";
 import Button from "../common-components/Button";
 // @ts-ignore
-import * as styles from '../style/pages/time-page.scss';
+import * as styles from '../style/components/time-page/time-page.scss';
 import timer from "../services/timer";
 import audioPlayer from "../services/audioPlayer";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
