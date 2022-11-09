@@ -6,14 +6,11 @@ import Button from "../../common-components/Button";
 import * as styles from '../style/pages/meditation-sessions-page.scss';
 
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import BottomNavigation from "../../common-components/BottomNavigation";
 import IMeditationSession from "../../models/IMeditationSession";
 import meditationSessionRepository from "../../repository/meditationSessionRepository";
 import meditationSession from "../../services/meditationSession";
-import {getFormattedDate, getFormattedDuration} from "../../models/IMeditationSession";
-import IconButton from "../../common-components/IconButton";
-import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
 import Page from "../../common-components/Page";
+import MeditationSession from "./MeditationSession";
 // @ts-ignore
 type Props = NativeStackScreenProps<RootStackParamList, 'Sessions'>;
 type RootStackParamList = {};
@@ -62,12 +59,7 @@ function createSessionEls(meditationSessions: IMeditationSession[], onDelete: (i
 }
 
 function createSessionEl(meditationSession: IMeditationSession, onDelete: (i: IMeditationSession)=> Promise<void>){
-    return <Div key={meditationSession.id}>
-        <Text>Date: {getFormattedDate(meditationSession.dateMs)}</Text>
-        <Text>Duration: { getFormattedDuration(meditationSession.durationMs)}</Text>
-        <Text>Notes: {meditationSession.notes}</Text>
-        <IconButton icon={faTrash} onClick={()=> onDelete(meditationSession)}/>
-    </Div>
+    return <MeditationSession meditationSession={meditationSession} onDeleteClick={onDelete}/>
 }
 
 export default MeditationSessionsPage;
