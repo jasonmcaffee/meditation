@@ -13,10 +13,14 @@ type Type = React.FC<PropsWithChildren<{
 
 const MeditationSession: Type = ({children, onDeleteClick, meditationSession}) => {
     return <Div key={meditationSession.id} className={styles.meditationSession}>
-        <Text>Date: {getFormattedDate(meditationSession.dateMs)}</Text>
-        <Text>Duration: { getFormattedDuration(meditationSession.durationMs)}</Text>
-        <Text>Notes: {meditationSession.notes}</Text>
-        <IconButton icon={faTrash} onClick={()=> onDeleteClick(meditationSession)}/>
+        <Div className={styles.rowOne}>
+            <Text style={styles.date}>{getFormattedDate(meditationSession.dateMs)}</Text>
+            <Text style={styles.duration}>{ getFormattedDuration(meditationSession.durationMs)}</Text>
+            <IconButton className={styles.deleteButton} icon={faTrash} onClick={()=> onDeleteClick(meditationSession)}/>
+        </Div>
+        <Div className={styles.rowTwo}>
+            <Text style={styles.notes}>{meditationSession.notes}</Text>
+        </Div>
     </Div>;
 }
 

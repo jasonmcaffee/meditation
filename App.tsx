@@ -21,7 +21,6 @@ const App = () => {
               <Stack.Screen name={"Timer"}  component={TimePage} options={{ headerShown: false }} />
               <Stack.Screen name={"Test"}  component={TestPage} options={{ headerShown: false }} />
               <Stack.Screen name={"Sessions"}  component={MeditationSessionsPage} options={{ headerShown: false }} />
-
           </Stack.Navigator>
       </NavigationContainer>
   );
