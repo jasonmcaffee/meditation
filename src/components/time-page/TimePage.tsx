@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {
     SafeAreaView,
-    ScrollView,
+    ScrollView, StyleSheet, StyleSheetProperties,
     Text,
+    // Dimensions,
+    useWindowDimensions
 } from 'react-native';
 import Div from "../../common-components/Div";
 import Button from "../../common-components/Button";
@@ -30,7 +32,8 @@ import {faPlay} from "@fortawesome/free-solid-svg-icons/faPlay";
 const TimePage = ({route, navigation}: Props) => {
     const [timeString, setTimeString] = useState(timer.getFormattedTime());
     const [startPauseText, setStartPauseText] = useState('Start');
-
+    const screenHeight = useWindowDimensions().height; // Dimensions.get('window').height;
+    const screenWidth = useWindowDimensions().width; //Dimensions.get('window').width;
     async function startPauseTimer(){
         // await audioPlayer.playChime();
         audioPlayer.playChime();
@@ -56,10 +59,12 @@ const TimePage = ({route, navigation}: Props) => {
         }
     }, []);
 
+    //not possible to calculate with rn css, so have to do it with js.
+    const timerTimeStyle = createTimerTimeStyle(screenWidth, screenHeight, styles.timerTime);
     return (
         <Page navigation={navigation}>
             <Div className={styles.timer}>
-                <Div className={styles.timerTime}>
+                <Div className={timerTimeStyle}>
                     <Text style={styles.timeText}>{timeString}</Text>
                 </Div>
                 <Div className={styles.timerButtons}>
@@ -74,5 +79,16 @@ const TimePage = ({route, navigation}: Props) => {
         </Page>
     );
 };
+
+function createTimerTimeStyle(screenWidth: number, screenHeight: number, timerTimeStyleSheet: StyleSheetProperties){
+    //not possible to calculate with rn css, so have to do it with js.
+    const circleDiameter = (screenWidth < screenHeight ? screenWidth - 50 : screenHeight - 100);
+    return {
+        ...timerTimeStyleSheet,
+        width: circleDiameter,
+        height: circleDiameter,
+        borderRadius: circleDiameter / 2,
+    };
+}
 
 export default TimePage;
