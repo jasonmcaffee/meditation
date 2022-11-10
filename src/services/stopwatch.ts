@@ -4,7 +4,7 @@ export interface IDurationUpdateData{
     formattedDuration: string;
 }
 
-class Timer{
+class Stopwatch {
     notifyDurationUpdated: (durationUpdateData: IDurationUpdateData) => void = ()=>{};
 
     startTimeMs = 0;
@@ -77,5 +77,5 @@ function zeroFormat(time: number){
     return time > 9 ? time : `0${time}`;
 }
 
-const timer = new Timer();
-export default timer;
+const stopwatch = new Stopwatch();
+export default stopwatch;

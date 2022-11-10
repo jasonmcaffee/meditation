@@ -10,7 +10,7 @@ import Div from "../../common-components/Div";
 import Button from "../../common-components/Button";
 // @ts-ignore
 import * as styles from '../../style/components/time-page/time-page.scss';
-import timer from "../../services/timer";
+import stopwatch from "../../services/stopwatch";
 import audioPlayer from "../../services/audioPlayer";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import BottomNavigation from "../../common-components/BottomNavigation";
@@ -25,33 +25,29 @@ type RootStackParamList = {
 };
 import {faPause} from "@fortawesome/free-solid-svg-icons/faPause";
 import {faPlay} from "@fortawesome/free-solid-svg-icons/faPlay";
+import timePage from "../../services/timePage";
 //todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
 //https://react-native-track-player.js.org/docs/basics/getting-started
 //https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
 
 const TimePage = ({route, navigation}: Props) => {
-    const [timeString, setTimeString] = useState(timer.getFormattedTime());
-    const [startPauseText, setStartPauseText] = useState('Start');
+    const [timeString, setTimeString] = useState(stopwatch.getFormattedTime());
+    const [isStopWatchRunning, setIsStopWatchRunning] = useState(false);
     const screenHeight = useWindowDimensions().height; // Dimensions.get('window').height;
     const screenWidth = useWindowDimensions().width; //Dimensions.get('window').width;
-    async function startPauseTimer(){
-        // await audioPlayer.playChime();
-        audioPlayer.playChime();
-        setTimeout(()=>{
-            audioPlayer.playChime({volume: .5});
-        }, 1000);
 
-        setStartPauseText(timer.isRunning ? `Start` : 'Pause');
-        timer.startPause();
+    async function startPauseStopwatch(){
+        timePage.startPauseStopwatch();
+        setIsStopWatchRunning(timePage.isStopWatchRunning);
     }
 
-    function resetTimer(){
-        setStartPauseText('Start');
-        timer.reset();
+    function finishSessionClicked(){
+        timePage.finishSession();
+        setIsStopWatchRunning(timePage.isStopWatchRunning);
     }
 
     useEffect(()=>{
-        const unregister = timer.onDurationUpdated((durationUpdateData) => {
+        const unregister = timePage.onDurationUpdated((durationUpdateData) => {
             setTimeString(durationUpdateData.formattedDuration);
         });
         return ()=>{
@@ -69,10 +65,10 @@ const TimePage = ({route, navigation}: Props) => {
                 </Div>
                 <Div className={styles.timerButtons}>
                     <Div className={styles.timerButtonsColumn}>
-                        <IconButton icon={timer.isRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={startPauseTimer}/>
+                        <IconButton icon={isStopWatchRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={startPauseStopwatch}/>
                     </Div>
                     <Div className={styles.timerButtonsColumn}>
-                        <Button className={styles.timerButton} onClick={resetTimer}><Text>Finish</Text></Button>
+                        <Button className={styles.timerButton} onClick={finishSessionClicked}><Text>Finish</Text></Button>
                     </Div>
                 </Div>
             </Div>
