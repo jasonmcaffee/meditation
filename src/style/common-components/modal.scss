@@ -1,0 +1,34 @@
+.modal{
+  background-color: rgba(0,0,0,.7);
+  backdrop-filter: blur(50px) brightness(50%);
+  display: flex;
+  //justify-content: center; //vertical
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+
+}
+
+.modalWindow{
+  background-color: white;
+  width: 85%;
+  height: 70%;
+  margin-top: 10%;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.modalCloseButton{
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  border: 0px solid transparent;
+}
+
+.modalCloseButtonIcon{
+  color: green;
+}

@@ -20,6 +20,10 @@ class TimePage{
     finishSession(){
         stopwatch.reset();
         this.isStopWatchRunning = stopwatch.isRunning;
+        //show modal
+    }
+    getFormattedTime(){
+        return stopwatch.getFormattedTime();
     }
 }
 
