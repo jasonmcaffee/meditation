@@ -44,6 +44,8 @@ class Stopwatch {
         return (Date.now() - this.startTimeMs) + this.durationMs;
     }
 
+    getStartTimeMs = ()=> this.startTimeMs
+
     /**
      * return HH:MM:SS formatted time
      */

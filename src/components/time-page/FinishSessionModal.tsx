@@ -4,11 +4,16 @@ import {Text} from 'react-native';
 import * as styles from "../../style/components/time-page/finish-session-modal.scss";
 import Div from "../../common-components/Div";
 import Modal from "../../common-components/Modal";
-type Prop = React.FC<PropsWithChildren<{ className?: any, onCloseClick?: ()=> void, }>>;
-const FinishSessionModal: Prop = ({children, className = null, onCloseClick}) => {
+import IMeditationSession from "../../models/IMeditationSession";
+type Prop = React.FC<PropsWithChildren<{
+    className?: any,
+    onCloseClick?: ()=> void,
+    meditationSession: IMeditationSession,
+}>>;
+const FinishSessionModal: Prop = ({meditationSession, children, className = null, onCloseClick}) => {
     const style = [styles.button, className];
     return <Modal onCloseClick={onCloseClick}>
-        <Div><Text>Finish Session</Text></Div>
+        <Div><Text>Finish Session {meditationSession.durationMs}</Text></Div>
     </Modal>
 }
 
