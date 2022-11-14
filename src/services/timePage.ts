@@ -52,7 +52,7 @@ function createMeditationSessionBasedOnDurationData(durationMs: number, dateMs: 
         id: Date.now().toString(),
         durationMs,
         dateMs,
-        notes: '',
+        notes: 'Hello this is me',
     };
     return meditationSession;
 

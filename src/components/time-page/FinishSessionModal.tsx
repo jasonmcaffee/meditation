@@ -1,5 +1,5 @@
-import React, {PropsWithChildren} from "react";
-import {Text} from 'react-native';
+import React, {PropsWithChildren, useEffect, useState} from "react";
+import {Text, TextInput} from 'react-native';
 // @ts-ignore
 import * as styles from "../../style/components/time-page/finish-session-modal.scss";
 import Div from "../../common-components/Div";
@@ -12,8 +12,14 @@ type Prop = React.FC<PropsWithChildren<{
 }>>;
 const FinishSessionModal: Prop = ({meditationSession, children, className = null, onCloseClick}) => {
     const style = [styles.button, className];
+    const [notes, setNotes] = useState<string>(meditationSession.notes);
+
     return <Modal onCloseClick={onCloseClick}>
         <Div><Text>Finish Session {meditationSession.durationMs}</Text></Div>
+        <Div>
+            <Text>Notes</Text>
+            <TextInput value={notes} onChangeText={setNotes}/>
+        </Div>
     </Modal>
 }
 
