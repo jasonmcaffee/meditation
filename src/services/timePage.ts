@@ -3,11 +3,13 @@ import audioPlayer from "./audioPlayer";
 import {useState} from "react";
 import FinishSessionModal from "../components/time-page/FinishSessionModal";
 import IMeditationSession from "../models/IMeditationSession";
+import meditationSessionRepository from "../repository/meditationSessionRepository";
 
 class TimePage{
     isStopWatchRunning = false;
     setFinishSessionModal = (s: boolean) => {};
-    setMeditationSession = (s: IMeditationSession) => {};
+    setMeditationSession = (s?: IMeditationSession) => {};
+    meditationSession?: IMeditationSession;
     startPauseStopwatch(){
         audioPlayer.playChime();
         setTimeout(()=>{
@@ -21,15 +23,26 @@ class TimePage{
         return stopwatch.onDurationUpdated(notifyDurationUpdated);
     }
 
+    //when the finish button is pressed, show a modal and prompt for notes, rating, etc.
     finishSession(){
         const durationMs = stopwatch.getCurrentDurationMs();
         const createdDateMs = stopwatch.getStartTimeMs();
         stopwatch.reset();
         this.isStopWatchRunning = stopwatch.isRunning;
-        const meditationSession = createMeditationSessionBasedOnDurationData(durationMs, createdDateMs);
-        this.setMeditationSession(meditationSession);
+        this.meditationSession = createMeditationSessionBasedOnDurationData(durationMs, createdDateMs);
+        this.setMeditationSession(this.meditationSession);
         //show modal
         this.setFinishSessionModal(true);
+    }
+
+    async saveSession(notes: string, rating: number){
+        if(!this.meditationSession) { return console.warn('no meditation session was set to save'); }
+        this.meditationSession.notes = notes;
+        this.meditationSession.rating = rating;
+
+        await meditationSessionRepository.saveMeditationSession(this.meditationSession);
+        this.meditationSession = undefined;
+        this.setMeditationSession(this.meditationSession);
     }
     getFormattedTime(){
         return stopwatch.getFormattedTime();
@@ -45,6 +58,10 @@ class TimePage{
         this.setMeditationSession = (m) => setMeditationSession(m);
         return meditationSession;
     }
+
+    closeFinishSessionModal(){
+        this.setFinishSessionModal(false);
+    }
 }
 
 function createMeditationSessionBasedOnDurationData(durationMs: number, dateMs: number){
@@ -52,7 +69,8 @@ function createMeditationSessionBasedOnDurationData(durationMs: number, dateMs: 
         id: Date.now().toString(),
         durationMs,
         dateMs,
-        notes: 'Hello this is me',
+        notes: '',
+        rating: 0,
     };
     return meditationSession;
 

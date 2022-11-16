@@ -48,7 +48,7 @@ const TimePage = ({route, navigation}: Props) => {
         return ()=>{ unregister(); }
     }, []);
 
-    const finishSessionModal = shouldShowFinishSessionModal && meditationSession ? <FinishSessionModal meditationSession={meditationSession}/> : null;
+    const finishSessionModal = shouldShowFinishSessionModal && meditationSession ? <FinishSessionModal meditationSession={meditationSession} onCloseClick={() => timePage.closeFinishSessionModal()} onSaveClick={(notes, rating) => timePage.saveSession(notes, rating)}/> : null;
     //not possible to calculate with rn css, so have to do it with js.
     const timerTimeStyle = createTimerTimeStyle(screenWidth, screenHeight, styles.timerTime);
     return (

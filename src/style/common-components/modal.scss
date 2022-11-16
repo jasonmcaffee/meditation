@@ -6,11 +6,10 @@
   align-items: center;
   position: absolute;
   top: 0;
-  left: 0;
+  left: -10;//fix padding on container?
   height: 100%;
   width: 100%;
   z-index: 10;
-
 }
 
 .blurView{
@@ -21,11 +20,12 @@
   width: 100%;
   z-index: 11;
 }
+
 .modalWindow{
   background-color: white;
-  width: 85%;
-  height: 70%;
-  margin-top: 10%;
+  width: 95%;
+  height: 75%;
+  margin-top: 20px;
   border-radius: 15px;
   padding: 10px;
 }
@@ -35,6 +35,7 @@
   right: 0;
   background-color: transparent;
   border: 0px solid transparent;
+  z-index: 100;
 }
 
 .modalCloseButtonIcon{

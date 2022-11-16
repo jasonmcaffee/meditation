@@ -3,6 +3,7 @@ export default interface IMeditationSession{
     dateMs: number,
     durationMs: number,
     notes: string, //description of how the meditation went
+    rating: number,
 }
 
 export function getFormattedDate(dateMs: number){

@@ -37,10 +37,12 @@ class Stopwatch {
     reset(){
         this.pause();
         this.durationMs = 0;
+        this.startTimeMs = 0;
         this.notifyDurationUpdated(getDurationDataFromDurationMs(0));
     }
 
     getCurrentDurationMs(){
+        if(this.startTimeMs === 0){ return 0; }
         return (Date.now() - this.startTimeMs) + this.durationMs;
     }
 
