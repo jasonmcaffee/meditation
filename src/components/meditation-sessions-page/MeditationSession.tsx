@@ -1,4 +1,6 @@
 import React, {PropsWithChildren} from "react";
+//@ts-ignore
+import StarRating from 'react-native-star-rating-widget';
 // @ts-ignore
 import * as styles from "../../style/components/meditation-page/meditation-session.scss";
 import Div from "../../common-components/Div";
@@ -19,6 +21,9 @@ const MeditationSession: Type = ({children, onDeleteClick, meditationSession}) =
             <IconButton className={styles.deleteButton} icon={faTrash} onClick={()=> onDeleteClick(meditationSession)}/>
         </Div>
         <Div className={styles.rowTwo}>
+            <StarRating rating={meditationSession.rating} color={"rgb(37, 37, 37)"} starSize={20} animationConfig={{scale: 1}}/>
+        </Div>
+        <Div className={styles.rowThree}>
             <Text style={styles.notes}>{meditationSession.notes}</Text>
         </Div>
     </Div>;
