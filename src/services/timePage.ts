@@ -44,8 +44,13 @@ class TimePage{
         this.meditationSession = undefined;
         this.setMeditationSession(this.meditationSession);
     }
+
     getFormattedTime(){
         return stopwatch.getFormattedTime();
+    }
+
+    getDurationData(){
+        return stopwatch.getDurationData();
     }
 
     useShouldDisplayFinishSessionModal(){

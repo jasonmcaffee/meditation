@@ -1,4 +1,7 @@
 export interface IDurationUpdateData{
+    hours: number,
+    minutes: number,
+    seconds: number,
     durationMs: number;
     durationSeconds: number;
     formattedDuration: string;
@@ -54,6 +57,9 @@ class Stopwatch {
     getFormattedTime(){
         return getDurationDataFromDurationMs(this.durationMs).formattedDuration;
     }
+    getDurationData(){
+        return getDurationDataFromDurationMs(this.durationMs);
+    }
     onDurationUpdated(notifyDurationUpdated: (durationUpdateData: IDurationUpdateData) => void){
         this.notifyDurationUpdated = notifyDurationUpdated;
         return () => {
@@ -71,6 +77,9 @@ function getDurationDataFromDurationMs(durationMs: number): IDurationUpdateData 
     const minutes = Math.floor(durationSeconds / 60) % 60;
     const seconds = Math.floor(durationSeconds % 60);
     return {
+        hours,
+        minutes,
+        seconds,
         durationMs,
         durationSeconds,
         formattedDuration: `${zeroFormat(hours)}:${zeroFormat(minutes)}:${zeroFormat(seconds)}`,

@@ -19,12 +19,13 @@ import {faPlay} from "@fortawesome/free-solid-svg-icons/faPlay";
 import timePage from "../../services/timePage";
 import Modal from "../../common-components/Modal";
 import FinishSessionModal from "./FinishSessionModal";
+import {IDurationUpdateData} from "../../services/stopwatch";
 //todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
 //https://react-native-track-player.js.org/docs/basics/getting-started
 //https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
 
 const TimePage = ({route, navigation}: Props) => {
-    const [timeString, setTimeString] = useState(timePage.getFormattedTime());
+    const [durationData, setDurationData] = useState(timePage.getDurationData());
     const [isStopWatchRunning, setIsStopWatchRunning] = useState(false);
     const screenHeight = useWindowDimensions().height; // Dimensions.get('window').height;
     const screenWidth = useWindowDimensions().width; //Dimensions.get('window').width;
@@ -43,7 +44,7 @@ const TimePage = ({route, navigation}: Props) => {
 
     useEffect(()=>{
         const unregister = timePage.onDurationUpdated((durationUpdateData) => {
-            setTimeString(durationUpdateData.formattedDuration);
+            setDurationData(durationUpdateData);
         });
         return ()=>{ unregister(); }
     }, []);
@@ -56,7 +57,7 @@ const TimePage = ({route, navigation}: Props) => {
             {finishSessionModal}
             <Div className={styles.timer}>
                 <Div className={timerTimeStyle}>
-                    <Text style={styles.timeText}>{timeString}</Text>
+                    {createTimeEl(durationData)}
                 </Div>
                 <Div className={styles.timerButtons}>
                     <Div className={styles.timerButtonsColumn}>
@@ -71,6 +72,11 @@ const TimePage = ({route, navigation}: Props) => {
     );
 };
 
+function createTimeEl(durationData: IDurationUpdateData){
+    const chars = durationData.formattedDuration.split("");
+    const els = chars.map( (c, i) => <Text key={i} adjustsFontSizeToFit style={styles.timeTextChar}>{c}</Text>);
+    return <Div className={styles.timeTextCharContainer}>{els}</Div>
+}
 function createTimerTimeStyle(screenWidth: number, screenHeight: number, timerTimeStyleSheet: StyleSheetProperties){
     //not possible to calculate with rn css, so have to do it with js.
     const circleDiameter = (screenWidth < screenHeight ? screenWidth - 50 : screenHeight - 100);
