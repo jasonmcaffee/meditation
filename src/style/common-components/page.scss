@@ -7,17 +7,12 @@
   background-color: rgb(37, 37, 37);
 }
 
-//all content between safe top and bottom navigation.
-.scrollView{
-  width: 100%;
-  padding-right: 10px;
-  padding-left: 10px;
-  //height: 100%;
-  //padding: 10px;
-  //background-color: green;
-  //padding-bottom: 150px; //leave space for bottom navigation
+.pageContent{
+  display: flex;
+  flex: 1;//push bottom navigation to the bottom
 }
 
-.bottomSpace{
-  height: 50px;
+.bottomNavigation{
+  //position: absolute;
+  //bottom: 15px;
 }

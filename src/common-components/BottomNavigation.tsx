@@ -14,12 +14,9 @@ import {faVihara} from "@fortawesome/free-solid-svg-icons/faVihara";
 
 // @ts-ignore
 import * as styles from '../style/common-components/bottom-navigation.scss';
-const BottomNavigation = ({navigate}: {navigate: (to: string) => void}) =>{
+const BottomNavigation = ({navigate, className}: { className?: string, navigate: (to: string) => void}) =>{
     return (
-        <Div className={styles.bottomNavigation}>
-            {/*<Div onClick={()=> navigate('Test')}>*/}
-            {/*    <FontAwesomeIcon style={styles.navigationIcon} icon={faDharmachakra} size={30}/>*/}
-            {/*</Div>*/}
+        <Div className={[styles.bottomNavigation, className]}>
             <Div className={styles.navigationItem}  onClick={()=> navigate('Timer')}>
                 <FontAwesomeIcon style={styles.navigationIcon} icon={faOm} size={30}/>
             </Div>
