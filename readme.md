@@ -12,6 +12,12 @@ brew install cocoapods
 ```shell
 cd ios && pod install && cd ..
 ```
+
+#### Install Assets
+For fonts
+```shell
+npx react-native-assets
+```
 ### React Native
 
 ## Running

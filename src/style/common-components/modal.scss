@@ -12,19 +12,11 @@
   z-index: 10;
 }
 
-.blurView{
-  position: absolute;
-  left: 0;
-  top:0;
-  height: 100%;
-  width: 100%;
-  z-index: 11;
-}
 
 .modalWindow{
   background-color: white;
   width: 95%;
-  height: 75%;
+  //height: 75%;
   margin-top: 20px;
   border-radius: 15px;
   padding: 10px;
@@ -41,3 +33,12 @@
 .modalCloseButtonIcon{
   color: green;
 }
+
+//.blurView{
+//  position: absolute;
+//  left: 0;
+//  top:0;
+//  height: 100%;
+//  width: 100%;
+//  z-index: 11;
+//}

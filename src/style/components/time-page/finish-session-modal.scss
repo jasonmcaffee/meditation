@@ -1,14 +1,18 @@
+@import "./src/style/common";
+
 .finishSessionModal{
 
 }
 
 .finishSessionModalWindow{
-
+  //height: auto;
 }
 
 .notesTextInput{
+  @extend %font;
   background-color: whitesmoke;
   border: 1px black solid;
   border-radius: 5px;
-  height: 80%;
+  height: 300px;
+  padding: 5px;
 }

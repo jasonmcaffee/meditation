@@ -1,4 +1,6 @@
 @import "../../common-components/page";
+@import "./src/style/common";
+
 .meditationSessionsPage{
   @extend .page;
   //background-color: red; need some content here or you lose the extend style.

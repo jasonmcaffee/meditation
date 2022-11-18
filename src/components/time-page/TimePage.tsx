@@ -63,7 +63,7 @@ const TimePage = ({route, navigation}: Props) => {
                         <IconButton icon={isStopWatchRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={startPauseStopwatch}/>
                     </Div>
                     <Div className={styles.timerButtonsColumn}>
-                        <Button className={styles.timerButton} onClick={finishSessionClicked}><Text>Finish</Text></Button>
+                        <Button text={"Finish"} className={styles.timerButton} onClick={finishSessionClicked}/>
                     </Div>
                 </Div>
             </Div>

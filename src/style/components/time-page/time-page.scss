@@ -1,3 +1,5 @@
+@import "./src/style/common";
+
 //https://blog.logrocket.com/sass-react-native-guide/
 .timer{
   display: flex;
@@ -40,9 +42,13 @@
 //}
 
 .timeText{
+  @extend %font;
   font-size: 50px;
   color: white;
-  //font-family: Montserrat-Regular;
+  background-color: red;
+  width: 100%;
+  text-align: center;
+  //letter-spacing: 4px;
 }
 
 .timerButtons{

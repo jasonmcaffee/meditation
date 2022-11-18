@@ -2,9 +2,11 @@ import React, {PropsWithChildren} from "react";
 // @ts-ignore
 import * as styles from "../style/common-components/button.scss";
 import Div from "./Div";
-const Button: React.FC<PropsWithChildren<{ className?: any, onClick?: ()=> void, }>> = ({children, className = null, onClick}) => {
+import {Text} from "react-native";
+const Button: React.FC<PropsWithChildren<{ className?: any, onClick?: ()=> void, text?: string}>> = ({children, className = null, onClick, text}) => {
     const style = [styles.button, className];
-    return <Div className={style} onClick={onClick}>{children}</Div>;
+    const textEl = text == null ? null : <Text style={styles.buttonText}>{text}</Text>
+    return <Div className={style} onClick={onClick}>{textEl}{children}</Div>;
 }
 
 export default Button;

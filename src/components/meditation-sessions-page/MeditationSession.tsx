@@ -21,7 +21,7 @@ const MeditationSession: Type = ({children, onDeleteClick, meditationSession}) =
             <IconButton className={styles.deleteButton} icon={faTrash} onClick={()=> onDeleteClick(meditationSession)}/>
         </Div>
         <Div className={styles.rowTwo}>
-            <StarRating rating={meditationSession.rating} color={"rgb(37, 37, 37)"} starSize={20} animationConfig={{scale: 1}}/>
+            <StarRating rating={meditationSession.rating} color={"rgb(37, 37, 37)"} starSize={20} onChange={()=> null} animationConfig={{scale: 1}}/>
         </Div>
         <Div className={styles.rowThree}>
             <Text style={styles.notes}>{meditationSession.notes}</Text>

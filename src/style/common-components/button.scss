@@ -1,3 +1,5 @@
+@import "./src/style/common";
+
 .button{
   display: flex;
   padding: 10px;
@@ -5,4 +7,8 @@
   border-radius: 10px;
   border: 1px solid grey;
   align-items: center;//horizontally center
+}
+
+.buttonText{
+  @extend %font;
 }
