@@ -1,11 +1,11 @@
 @import "./src/style/common";
 
 .button{
+  background-color: $buttonBackgroundColor;
   display: flex;
   padding: 10px;
-  background-color: lightgrey;
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid $buttonBorderColor;
   align-items: center;//horizontally center
 }
 
