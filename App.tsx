@@ -8,22 +8,32 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TimePage from "./src/components/time-page/TimePage";
 import TestPage from "./src/components/TestPage";
 import MeditationSessionsPage from "./src/components/meditation-sessions-page/MeditationSessionsPage";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = { backgroundColor: isDarkMode ? Colors.darker : Colors.lighter, };
-
+  const screenOptions = { headerShown: false, tabBarStyle:{display: 'none'} };
   return (
       <NavigationContainer>
-          <Stack.Navigator>
-              <Stack.Screen name={"Timer"}  component={TimePage} options={{ headerShown: false }} />
-              <Stack.Screen name={"Test"}  component={TestPage} options={{ headerShown: false }} />
-              <Stack.Screen name={"Sessions"}  component={MeditationSessionsPage} options={{ headerShown: false }} />
-          </Stack.Navigator>
+          <Tab.Navigator screenOptions={{}}>
+              <Tab.Screen name={"Timer"}  component={TimePage} options={{ headerShown: false, tabBarStyle:{display: 'none'} }} />
+              <Tab.Screen name={"Sessions"}  component={MeditationSessionsPage} options={{ headerShown: false,  tabBarStyle:{display: 'none'} }} />
+          </Tab.Navigator>
       </NavigationContainer>
   );
 };
 
 export default App;
+
+/**
+ * <NavigationContainer>
+ *           <Stack.Navigator>
+ *               <Stack.Screen name={"Timer"}  component={TimePage} options={{ headerShown: false }} />
+ *               <Stack.Screen name={"Sessions"}  component={MeditationSessionsPage} options={{ headerShown: false }} />
+ *           </Stack.Navigator>
+ *       </NavigationContainer>
+ */

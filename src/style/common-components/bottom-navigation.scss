@@ -14,7 +14,17 @@
   border-radius: 45px;
 }
 
+.navigationItemActive{
+  @extend .navigationItem;
+  background-color: rgb(55,55,55);
+}
+
 .navigationIcon{
   display: flex;
   color: $navigationIconColor;
+}
+
+.navigationIconActive{
+  @extend .navigationIcon;
+  color: white;
 }

@@ -10,6 +10,7 @@ type RootStackParamList = {};
 
 const Page: React.FC<PropsWithChildren<{ className?: any, navigation: any}>> = ({children, className = null, navigation}) => {
     // const style = [styles.page, className];
+
     return <SafeAreaView style={styles.page}>
         <Div className={styles.pageContent}>
             {children}
