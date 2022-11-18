@@ -1,15 +1,15 @@
-@import "./src/style/common";
+@import "../common";
 
 .iconButton{
-  background-color: rgb(173, 172, 172);
+  background-color: $iconButtonBackgroundColor;
   width: 40px;
   padding: 10px;
   display:flex;
   align-items: center;
   border-radius: 7px;
-  border: 1px solid rgb(134, 134, 134);
+  border: 1px solid $iconButtonBorderColor;
 }
 
 .icon{
-  color: rgb(212, 68, 64);
+  color: $iconButtonColor;
 }

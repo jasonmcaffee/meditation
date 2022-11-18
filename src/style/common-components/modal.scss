@@ -1,5 +1,7 @@
+@import "./src/style/common";
+
 .modal{
-  background-color: rgba(0,0,0,.7);
+  background-color: $modalBackgroundColor;
   backdrop-filter: blur(50px) brightness(50%);
   display: flex;
   //justify-content: center; //vertical
@@ -14,7 +16,7 @@
 
 
 .modalWindow{
-  background-color: white;
+  background-color: $modalWindowBackgroundColor;
   width: 95%;
   //height: 75%;
   margin-top: 20px;
@@ -31,7 +33,7 @@
 }
 
 .modalCloseButtonIcon{
-  color: green;
+  color: $modalCloseButtonIconColor;
 }
 
 //.blurView{
