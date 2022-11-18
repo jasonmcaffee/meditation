@@ -35,20 +35,9 @@ const MeditationSessionsPage = ({route, navigation}: Props) => {
     return (
         <Page navigation={navigation}>
             <Div>
-                {/*<Div>*/}
-                {/*    <Text>Meditation Session History</Text>*/}
-                {/*</Div>*/}
-                <Div>
+                <ScrollView>
                     {sessionEls}
-                </Div>
-                {/*<Div onClick={async ()=>{*/}
-                {/*    await meditationSession.createAndSaveMeditationSession(15 * 60 * 1000, `good stuff`);*/}
-                {/*    //await meditationSessionRepository.saveMeditationSession(session);*/}
-                {/*    console.log(`meditation added`);*/}
-                {/*    meditationSessionRepository.getMeditationSessions().then(setMeditationSessions);*/}
-                {/*}}>*/}
-                {/*    <Text>Create test session</Text>*/}
-                {/*</Div>*/}
+                </ScrollView>
             </Div>
         </Page>
     );
