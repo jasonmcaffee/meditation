@@ -29,7 +29,7 @@ import StarRating from 'react-native-star-rating-widget';
 const FinishSessionModal: Prop = ({meditationSession, children, onCloseClick, onSaveClick}) => {
     const [notes, setNotes] = useState<string>(meditationSession.notes);
     const [rating, setRating] = useState(0);
-
+    const [selectedIndex, setSelectedIndex] = useState(0);
     return <Modal onCloseClick={onCloseClick} className={styles.finishSessionModal} windowClassName={styles.finishSessionModalWindow}>
         <Div className={styles.rowOne}>
             <Text style={styles.durationText}>{ getFormattedDuration(meditationSession.durationMs)}</Text>

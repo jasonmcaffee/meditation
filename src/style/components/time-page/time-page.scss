@@ -20,6 +20,30 @@
   justify-content: flex-end;
 }
 
+.hoursAndMinutes{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+}
+
+.bellIconButton{
+  background-color: transparent;
+  border: none;
+  margin-right: 5px;
+}
+.bellIconButtonIcon{
+  color: white;
+}
+
+.hours{
+  margin-right: 10px;
+}
+
 .timerTime{
   display: flex;
   align-items: center; //horizontal align content
