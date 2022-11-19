@@ -1,5 +1,5 @@
 import stopwatch, {IDurationUpdateData} from "./stopwatch";
-import audioPlayer from "./audioPlayer";
+import audioPlayer, {soundFiles} from "./audioPlayer";
 import {useState} from "react";
 import FinishSessionModal from "../components/time-page/FinishSessionModal";
 import IMeditationSession from "../models/IMeditationSession";
@@ -11,10 +11,8 @@ class TimePage{
     setMeditationSession = (s?: IMeditationSession) => {};
     meditationSession?: IMeditationSession;
     async startPauseStopwatch(){
-        audioPlayer.playChime();
-        setTimeout(()=>{
-            audioPlayer.playChime({volume: .5});
-        }, 1000);
+        // audioPlayer.playChime();
+        audioPlayer.playFile(soundFiles.metalBowlStrikeHard2Gong);
         stopwatch.startPause();
         this.isStopWatchRunning = stopwatch.isRunning;
 

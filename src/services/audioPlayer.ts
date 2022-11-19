@@ -4,6 +4,19 @@ Sound.setCategory('Playback');
 //@ts-ignore use an alias due to TS having issue with value being same name as type Sound
 type S = Sound;
 
+export const soundFiles = {
+    chimeGentlePaced: 'chime-gentle-paced.mp3',
+    chimeMediumPace: 'chime-medium-paced.mp3',
+    chimeMediumSingle: 'chime-medium-single.mp3',
+    metalBowlSingGoodLongWooden: 'metal-bowl-sing-good-long-wooden.mp3',
+    metalBowlSingQuiet: 'metal-bowl-sing-quiet.mp3',
+    metalBowlStrikeHard2Gong: 'metal-bowl-strike-hard2-gong.mp3',
+    metalBowlStrikeMedium7Deep: 'metal-bowl-strike-medium7-deep.mp3',
+    metalBowlStrikeMedium18Vibrato: 'metal-bowl-strike-medium18-vibrato.mp3',
+    metalBowlStrikeSoft6: 'metal-bowl-strike-soft6.mp3',
+    chime: 'chime.mp3',
+}
+
 function createSound(fileName: string): Promise<S>{
     return new Promise<S>((resolve, reject)=>{
        let s = new Sound(fileName, Sound.MAIN_BUNDLE, (error: any) =>{
@@ -24,14 +37,12 @@ class AudioPlayer{
 
     constructor() {}
 
-    async playChime({volume} = {volume: 1}): Promise<S>{
-        return this.playFile({volume, fileName: 'chime-gentle-paced.mp3'});
-        // const sound = await createSound('chime.mp3');
-        // sound.setVolume(volume);
-        // return playSound(sound);
+    async playChime({volume} = {volume: 1}){
+        return this.playFile( soundFiles.chimeGentlePaced, volume);
     }
 
-    async playFile({volume, fileName} = {volume: 1, fileName: 'chime.mp3'}): Promise<S>{
+    // async playFile({volume, fileName} = {volume: 1, fileName: 'chime.mp3'}): Promise<S>{
+    async playFile(fileName:string, volume = 1): Promise<S>{
         const sound = await createSound(fileName);
         sound.setVolume(volume);
         return playSound(sound);
