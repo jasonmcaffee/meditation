@@ -14,7 +14,12 @@ $meditationSessionBackgroundColor:  rgb(67, 67, 67);
   align-items: center; //vertical align
 }
 .rowTwo{
-
+  padding-bottom: 5px;
+  padding-top: 5px;
+  display: flex;
+  //align-self: center;
+  margin-left: -6px;
+  //background-color: red;
 }
 .rowThree{
 

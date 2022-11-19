@@ -16,19 +16,24 @@ type Type = React.FC<PropsWithChildren<{
 }>>;
 
 const MeditationSession: Type = ({children, onDeleteClick, meditationSession}) => {
+    // const starColor = "rgb(37,37,37)";
+    const starColor = "rgb(174, 174, 174 )";
+    const emptyColor = "rgb(174, 174, 174 )";
+
     return <Swipeable renderRightActions={(progress, dragX) => renderRightActions(progress, dragX, ()=>{onDeleteClick(meditationSession)})}>
         <Div key={meditationSession.id} className={styles.meditationSession}>
             <Div className={styles.rowOne}>
                 <Text style={styles.date}>{getFormattedDate(meditationSession.dateMs)}</Text>
                 <Text style={styles.duration}>{ getFormattedDuration(meditationSession.durationMs)}</Text>
-                {/*<IconButton className={styles.deleteButton} icon={faTrash} onClick={()=> onDeleteClick(meditationSession)}/>*/}
             </Div>
             <Div className={styles.rowTwo}>
-                <StarRating rating={meditationSession.rating} color={"rgb(37, 37, 37)"} starSize={20} onChange={()=> null} animationConfig={{scale: 1}}/>
+                <StarRating rating={meditationSession.rating} color={starColor} emptyColor={emptyColor} starSize={20} onChange={()=> null} animationConfig={{scale: 1}}/>
             </Div>
+            {meditationSession.notes &&
             <Div className={styles.rowThree}>
                 <Text style={styles.notes}>{meditationSession.notes}</Text>
             </Div>
+            }
         </Div>
     </Swipeable>;
 }

@@ -36,7 +36,6 @@ const MeditationSessionsPage = ({route, navigation}: Props) => {
         setMeditationSessions([...sessions]); //must clone array so flatlist gets updated after delete.
     };
 
-    // const sessionEls = createSessionEls(meditationSessions, onDeleteClicked);
     return (
         <Page navigation={navigation}>
             <Div>
@@ -45,10 +44,6 @@ const MeditationSessionsPage = ({route, navigation}: Props) => {
         </Page>
     );
 };
-
-function createSessionEls(meditationSessions: IMeditationSession[], onDelete: (i: IMeditationSession)=> Promise<void>){
-    return meditationSessions.map((i) => createSessionEl(i, onDelete));
-}
 
 function createSessionEl(meditationSession: IMeditationSession, onDelete: (i: IMeditationSession)=> Promise<void>){
     return <MeditationSession key={meditationSession.id} meditationSession={meditationSession} onDeleteClick={onDelete}/>
