@@ -56,15 +56,19 @@ const TimePage = ({route, navigation}: Props) => {
         <Page navigation={navigation}>
             {finishSessionModal}
             <Div className={styles.timer}>
-                <Div className={timerTimeStyle}>
-                    {createTimeEl(durationData)}
-                </Div>
-                <Div className={styles.timerButtons}>
-                    <Div className={styles.timerButtonsColumn}>
-                        <IconButton icon={isStopWatchRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={startPauseStopwatch}/>
+                <Div className={styles.rowOne}>
+                    <Div className={timerTimeStyle}>
+                        {createTimeEl(durationData)}
                     </Div>
-                    <Div className={styles.timerButtonsColumn}>
-                        <Button text={"Finish"} className={styles.timerButton} onClick={finishSessionClicked}/>
+                </Div>
+                <Div className={styles.rowTwo}>
+                    <Div className={styles.timerButtons}>
+                        <Div className={styles.timerButtonsColumn}>
+                            <IconButton icon={isStopWatchRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={startPauseStopwatch}/>
+                        </Div>
+                        <Div className={styles.timerButtonsColumn}>
+                            <Button text={"Finish"} className={styles.timerButton} onClick={finishSessionClicked}/>
+                        </Div>
                     </Div>
                 </Div>
             </Div>

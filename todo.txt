@@ -1,4 +1,4 @@
-- Swipe View to delete session. https://docs.swmansion.com/react-native-gesture-handler/docs/api/components/swipeable/
+- remove powered by react native. better startup screen.
 - calendar integration? https://github.com/wmcmahan/react-native-calendar-events
 
 Later

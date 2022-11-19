@@ -4,6 +4,20 @@
 .timer{
   display: flex;
   padding: 5px;
+  position: relative;
+}
+
+.rowOne{
+  display: flex;
+  //flex: 1;
+  height: 60%;
+}
+
+.rowTwo{
+  display: flex;
+  //flex: 1;
+  height: 40%;
+  justify-content: flex-end;
 }
 
 .timerTime{
