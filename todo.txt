@@ -1,4 +1,4 @@
-- SwipeView to delete session.
+- Swipe View to delete session. https://docs.swmansion.com/react-native-gesture-handler/docs/api/components/swipeable/
 - calendar integration? https://github.com/wmcmahan/react-native-calendar-events
 
 Later

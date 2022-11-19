@@ -10,7 +10,7 @@ import TestPage from "./src/components/TestPage";
 import MeditationSessionsPage from "./src/components/meditation-sessions-page/MeditationSessionsPage";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import meditationSessionRepository from "./src/repository/meditationSessionRepository";
-
+import "react-native-gesture-handler";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -30,12 +30,3 @@ const App = () => {
 };
 
 export default App;
-
-/**
- * <NavigationContainer>
- *           <Stack.Navigator>
- *               <Stack.Screen name={"Timer"}  component={TimePage} options={{ headerShown: false }} />
- *               <Stack.Screen name={"Sessions"}  component={MeditationSessionsPage} options={{ headerShown: false }} />
- *           </Stack.Navigator>
- *       </NavigationContainer>
- */

@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList, SafeAreaView, ScrollView, Text, TextInput,} from 'react-native';
+import React, {Component, useEffect, useState} from 'react';
+import {FlatList, SafeAreaView, ScrollView, Text, TextInput, Animated} from 'react-native';
 import Div from "../../common-components/Div";
+import {RectButton, Swipeable} from "react-native-gesture-handler";
 import Button from "../../common-components/Button";
 // @ts-ignore
-import * as styles from '../style/pages/meditation-sessions-page.scss';
+import * as styles from '../../style/components/meditation-page/meditation-sessions-page.scss';
 
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import IMeditationSession from "../../models/IMeditationSession";
@@ -19,6 +20,7 @@ type RootStackParamList = {};
 //https://github.com/rossbulat/rn-load-more/blob/master/List.js
 //https://rossbulat.medium.com/react-native-lists-load-more-by-scrolling-378a1c5f56a6
 const MeditationSessionsPage = ({route, navigation}: Props) => {
+
     const [meditationSessions, setMeditationSessions] = useState([] as IMeditationSession[]);
     useEffect(()=>{
         refreshMeditationSessions();
@@ -49,8 +51,9 @@ function createSessionEls(meditationSessions: IMeditationSession[], onDelete: (i
 }
 
 function createSessionEl(meditationSession: IMeditationSession, onDelete: (i: IMeditationSession)=> Promise<void>){
-
     return <MeditationSession key={meditationSession.id} meditationSession={meditationSession} onDeleteClick={onDelete}/>
 }
 
 export default MeditationSessionsPage;
+
+

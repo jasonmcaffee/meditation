@@ -1,7 +1,8 @@
 @import "./src/style/common";
 
+$meditationSessionBackgroundColor:  rgb(67, 67, 67);
 .meditationSession{
-  background-color: rgb(67, 67, 67);
+  background-color: $meditationSessionBackgroundColor;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
@@ -37,11 +38,36 @@
 
 .notes{
   @extend .text;
-  //
+}
+
+.rightSwipeContainer{
+  background-color: transparent;
+  display: flex; //ensures we only slide left by a certain amount.
+  margin-bottom: 10px;
+  border-radius: 5px;
+  //width: 100px;
+}
+
+.animatedTextDeleteButtonContainer{
+  //background-color: $meditationSessionBackgroundColor;
+  display: flex;
+  background-color: transparent;
+  flex: 1;
 }
 
 .deleteButton{
-  margin-left: 10px;
+  display: flex;
+  //margin-left: 10px;
   background-color: transparent;
   border: none;
+  flex: 1; //vertically align
+  align-items: flex-end; //push icon to far right
+  justify-content: center; //vertically align delete button
+  width: 70px;
 }
+
+.deleteButtonIcon{
+  display: flex;
+  //background-color: red;
+}
+
