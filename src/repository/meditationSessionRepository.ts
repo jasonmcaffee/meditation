@@ -5,31 +5,37 @@ import RNFS from "react-native-fs";
 
 const sessionsDataFilePath = RNFS.DocumentDirectoryPath + '/sessions.txt';
 
-class MeditationSessionRepository {
-    async getMeditationSessions(): Promise<IMeditationSession[]>{
+export class MeditationSessionRepository {
+    dataContainer?: IDataContainer;
+    async getMeditationSessions(startDateMs?: number, limit?: number): Promise<IMeditationSession[]>{
         const dataContainer = await this.getDataContainer();
         const meditationSessions = dataContainer.meditationSessions;
-        return meditationSessions;
+        if(startDateMs == undefined) { return meditationSessions; }
+
+        let result = meditationSessions.filter(m => m.dateMs >= startDateMs);
+        return result.slice(0, limit);
     }
 
-    async getDataContainer(){
+    async getDataContainer(forceRefresh = false){
+        if(forceRefresh == false && this.dataContainer != undefined){ return this.dataContainer; }
+        const startTime = Date.now();
         let dataString = await ensureSessionsFileExists(async ()=>{
             return await fileSystem.readFile(sessionsDataFilePath);
         });
         const dataContainer = convertDataStringToDataContainer(dataString);
+        const duration = Date.now() - startTime;
+        this.dataContainer = dataContainer;
+        console.log(`it took ${duration} ms to retrieve date from file system. count: ${dataContainer.meditationSessions.length}`);
         return dataContainer;
+    }
+
+    async deleteAll(){
+        await this.saveDataContainer({meditationSessions: []});
     }
 
     async saveMeditationSession(meditationSession: IMeditationSession){
         const dataContainer = await this.getDataContainer();
-        //should be upsert.
-        const index = dataContainer.meditationSessions.findIndex( s => s.id == meditationSession.id);
-        if(index < 0){
-            dataContainer.meditationSessions.push(meditationSession);
-        }
-        //we can probably assume by ref, but easy enough to just reset.
-        dataContainer.meditationSessions[index] = meditationSession;
-
+        dataContainer.meditationSessions.unshift(meditationSession); //insert at beginning;
         await this.saveDataContainer(dataContainer);
     }
 
@@ -43,6 +49,7 @@ class MeditationSessionRepository {
     }
 
     async saveDataContainer(dataContainer: IDataContainer){
+        this.dataContainer = dataContainer;
         const dataContainerString = JSON.stringify(dataContainer);
         await fileSystem.writeFile(dataContainerString, sessionsDataFilePath);
     }

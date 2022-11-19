@@ -6,15 +6,24 @@ class FileSystem{
 
     async writeFile(data: string, path: string) {
         // const path = RNFS.DocumentDirectoryPath + '/test.txt';
-        console.log(`writing file. path: ${path}, data: ${data}`);
-        return RNFS.writeFile(path, data, 'utf8');
+        const start = Date.now();
+        console.log(`writing file. path: ${path}`);
+        const result = RNFS.writeFile(path, data, 'utf8');
+        const duration = Date.now() - start;
+        console.log(`writing took: ${duration} ms`);
+        return result;
     }
 
     async readFile(path: string){
         // const path = RNFS.DocumentDirectoryPath + '/test.txt';
+        const start = Date.now();
         console.log(`reading file: ${path}`);
         const result = await RNFS.readFile(path, 'utf8');
-        console.log(`read file: `, result);
+        const stat = await RNFS.stat(path);
+
+        const duration = Date.now() - start;
+        console.log(`reading took: ${duration} ms size: ${stat.size}`);
+        // console.log(`read file: `, result);
         return result;
     }
 }

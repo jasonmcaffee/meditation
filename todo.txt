@@ -1,5 +1,6 @@
-Time page
-- use play button
-- Reset should be named finish
--- show modal with notes to add for the session
-- use percentage width for clock display
+- SwipeView to delete session.
+- calendar integration? https://github.com/wmcmahan/react-native-calendar-events
+
+Later
+============================
+SQLite didn't work out of the box.  Revisit later.  File system will work for the next couple of years.

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, SafeAreaView, ScrollView, Text, TextInput,} from 'react-native';
+import {SafeAreaView, ScrollView, Text, TextInput,} from 'react-native';
 import Div from "../../common-components/Div";
 import Button from "../../common-components/Button";
 // @ts-ignore
@@ -26,19 +26,21 @@ const MeditationSessionsPage = ({route, navigation}: Props) => {
 
     const onDeleteClicked = async (i: IMeditationSession) => {
         await meditationSession.deleteMeditationSession(i);
-        await refreshMeditationSessions();
+        await refreshMeditationSessions(); //TODO: this needs fixing.
     };
 
     const refreshMeditationSessions = async () => {
         const sessions = await meditationSession.getMeditationSessions();
-        setMeditationSessions([...sessions]); //must clone array so flatlist gets updated after delete.
+        setMeditationSessions(sessions);
     };
 
-    // const sessionEls = createSessionEls(meditationSessions, onDeleteClicked);
+    const sessionEls = createSessionEls(meditationSessions, onDeleteClicked);
     return (
         <Page navigation={navigation}>
             <Div>
-                <FlatList onEndReachedThreshold={.5} data={meditationSessions} renderItem={i => { return createSessionEl(i.item, onDeleteClicked)}} keyExtractor={(i) => i.id}/>
+                <ScrollView>
+                    {sessionEls}
+                </ScrollView>
             </Div>
         </Page>
     );
@@ -49,8 +51,7 @@ function createSessionEls(meditationSessions: IMeditationSession[], onDelete: (i
 }
 
 function createSessionEl(meditationSession: IMeditationSession, onDelete: (i: IMeditationSession)=> Promise<void>){
-
-    return <MeditationSession key={meditationSession.id} meditationSession={meditationSession} onDeleteClick={onDelete}/>
+    return <MeditationSession meditationSession={meditationSession} onDeleteClick={onDelete}/>
 }
 
 export default MeditationSessionsPage;
