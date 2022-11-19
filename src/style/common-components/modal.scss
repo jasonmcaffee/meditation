@@ -2,16 +2,16 @@
 
 .modal{
   background-color: $modalBackgroundColor;
-  backdrop-filter: blur(50px) brightness(50%);
   display: flex;
   //justify-content: center; //vertical
   align-items: center;
   position: absolute;
-  top: 0;
-  left: -10;//fix padding on container?
+  //top: 0;
+  //left: -10;//fix padding on container?
+  padding-top: 50px;
   height: 100%;
   width: 100%;
-  z-index: 10;
+  z-index: 1000;
 }
 
 

@@ -53,8 +53,7 @@ const TimePage = ({route, navigation}: Props) => {
     //not possible to calculate with rn css, so have to do it with js.
     const timerTimeStyle = createTimerTimeStyle(screenWidth, screenHeight, styles.timerTime);
     return (
-        <Page navigation={navigation}>
-            {finishSessionModal}
+        <Page navigation={navigation} modal={finishSessionModal}>
             <Div className={styles.timer}>
                 <Div className={styles.rowOne}>
                     <Div className={timerTimeStyle}>
