@@ -20,7 +20,7 @@ const Modal: Prop = ({children, className = null, windowClassName = null, onClos
     return <Div className={style}>
         {/*<BlurView blurType={"light"} style={styles.blurView}/>*/}
         <Div className={[styles.modalWindow, windowClassName]}>
-            <IconButton icon={faClose} onClick={onCloseClick} className={styles.modalCloseButton} iconClassName={styles.modalCloseButtonIcon}/>
+            <IconButton icon={faClose} onClick={onCloseClick} className={styles.modalCloseButton} iconClassName={styles.modalCloseButtonIcon} size={35}/>
             {children}
         </Div>
     </Div>;

@@ -31,18 +31,18 @@ const FinishSessionModal: Prop = ({meditationSession, children, onCloseClick, on
     const [rating, setRating] = useState(0);
 
     return <Modal onCloseClick={onCloseClick} className={styles.finishSessionModal} windowClassName={styles.finishSessionModalWindow}>
-        <Div>
-            <Text>Duration { getFormattedDuration(meditationSession.durationMs)}</Text>
+        <Div className={styles.rowOne}>
+            <Text style={styles.durationText}>{ getFormattedDuration(meditationSession.durationMs)}</Text>
         </Div>
-        <Div>
-            <Text>Notes</Text>
+        <Div className={styles.rowTwo}>
+            <Text style={styles.notesText}>Notes</Text>
             <TextInput style={styles.notesTextInput} value={notes} onChangeText={setNotes} multiline numberOfLines={4} placeholder={"Notes about your session"}/>
         </Div>
-        <Div>
-            <StarRating rating={rating} onChange={setRating} color={"rgb(37, 37, 37)"} starSize={50} animationConfig={{scale: 1}}/>
+        <Div className={styles.rowThree}>
+            <StarRating rating={rating} onChange={setRating} color={"rgba(37, 37, 37, .7)"} starSize={50} animationConfig={{scale: 1}}/>
         </Div>
-        <Div>
-            <Button onClick={() => onSaveClick && onSaveClick(notes, rating)}><Text>Save</Text></Button>
+        <Div className={styles.rowFour}>
+            <Button onClick={() => onSaveClick && onSaveClick(notes, rating)} text={"Save"} style2={true}/>
         </Div>
     </Modal>
 }

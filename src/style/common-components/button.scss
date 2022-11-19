@@ -1,7 +1,7 @@
 @import "./src/style/common";
 
 .button{
-  background-color: $buttonBackgroundColor;
+  background-color: rgb(228, 228, 229 );// $buttonBackgroundColor;
   display: flex;
   padding: 10px;
   border-radius: 10px;
@@ -9,6 +9,12 @@
   align-items: center;//horizontally center
 }
 
+.buttonStyle2{
+  @extend .button;
+  //background-color: rgb(229, 242, 222 );
+  //border: 1px solid rgb(236, 241, 233  );
+}
 .buttonText{
   @extend %font;
+  font-size: 20px;
 }
