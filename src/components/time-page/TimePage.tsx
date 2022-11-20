@@ -10,12 +10,10 @@ import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import Page from "../../common-components/Page";
 import IconButton from "../../common-components/IconButton";
 // @ts-ignore
-type Props = NativeStackScreenProps<RootStackParamList, 'Timer'>;
-type RootStackParamList = {
-    // Home: undefined;
-    // Profile: { userId: string };
-    // Feed: { sort: 'latest' | 'top' } | undefined;
-};
+// type Props = NativeStackScreenProps<RootStackParamList, 'Timer'>;
+type Props = { navigation: {
+        navigate: (to: string) => void
+    } };
 import {faBell} from "@fortawesome/free-regular-svg-icons";
 import {faPause} from "@fortawesome/free-solid-svg-icons/faPause";
 import {faPlay} from "@fortawesome/free-solid-svg-icons/faPlay";
@@ -32,7 +30,8 @@ import SoundSettingsModal from "./SoundSettingsModal";
 //https://react-native-track-player.js.org/docs/basics/getting-started
 //https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
 
-const TimePage = ({route, navigation}: Props) => {
+// const TimePage = ({route, navigation}: Props) => {
+const TimePage = ({navigation}: Props) => {
     const [durationData, setDurationData] = useState(timePage.getDurationData());
     const [isStopWatchRunning, setIsStopWatchRunning] = useState(false);
     const screenHeight = useWindowDimensions().height; // Dimensions.get('window').height;
@@ -68,7 +67,7 @@ const TimePage = ({route, navigation}: Props) => {
     const minuteOptions = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]; //todo: 60 minutes here makes 1 hour and 60 minutes.
     const hourOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
     return (
-        <Page navigation={navigation} modal={finishSessionModal || soundSettingsModal}>
+        <Page currentPage={"Timer"} navigation={navigation} modal={finishSessionModal || soundSettingsModal}>
             <Div className={styles.timer}>
                 <Div className={styles.rowOne}>
                     <Div className={styles.hoursAndMinutes}>

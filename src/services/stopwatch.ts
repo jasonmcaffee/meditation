@@ -33,7 +33,7 @@ class Stopwatch {
                 this.hasAlarmAlreadyPlayed = true;
             }
 
-        }, 100);
+        }, 50);
     }
 
     setSoundFileToPlayAsAlarm(soundFile?: string){

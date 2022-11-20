@@ -11,12 +11,13 @@ import {faCalendar} from "@fortawesome/free-regular-svg-icons/faCalendar";
 import {faDharmachakra} from "@fortawesome/free-solid-svg-icons/faDharmachakra";
 import {faOm} from "@fortawesome/free-solid-svg-icons/faOm";
 import {faVihara} from "@fortawesome/free-solid-svg-icons/faVihara";
-import { useRoute } from '@react-navigation/native';
+// import { useRoute } from '@react-navigation/native';
 
 // @ts-ignore
 import * as styles from '../style/common-components/bottom-navigation.scss';
-const BottomNavigation = ({navigate, className}: { className?: string, navigate: (to: string) => void}) =>{
-    const currentPage = useRoute().name;
+const BottomNavigation = ({navigate, className, currentPage}: {currentPage: string, className?: string, navigate: (to: string) => void}) =>{
+    // const currentPage = useRoute().name;
+    // console.log(`rendering bottom nav`);
     return (
         <Div className={[styles.bottomNavigation, className]}>
             <Div className={currentPage == "Timer" ? styles.navigationItemActive : styles.navigationItem}  onClick={()=> navigate('Timer')}>
@@ -29,4 +30,12 @@ const BottomNavigation = ({navigate, className}: { className?: string, navigate:
     );
 }
 
-export default BottomNavigation;
+
+
+const MemoizedBottomNavigation = React.memo(BottomNavigation);
+// export default BottomNavigation;
+export default MemoizedBottomNavigation;
+
+// function areEqual(prevProps, nextProps){
+//
+// }

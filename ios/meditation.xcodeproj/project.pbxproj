@@ -33,7 +33,7 @@
 		89C9BE2FC2EE4CB1B78386F0 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB2DD4E3DC3945539A3FEF14 /* Montserrat-Thin.ttf */; };
 		90BCD5E4D3CB4D2E9842564C /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07F36E6723C44DAB909601A6 /* Montserrat-VariableFont_wght.ttf */; };
 		910FD42B88E241C291B8AB61 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3381FB3DC2EF4234A7BAAB3C /* Montserrat-SemiBold.ttf */; };
-		96E5296729186E030003A44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E5296629186E030003A44F /* Assets.xcassets */; };
+		96BCD9A32929E81000255B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96BCD9A22929E81000255B20 /* Assets.xcassets */; };
 		96E5296B2919542D0003A44F /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E5296A2919542D0003A44F /* chime.mp3 */; };
 		96E529702919EB0D0003A44F /* chime-gentle-paced.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E5296F2919EB0D0003A44F /* chime-gentle-paced.mp3 */; };
 		96E529792919EFB20003A44F /* metal-bowl-strike-medium18-vibrato.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E529712919EFB20003A44F /* metal-bowl-strike-medium18-vibrato.mp3 */; };
@@ -89,7 +89,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = meditation/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CE5E569D0D34F158D33E92A /* Montserrat-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Black.ttf"; path = "../assets/fonts/Montserrat/static/Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		923E8DDA53974E8E937D7C81 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat/static/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
-		96E5296629186E030003A44F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		96BCD9A22929E81000255B20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96E5296A2919542D0003A44F /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chime.mp3; path = ../assets/chime.mp3; sourceTree = "<group>"; };
 		96E5296F2919EB0D0003A44F /* chime-gentle-paced.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "chime-gentle-paced.mp3"; path = "../assets/chime-gentle-paced.mp3"; sourceTree = "<group>"; };
 		96E529712919EFB20003A44F /* metal-bowl-strike-medium18-vibrato.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "metal-bowl-strike-medium18-vibrato.mp3"; path = "../assets/metal-bowl-strike-medium18-vibrato.mp3"; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 				96E529752919EFB20003A44F /* metal-bowl-strike-soft6.mp3 */,
 				96E5296F2919EB0D0003A44F /* chime-gentle-paced.mp3 */,
 				96E5296A2919542D0003A44F /* chime.mp3 */,
-				96E5296629186E030003A44F /* Assets.xcassets */,
+				96BCD9A22929E81000255B20 /* Assets.xcassets */,
 				13B07FAE1A68108700A75B9A /* meditation */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* meditationTests */,
@@ -353,10 +353,10 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				96E5297F2919EFB20003A44F /* metal-bowl-strike-hard2-gong.mp3 in Resources */,
 				96E5297E2919EFB20003A44F /* metal-bowl-sing-quiet.mp3 in Resources */,
+				96BCD9A32929E81000255B20 /* Assets.xcassets in Resources */,
 				96E5296B2919542D0003A44F /* chime.mp3 in Resources */,
 				96E529802919EFB20003A44F /* metal-bowl-sing-good-long-wooden.mp3 in Resources */,
 				96E5297D2919EFB20003A44F /* metal-bowl-strike-soft6.mp3 in Resources */,
-				96E5296729186E030003A44F /* Assets.xcassets in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				96E5297A2919EFB20003A44F /* metal-bowl-strike-medium7-deep.mp3 in Resources */,
 				96E529792919EFB20003A44F /* metal-bowl-strike-medium18-vibrato.mp3 in Resources */,
@@ -630,7 +630,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = A7L778FFNA;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = meditation/Info.plist;
@@ -663,7 +663,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = A7L778FFNA;
 				INFOPLIST_FILE = meditation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
