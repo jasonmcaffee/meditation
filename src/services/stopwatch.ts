@@ -1,3 +1,5 @@
+import audioPlayer, {soundFiles} from "./audioPlayer";
+
 export interface IDurationUpdateData{
     hours: number,
     minutes: number,
@@ -14,13 +16,33 @@ class Stopwatch {
     durationMs = 0; //running total, modified on pause and stop.
     notifyIntervalId = 0;
     isRunning = false;
+    isAlarmEnabled = false;
+    alarmMinutes = 0;
+    hasAlarmAlreadyPlayed = false;
+    soundFileToPlayAsAlarm?: string = undefined;
 
     start(){
         this.isRunning = true;
         this.startTimeMs = Date.now();
         this.notifyIntervalId = setInterval(()=> {
             this.notifyDurationUpdated(getDurationDataFromDurationMs(this.getCurrentDurationMs()));
+            const totalMinutes = this.getCurrentDurationMs() / 1000 / 60;
+            const shouldAlarmPlay = !this.hasAlarmAlreadyPlayed && this.isAlarmEnabled && totalMinutes >= this.alarmMinutes;
+            if(this.soundFileToPlayAsAlarm && shouldAlarmPlay){
+                audioPlayer.playFile(this.soundFileToPlayAsAlarm);
+                this.hasAlarmAlreadyPlayed = true;
+            }
+
         }, 100);
+    }
+
+    setSoundFileToPlayAsAlarm(soundFile?: string){
+        this.soundFileToPlayAsAlarm = soundFile;
+    }
+
+    setAlarmMinutes(minutes: number){
+        this.isAlarmEnabled = minutes > 0;
+        this.alarmMinutes = minutes;
     }
 
     pause(){
@@ -39,6 +61,7 @@ class Stopwatch {
 
     reset(){
         this.pause();
+        this.hasAlarmAlreadyPlayed = false;
         this.durationMs = 0;
         this.startTimeMs = 0;
         this.notifyDurationUpdated(getDurationDataFromDurationMs(0));

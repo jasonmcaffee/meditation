@@ -7,8 +7,6 @@ import meditationSessionRepository, {MeditationSessionRepository} from "../repos
 
 class TimePage{
     isStopWatchRunning = false;
-    isAlarmEnabled = false;
-    alarmMinutes = 0;
     setAlarmMinutes = (m: number) => {};
     setIsAlarmEnabled = (s: boolean) => {};
     setFinishSessionModal = (s: boolean) => {};
@@ -65,10 +63,6 @@ class TimePage{
         this.setMeditationSession(this.meditationSession);
     }
 
-    getFormattedTime(){
-        return stopwatch.getFormattedTime();
-    }
-
     getDurationData(){
         return stopwatch.getDurationData();
     }
@@ -85,22 +79,22 @@ class TimePage{
     }
 
     useIsAlarmEnabled(){
-        const [isAlarmEnabled, setIsAlarmEnabled] = useState(this.isAlarmEnabled);
+        const [isAlarmEnabled, setIsAlarmEnabled] = useState(stopwatch.isAlarmEnabled);
         this.setIsAlarmEnabled = function(val){
-            this.isAlarmEnabled = val;
-            console.log(`isAlarmEnabled: `, this.isAlarmEnabled);
+            stopwatch.isAlarmEnabled = val;
+            console.log(`isAlarmEnabled: `, stopwatch.isAlarmEnabled);
             setIsAlarmEnabled(val);
         }
         return isAlarmEnabled;
     }
 
     useAlarmMinutes(){
-        const [alarmMinutes, setAlarmMinutes] = useState(this.alarmMinutes);
+        const [alarmMinutes, setAlarmMinutes] = useState(stopwatch.alarmMinutes);
         this.setAlarmMinutes = function(minutes){
             console.log(`setAlarmMinutes: ${minutes}`);
-            this.alarmMinutes = minutes;
-            this.setIsAlarmEnabled(this.alarmMinutes > 0)
-            setAlarmMinutes(this.alarmMinutes);
+            stopwatch.setAlarmMinutes(minutes);
+            this.setIsAlarmEnabled(stopwatch.isAlarmEnabled);
+            setAlarmMinutes(stopwatch.alarmMinutes);
         }
         return alarmMinutes;
     }
@@ -109,10 +103,6 @@ class TimePage{
         console.log(`set hours: ${hours}  minutes: ${minutes}`);
         const value = (hours * 60) + minutes;
         this.setAlarmMinutes(value);
-    }
-
-    toggleIsAlarmEnabled(){
-        this.setIsAlarmEnabled(!this.isAlarmEnabled);
     }
 
     closeFinishSessionModal(){
