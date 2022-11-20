@@ -42,6 +42,11 @@
 .bellIconButtonIcon{
   color: white;
 }
+.gearIconButtonIcon{
+  color: white;
+  display: none;
+  visibility: hidden;
+}
 
 .bellIconButtonIconDisabled{
   @extend .bellIconButtonIcon;

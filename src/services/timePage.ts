@@ -10,6 +10,7 @@ class TimePage{
     setAlarmMinutes = (m: number) => {};
     setIsAlarmEnabled = (s: boolean) => {};
     setFinishSessionModal = (s: boolean) => {};
+    setSoundSettingsModal = (s: boolean) => {};
     setMeditationSession = (s?: IMeditationSession) => {};
     meditationSession?: IMeditationSession;
     async startPauseStopwatch(){
@@ -72,6 +73,11 @@ class TimePage{
         this.setFinishSessionModal = (s) => setFinishSessionModal(s);
         return shouldDisplayFinishSessionModal;
     }
+    useShouldDisplaySoundSettingsModal(){
+        const [shouldDisplaySoundSettingsModal, setShouldDisplaySoundSettingsModal] = useState(false);
+        this.setSoundSettingsModal = (s) => setShouldDisplaySoundSettingsModal(s);
+        return shouldDisplaySoundSettingsModal;
+    }
     useMeditationSession(){
         const [meditationSession, setMeditationSession] = useState<IMeditationSession>();
         this.setMeditationSession = (m) => setMeditationSession(m);
@@ -107,6 +113,9 @@ class TimePage{
 
     closeFinishSessionModal(){
         this.setFinishSessionModal(false);
+    }
+    closeSoundSettingsModal(){
+        this.setSoundSettingsModal(false);
     }
 }
 

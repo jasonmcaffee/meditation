@@ -19,7 +19,7 @@ class Stopwatch {
     isAlarmEnabled = false;
     alarmMinutes = 0;
     hasAlarmAlreadyPlayed = false;
-    soundFileToPlayAsAlarm?: string = undefined;
+    soundFileToPlayAsAlarm?: string = soundFiles.chimeGentlePaced;
 
     start(){
         this.isRunning = true;

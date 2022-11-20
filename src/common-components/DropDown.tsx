@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from "react";
-import {TouchableOpacity} from "react-native";
+import {TouchableOpacity, Text} from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 //@ts-ignore
 import * as styles from '../style/common-components/dropdown.scss';
@@ -12,6 +12,13 @@ const DropDown: React.FC<PropsWithChildren<{value?: any, className?: any, onSele
             buttonStyle={styles.buttonStyle}
             buttonTextStyle={styles.buttonTextStyle}
             dropdownStyle={styles.dropDownStyle}
+            rowStyle={styles.dropDownChildRow}
+            rowTextStyle={styles.dropDownChildRowText}
+            // renderCustomizedRowChild={(item) => {
+            //     return <Div className={styles.dropDownChildRow}>
+            //         <Text style={styles.dropDownChildRowText}>{item}</Text>
+            //     </Div>
+            // }}
             defaultButtonText={"0" + (label ? ` ${label}`: '')}
             defaultValue={value}
             data={data}
@@ -33,5 +40,5 @@ const DropDown: React.FC<PropsWithChildren<{value?: any, className?: any, onSele
         />
     </Div>
 }
-
+//onClick={function(){ onSelected(item) }}
 export default DropDown;
