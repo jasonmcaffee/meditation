@@ -7,6 +7,10 @@ import meditationSessionRepository, {MeditationSessionRepository} from "../repos
 
 class TimePage{
     isStopWatchRunning = false;
+    isAlarmEnabled = false;
+    alarmMinutes = 0;
+    setAlarmMinutes = (m: number) => {};
+    setIsAlarmEnabled = (s: boolean) => {};
     setFinishSessionModal = (s: boolean) => {};
     setMeditationSession = (s?: IMeditationSession) => {};
     meditationSession?: IMeditationSession;
@@ -78,6 +82,37 @@ class TimePage{
         const [meditationSession, setMeditationSession] = useState<IMeditationSession>();
         this.setMeditationSession = (m) => setMeditationSession(m);
         return meditationSession;
+    }
+
+    useIsAlarmEnabled(){
+        const [isAlarmEnabled, setIsAlarmEnabled] = useState(this.isAlarmEnabled);
+        this.setIsAlarmEnabled = function(val){
+            this.isAlarmEnabled = val;
+            console.log(`isAlarmEnabled: `, this.isAlarmEnabled);
+            setIsAlarmEnabled(val);
+        }
+        return isAlarmEnabled;
+    }
+
+    useAlarmMinutes(){
+        const [alarmMinutes, setAlarmMinutes] = useState(this.alarmMinutes);
+        this.setAlarmMinutes = function(minutes){
+            console.log(`setAlarmMinutes: ${minutes}`);
+            this.alarmMinutes = minutes;
+            this.setIsAlarmEnabled(this.alarmMinutes > 0)
+            setAlarmMinutes(this.alarmMinutes);
+        }
+        return alarmMinutes;
+    }
+
+    setAlarmMinutesFromHoursAndMinutes(hours: number, minutes: number){
+        console.log(`set hours: ${hours}  minutes: ${minutes}`);
+        const value = (hours * 60) + minutes;
+        this.setAlarmMinutes(value);
+    }
+
+    toggleIsAlarmEnabled(){
+        this.setIsAlarmEnabled(!this.isAlarmEnabled);
     }
 
     closeFinishSessionModal(){

@@ -5,7 +5,7 @@ import SelectDropdown from "react-native-select-dropdown";
 import * as styles from '../style/common-components/dropdown.scss';
 import Div from "./Div";
 
-const DropDown: React.FC<PropsWithChildren<{ className?: any, onSelected: (item: any)=> void, data: Array<any>, label?: string}>> = ({label, children, className = null, onSelected, data}) => {
+const DropDown: React.FC<PropsWithChildren<{value?: any, className?: any, onSelected: (item: any)=> void, data: Array<any>, label?: string}>> = ({value, label, children, className = null, onSelected, data}) => {
 
     return <Div className={className}>
         <SelectDropdown
@@ -13,6 +13,7 @@ const DropDown: React.FC<PropsWithChildren<{ className?: any, onSelected: (item:
             buttonTextStyle={styles.buttonTextStyle}
             dropdownStyle={styles.dropDownStyle}
             defaultButtonText={"0" + (label ? ` ${label}`: '')}
+            defaultValue={value}
             data={data}
             onSelect={(selectedItem, index) => {
                 console.log(selectedItem, index);

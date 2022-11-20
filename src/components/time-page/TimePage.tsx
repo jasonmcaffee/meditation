@@ -19,6 +19,8 @@ type RootStackParamList = {
 import {faBell} from "@fortawesome/free-regular-svg-icons";
 import {faPause} from "@fortawesome/free-solid-svg-icons/faPause";
 import {faPlay} from "@fortawesome/free-solid-svg-icons/faPlay";
+import {faGear} from "@fortawesome/free-solid-svg-icons/faGear";
+
 import timePage from "../../services/timePage";
 import Modal from "../../common-components/Modal";
 import FinishSessionModal from "./FinishSessionModal";
@@ -36,6 +38,9 @@ const TimePage = ({route, navigation}: Props) => {
     const screenWidth = useWindowDimensions().width; //Dimensions.get('window').width;
     const shouldShowFinishSessionModal = timePage.useShouldDisplayFinishSessionModal();
     const meditationSession = timePage.useMeditationSession();
+    const isAlarmEnabled = timePage.useIsAlarmEnabled();
+    const alarmMinutes = timePage.useAlarmMinutes();
+    const {hours, minutes} = convertMinutesToHoursAndMinutes(alarmMinutes);
 
     async function startPauseStopwatch(){
         timePage.startPauseStopwatch();
@@ -57,24 +62,23 @@ const TimePage = ({route, navigation}: Props) => {
     const finishSessionModal = shouldShowFinishSessionModal && meditationSession ? <FinishSessionModal meditationSession={meditationSession} onCloseClick={() => timePage.closeFinishSessionModal()} onSaveClick={(notes, rating) => timePage.saveSession(notes, rating)}/> : null;
     //not possible to calculate with rn css, so have to do it with js.
     const timerTimeStyle = createTimerTimeStyle(screenWidth, screenHeight, styles.timerTime);
-    const minutes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
-    const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+    const minuteOptions = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60];
+    const hourOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
     return (
         <Page navigation={navigation} modal={finishSessionModal}>
             <Div className={styles.timer}>
                 <Div className={styles.rowOne}>
+                    <Div className={styles.hoursAndMinutes}>
+                        <IconButton icon={faBell} className={styles.bellIconButton} iconClassName={isAlarmEnabled ? styles.bellIconButtonIcon : styles.bellIconButtonIconDisabled}/>
+                        <DropDown value={hours} onSelected={(h)=>{ timePage.setAlarmMinutesFromHoursAndMinutes(h, minutes); }} data={hourOptions} label={"hours"} className={styles.hours}/>
+                        <DropDown value={minutes} onSelected={(m)=>{ timePage.setAlarmMinutesFromHoursAndMinutes(hours, m); }} data={minuteOptions} label={"min"}/>
+                        <IconButton icon={faGear} className={styles.bellIconButton} iconClassName={styles.bellIconButtonIcon}/>
+                    </Div>
                     <Div className={timerTimeStyle}>
                         {createTimeEl(durationData)}
                     </Div>
                 </Div>
                 <Div className={styles.rowTwo}>
-
-                    <Div className={styles.hoursAndMinutes}>
-                        <IconButton icon={faBell} className={styles.bellIconButton} iconClassName={styles.bellIconButtonIcon}/>
-                        <DropDown onSelected={()=>{}} data={hours} label={"hours"} className={styles.hours}/>
-                        <DropDown onSelected={()=>{}} data={minutes} label={"min"}/>
-                    </Div>
-
                     <Div className={styles.timerButtons}>
                         <Div className={styles.timerButtonsColumn}>
                             <IconButton icon={isStopWatchRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={startPauseStopwatch}/>
@@ -104,5 +108,14 @@ function createTimerTimeStyle(screenWidth: number, screenHeight: number, timerTi
         borderRadius: circleDiameter / 2,
     };
 }
+
+function convertMinutesToHoursAndMinutes(minutes: number){
+    // if(minutes <= 60) { return {hours: 0, minutes: 0}}
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return {hours, minutes: remainingMinutes};
+}
+
+
 
 export default TimePage;

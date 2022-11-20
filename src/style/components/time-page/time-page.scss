@@ -29,15 +29,23 @@
   align-self: center;
   align-items: center;
   align-content: center;
+  margin-bottom: 20px;
 }
+
 
 .bellIconButton{
   background-color: transparent;
   border: none;
   margin-right: 5px;
+  margin-left: 5px;
 }
 .bellIconButtonIcon{
   color: white;
+}
+
+.bellIconButtonIconDisabled{
+  @extend .bellIconButtonIcon;
+  color: rgb(102, 102, 102);
 }
 
 .hours{
