@@ -20,11 +20,14 @@ type RootStackParamList = {};
 //https://github.com/rossbulat/rn-load-more/blob/master/List.js
 //https://rossbulat.medium.com/react-native-lists-load-more-by-scrolling-378a1c5f56a6
 const MeditationSessionsPage = ({route, navigation}: Props) => {
-
     const [meditationSessions, setMeditationSessions] = useState([] as IMeditationSession[]);
     useEffect(()=>{
         refreshMeditationSessions();
-    }, []);
+        const unregister = meditationSession.registerOnSaveObserver(refreshMeditationSessions);
+        return ()=>{
+            unregister();
+        }
+    },[]);
 
     const onDeleteClicked = async (i: IMeditationSession) => {
         await meditationSession.deleteMeditationSession(i);
@@ -32,6 +35,7 @@ const MeditationSessionsPage = ({route, navigation}: Props) => {
     };
 
     const refreshMeditationSessions = async () => {
+        console.log(`refresh meditation sessions`);
         const sessions = await meditationSession.getMeditationSessions();
         setMeditationSessions([...sessions]); //must clone array so flatlist gets updated after delete.
     };

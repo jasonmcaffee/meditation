@@ -9,12 +9,12 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   return (
       <NavigationContainer>
-          <Tab.Navigator screenOptions={{}}>
+          <Tab.Navigator>
               <Tab.Screen name={"Timer"}  component={TimePage} options={{ headerShown: false, tabBarStyle:{display: 'none'} }} />
-              <Tab.Screen name={"Sessions"}  component={MeditationSessionsPage} options={{ headerShown: false,  tabBarStyle:{display: 'none'}, unmountOnBlur:true }} />
+              <Tab.Screen name={"Sessions"}  component={MeditationSessionsPage} options={{ headerShown: false,  tabBarStyle:{display: 'none'}, }} />
           </Tab.Navigator>
       </NavigationContainer>
   );
 };
-
+//{/* this causes flashing of bottom tabs --> unmountOnBlur:true */}
 export default App;

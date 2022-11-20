@@ -1,15 +1,21 @@
 import IMeditationSession from "../models/IMeditationSession";
 import meditationSessionRepository, {MeditationSessionRepository} from "../repository/meditationSessionRepository";
+import {useState} from "react";
 
 
 
 class MeditationSession{
+
     async getMeditationSessions() : Promise<IMeditationSession[]>{
         return meditationSessionRepository.getMeditationSessions();
     }
 
     async deleteMeditationSession(meditationSession: IMeditationSession){
         return meditationSessionRepository.deleteMeditationSession(meditationSession);
+    }
+
+    registerOnSaveObserver(callback: ()=> void){
+        return meditationSessionRepository.registerOnSaveObserver(callback);
     }
 
 }

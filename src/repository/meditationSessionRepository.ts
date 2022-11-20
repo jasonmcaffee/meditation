@@ -7,6 +7,7 @@ const sessionsDataFilePath = RNFS.DocumentDirectoryPath + '/sessions.txt';
 
 export class MeditationSessionRepository {
     dataContainer?: IDataContainer;
+    onSaveObserver?: ()=> void;
     async getMeditationSessions(startDateMs?: number, limit?: number): Promise<IMeditationSession[]>{
         const dataContainer = await this.getDataContainer();
         const meditationSessions = dataContainer.meditationSessions;
@@ -37,6 +38,16 @@ export class MeditationSessionRepository {
         const dataContainer = await this.getDataContainer();
         dataContainer.meditationSessions.unshift(meditationSession); //insert at beginning;
         await this.saveDataContainer(dataContainer);
+        if(this.onSaveObserver){
+            this.onSaveObserver();
+        }
+    }
+
+    registerOnSaveObserver(callback: ()=> void){
+        this.onSaveObserver = callback;
+        return ()=>{
+            this.onSaveObserver = undefined;
+        }
     }
 
     async deleteMeditationSession(meditationSession: IMeditationSession){
