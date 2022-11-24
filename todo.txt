@@ -1,5 +1,10 @@
-- stopwatch shouldn't play audio.  emit event and have listener instead.
+- set alarm time to 0 after the alarm has gone off
+- sound settings modal
+- show modal event?
+- export data
+- do not disturb mode
 - calendar integration? https://github.com/wmcmahan/react-native-calendar-events
+- animate pages
 
 Later
 ============================

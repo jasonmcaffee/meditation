@@ -20,6 +20,8 @@ import {IDurationUpdateData} from "../../services/stopwatch";
 import DropDown from "../../common-components/DropDown";
 import SoundSettingsModal from "./SoundSettingsModal";
 import appEventBus from "../../services/appEventBus";
+import fileSystem from "../../services/fileSystem";
+import RNFS from "react-native-fs";
 //todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
 //https://react-native-track-player.js.org/docs/basics/getting-started
 //https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
@@ -39,7 +41,6 @@ const TimePage = () => {
 
     async function startPauseStopwatch(){
         timePage.startPauseStopwatch();
-        // setIsStopWatchRunning(timePage.isStopWatchRunning);
     }
 
     function finishSessionClicked(){

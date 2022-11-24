@@ -1,10 +1,10 @@
 import IMeditationSession from "../models/IMeditationSession";
-import fileSystem from "../services/fileSystem";
+import fileSystem, {baseDirectory} from "../services/fileSystem";
 import IDataContainer from "../models/DataContainer";
-import RNFS from "react-native-fs";
 import appEventBus from "../services/appEventBus";
 
-const sessionsDataFilePath = RNFS.DocumentDirectoryPath + '/sessions.txt';
+const sessionsDataFilePath = baseDirectory + '/sessions.txt';
+
 
 export class MeditationSessionRepository {
     dataContainer?: IDataContainer;

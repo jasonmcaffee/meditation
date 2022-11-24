@@ -1,10 +1,10 @@
 const RNFS = require('react-native-fs');
+export const baseDirectory = RNFS.DocumentDirectoryPath;
 
 class FileSystem{
-    async readFilesAndDirectories(path=RNFS.MainBundlePath){
-    }
 
     async writeFile(data: string, path: string) {
+        await this.mkDir(baseDirectory);
         // const path = RNFS.DocumentDirectoryPath + '/test.txt';
         const start = Date.now();
         console.log(`writing file. path: ${path}`);
@@ -12,6 +12,10 @@ class FileSystem{
         const duration = Date.now() - start;
         console.log(`writing took: ${duration} ms`);
         return result;
+    }
+
+    async mkDir(path: string){
+        return RNFS.mkdir(path);
     }
 
     async readFile(path: string){
