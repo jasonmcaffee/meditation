@@ -13,11 +13,6 @@ class MeditationSession{
     async deleteMeditationSession(meditationSession: IMeditationSession){
         return meditationSessionRepository.deleteMeditationSession(meditationSession);
     }
-
-    registerOnSaveObserver(callback: ()=> void){
-        return meditationSessionRepository.registerOnSaveObserver(callback);
-    }
-
 }
 
 const meditationSession = new MeditationSession();

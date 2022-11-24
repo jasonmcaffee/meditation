@@ -1,4 +1,5 @@
 import audioPlayer, {soundFiles} from "./audioPlayer";
+import appEventBus from "./appEventBus";
 
 export interface IDurationUpdateData{
     hours: number,
@@ -10,8 +11,6 @@ export interface IDurationUpdateData{
 }
 
 class Stopwatch {
-    notifyDurationUpdated: (durationUpdateData: IDurationUpdateData) => void = ()=>{};
-
     startTimeMs = 0;
     durationMs = 0; //running total, modified on pause and stop.
     notifyIntervalId = 0;
@@ -24,8 +23,10 @@ class Stopwatch {
     start(){
         this.isRunning = true;
         this.startTimeMs = Date.now();
+        //@ts-ignore
         this.notifyIntervalId = setInterval(()=> {
-            this.notifyDurationUpdated(getDurationDataFromDurationMs(this.getCurrentDurationMs()));
+            const durationData = getDurationDataFromDurationMs(this.getCurrentDurationMs());
+            appEventBus.stopwatchDuration().set(durationData);
             const totalMinutes = this.getCurrentDurationMs() / 1000 / 60;
             const shouldAlarmPlay = !this.hasAlarmAlreadyPlayed && this.isAlarmEnabled && totalMinutes >= this.alarmMinutes;
             if(this.soundFileToPlayAsAlarm && shouldAlarmPlay){
@@ -64,7 +65,7 @@ class Stopwatch {
         this.hasAlarmAlreadyPlayed = false;
         this.durationMs = 0;
         this.startTimeMs = 0;
-        this.notifyDurationUpdated(getDurationDataFromDurationMs(0));
+        appEventBus.stopwatchDuration().set(getDurationDataFromDurationMs(0));
     }
 
     getCurrentDurationMs(){
@@ -83,14 +84,6 @@ class Stopwatch {
     getDurationData(){
         return getDurationDataFromDurationMs(this.durationMs);
     }
-    onDurationUpdated(notifyDurationUpdated: (durationUpdateData: IDurationUpdateData) => void){
-        this.notifyDurationUpdated = notifyDurationUpdated;
-        return () => {
-            console.log(`unregistered`);
-            this.notifyDurationUpdated = () => {};
-        }
-    }
-
 }
 
 function getDurationDataFromDurationMs(durationMs: number): IDurationUpdateData {

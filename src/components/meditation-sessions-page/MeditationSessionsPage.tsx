@@ -12,8 +12,8 @@ import meditationSessionRepository from "../../repository/meditationSessionRepos
 import meditationSession from "../../services/meditationSession";
 import Page from "../../common-components/Page";
 import MeditationSession from "./MeditationSession";
-// @ts-ignore
-// type Props = NativeStackScreenProps<RootStackParamList, 'Sessions'>;
+import appEventBus from "../../services/appEventBus";
+
 type Props = { navigation: {
         navigate: (to: string) => void
     } };
@@ -26,15 +26,19 @@ const MeditationSessionsPage = ({navigation}: Props) => {
     const [meditationSessions, setMeditationSessions] = useState([] as IMeditationSession[]);
     useEffect(()=>{
         refreshMeditationSessions();
-        const unregister = meditationSession.registerOnSaveObserver(refreshMeditationSessions);
+
+        //refresh when any repo changes occur.
+        const unregister2 = appEventBus.meditationSessionRepository.meditationSessionsChanged().on(sessions=>{
+            console.log(`setting sessions: `, sessions);
+            setMeditationSessions(sessions);
+        })
         return ()=>{
-            unregister();
+            unregister2();
         }
     },[]);
 
     const onDeleteClicked = async (i: IMeditationSession) => {
         await meditationSession.deleteMeditationSession(i);
-        await refreshMeditationSessions();
     };
 
     const refreshMeditationSessions = async () => {

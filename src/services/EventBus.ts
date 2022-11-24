@@ -162,7 +162,7 @@ function createPropertyOfTAsAnEventBus<T extends object, TParent=unknown>(_dontU
 }
 
 
-export function createObserverProxy<T extends object>(root: T){
+export function createObserverProxy<T extends object>(root: T = {} as T){
     //make it so the root behaves as properties would.
     //e.g. createProxyBus(person)  would allow  pPerson().on(...)
     type RootContainer = {root: T};

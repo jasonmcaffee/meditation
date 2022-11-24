@@ -1,5 +1,6 @@
 import "jest";
 import { createObserverProxy} from '../../services/EventBus';
+import app from "../../../App";
 
 interface IAddress {
     street1: string;
@@ -30,11 +31,21 @@ interface INullableProperties{
     }
 }
 
-interface IEventBus{
-    eventOne: string
+class AppEventBus{
+    addressUpdated: IAddress = {} as IAddress;
 }
 
 describe("Observer Proxy", () => {
+
+    it('should work as an app event bus', ()=>{
+        const appEventBus = createObserverProxy(new AppEventBus());
+        let count = 0;
+        appEventBus.addressUpdated().on(data => {
+            ++count;
+            expect(data.street1).toBe('hello');
+        });
+        appEventBus.addressUpdated().set({street1: 'hello', cityAndState: { city: 'columbus', state: 'OH'}});
+    });
 
     it("shouldn't notify children of changes, but should keep their listeners working", ()=>{
         const person: IPerson = {firstName: "John", lastName: "Doe", age: 33, address: {street1: "Candy Ln", cityAndState: {city: 'Orange', state: 'CA'}} };

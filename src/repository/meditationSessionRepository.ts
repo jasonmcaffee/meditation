@@ -2,12 +2,12 @@ import IMeditationSession from "../models/IMeditationSession";
 import fileSystem from "../services/fileSystem";
 import IDataContainer from "../models/DataContainer";
 import RNFS from "react-native-fs";
+import appEventBus from "../services/appEventBus";
 
 const sessionsDataFilePath = RNFS.DocumentDirectoryPath + '/sessions.txt';
 
 export class MeditationSessionRepository {
     dataContainer?: IDataContainer;
-    onSaveObserver?: ()=> void;
     async getMeditationSessions(startDateMs?: number, limit?: number): Promise<IMeditationSession[]>{
         const dataContainer = await this.getDataContainer();
         const meditationSessions = dataContainer.meditationSessions;
@@ -38,16 +38,8 @@ export class MeditationSessionRepository {
         const dataContainer = await this.getDataContainer();
         dataContainer.meditationSessions.unshift(meditationSession); //insert at beginning;
         await this.saveDataContainer(dataContainer);
-        if(this.onSaveObserver){
-            this.onSaveObserver();
-        }
-    }
-
-    registerOnSaveObserver(callback: ()=> void){
-        this.onSaveObserver = callback;
-        return ()=>{
-            this.onSaveObserver = undefined;
-        }
+        appEventBus.meditationSessionRepositorySave().set(meditationSession);
+        appEventBus.meditationSessionRepository.meditationSessionsChanged().set(dataContainer.meditationSessions);
     }
 
     async deleteMeditationSession(meditationSession: IMeditationSession){
@@ -57,6 +49,7 @@ export class MeditationSessionRepository {
         if(index < 0){ return console.log(`no meditation session exists.`) }
         dataContainer.meditationSessions.splice(index, 1);
         await this.saveDataContainer(dataContainer);
+        appEventBus.meditationSessionRepository.meditationSessionsChanged().set(dataContainer.meditationSessions);
     }
 
     async saveDataContainer(dataContainer: IDataContainer){

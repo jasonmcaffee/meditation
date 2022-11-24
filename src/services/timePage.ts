@@ -38,10 +38,6 @@ class TimePage{
         // await meditationSessionRepository.getDataContainer(true);
     }
 
-    onDurationUpdated(notifyDurationUpdated: (durationUpdateData: IDurationUpdateData) => void){
-        return stopwatch.onDurationUpdated(notifyDurationUpdated);
-    }
-
     //when the finish button is pressed, show a modal and prompt for notes, rating, etc.
     finishSession(){
         const durationMs = stopwatch.getCurrentDurationMs();

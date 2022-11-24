@@ -26,6 +26,7 @@ import {IDurationUpdateData} from "../../services/stopwatch";
 import WheelPicker from "react-native-wheely";
 import DropDown from "../../common-components/DropDown";
 import SoundSettingsModal from "./SoundSettingsModal";
+import appEventBus from "../../services/appEventBus";
 //todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
 //https://react-native-track-player.js.org/docs/basics/getting-started
 //https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
@@ -54,9 +55,12 @@ const TimePage = ({navigation}: Props) => {
     }
 
     useEffect(()=>{
-        const unregister = timePage.onDurationUpdated((durationUpdateData) => {
+        // const unregister = timePage.onDurationUpdated((durationUpdateData) => {
+        //     setDurationData(durationUpdateData);
+        // });
+        const unregister = appEventBus.stopwatchDuration().on(durationUpdateData => {
             setDurationData(durationUpdateData);
-        });
+        })
         return ()=>{ unregister(); }
     }, []);
 
