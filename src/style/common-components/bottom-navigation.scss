@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: row;
   padding-left: 20px;
+  background-color: rgb(37, 37, 37);//helps prevent flash
+  width: 100%;
 }
 
 .navigationItem{

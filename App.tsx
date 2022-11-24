@@ -10,12 +10,17 @@ import appEventBus from "./src/services/appEventBus";
 //something needs to include this
 const Tab = createBottomTabNavigator();
 
+// const TimePageMemo = React.memo(TimePage);
+// const MeditationSessionsPageMemo = React.memo(MeditationSessionsPage);
+//have a single instance to prevent flash
+const timePage = <TimePage/>;
+const meditationSessionPage = <MeditationSessionsPage/>;
 
 const App = () => {
     const [currentPage, setCurrentPage] = useState("Timer");
-    let page = <TimePage/>;
+    let page = timePage;
     if(currentPage == "Sessions"){
-        page = <MeditationSessionsPage/>
+        page = meditationSessionPage;
     }
 
     useEffect(()=>{
@@ -24,9 +29,9 @@ const App = () => {
         })
     }, []);
   return (
-      <Div>
+      <React.Fragment>
           {page}
-      </Div>
+      </React.Fragment>
 
   );
 };

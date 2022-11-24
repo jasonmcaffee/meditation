@@ -1,4 +1,5 @@
-import React, {PropsWithChildren, ReactNode} from "react";
+import React, {PropsWithChildren, ReactNode, useRef} from "react";
+import StaticSafeAreaInsets from 'react-native-static-safe-area-insets';
 // @ts-ignore
 import * as styles from "../style/common-components/page.scss";
 import Div from "./Div";
@@ -9,14 +10,16 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 type RootStackParamList = {};
 
 const Page: React.FC<PropsWithChildren<{currentPage: string, className?: any, modal?: ReactNode}>> = ({currentPage, children, className = null, modal}) => {
-    // const style = [styles.page, className];
-
+    const bottom = StaticSafeAreaInsets?.safeAreaInsetsBottom ?? 0;
+    const bottomPosition = {bottom};
+    const bottomStyle = {...styles.bottomNavigation, ...bottomPosition};
     return <SafeAreaView style={styles.page}>
         {modal}
         <Div className={styles.pageContent}>
             {children}
         </Div>
-        <BottomNavigation currentPage={currentPage} className={styles.bottomNavigation}/>
+        <Div className={styles.bottomNavigationSpace}/>
+        <BottomNavigation currentPage={currentPage} className={bottomStyle}/>
     </SafeAreaView>
 }
 

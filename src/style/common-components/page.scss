@@ -12,7 +12,10 @@
   flex: 1;//push bottom navigation to the bottom
 }
 
+.bottomNavigationSpace{
+  height: 60px;
+}
 .bottomNavigation{
-  //position: absolute;
-  //bottom: 15px;
+  position: absolute;
+  bottom: 15px;
 }
