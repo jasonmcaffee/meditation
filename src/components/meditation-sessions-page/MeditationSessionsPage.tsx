@@ -14,15 +14,12 @@ import Page from "../../common-components/Page";
 import MeditationSession from "./MeditationSession";
 import appEventBus from "../../services/appEventBus";
 
-type Props = { navigation: {
-        navigate: (to: string) => void
-    } };
 type RootStackParamList = {};
 
 //TODO: Use a flatlist and load as they scroll so that the sessions page loads quickly when there are hundreds of sessions.
 //https://github.com/rossbulat/rn-load-more/blob/master/List.js
 //https://rossbulat.medium.com/react-native-lists-load-more-by-scrolling-378a1c5f56a6
-const MeditationSessionsPage = ({navigation}: Props) => {
+const MeditationSessionsPage = () => {
     const [meditationSessions, setMeditationSessions] = useState([] as IMeditationSession[]);
     useEffect(()=>{
         refreshMeditationSessions();
@@ -48,7 +45,7 @@ const MeditationSessionsPage = ({navigation}: Props) => {
     };
 
     return (
-        <Page currentPage={"Sessions"} navigation={navigation}>
+        <Page currentPage={"Sessions"}>
             <Div>
                 <FlatList onEndReachedThreshold={.5} data={meditationSessions} renderItem={i => { return createSessionEl(i.item, onDeleteClicked)}} keyExtractor={(i) => i.id}/>
             </Div>

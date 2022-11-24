@@ -1,5 +1,6 @@
 import audioPlayer, {soundFiles} from "./audioPlayer";
 import appEventBus from "./appEventBus";
+import app from "../../App";
 
 export interface IDurationUpdateData{
     hours: number,
@@ -23,22 +24,20 @@ class Stopwatch {
     start(){
         this.isRunning = true;
         this.startTimeMs = Date.now();
+        appEventBus.stopwatch.isRunning().set(this.isRunning);
         //@ts-ignore
         this.notifyIntervalId = setInterval(()=> {
             const durationData = getDurationDataFromDurationMs(this.getCurrentDurationMs());
-            appEventBus.stopwatchDuration().set(durationData);
+            appEventBus.stopwatch.durationUpdate().set(durationData);
             const totalMinutes = this.getCurrentDurationMs() / 1000 / 60;
             const shouldAlarmPlay = !this.hasAlarmAlreadyPlayed && this.isAlarmEnabled && totalMinutes >= this.alarmMinutes;
             if(this.soundFileToPlayAsAlarm && shouldAlarmPlay){
-                audioPlayer.playFile(this.soundFileToPlayAsAlarm);
+                // audioPlayer.playFile(this.soundFileToPlayAsAlarm);
+                console.log(`timer is completed`);
+                appEventBus.stopwatch.timerCompleted().set(true);
                 this.hasAlarmAlreadyPlayed = true;
             }
-
         }, 50);
-    }
-
-    setSoundFileToPlayAsAlarm(soundFile?: string){
-        this.soundFileToPlayAsAlarm = soundFile;
     }
 
     setAlarmMinutes(minutes: number){
@@ -48,6 +47,7 @@ class Stopwatch {
 
     pause(){
         this.isRunning = false;
+        appEventBus.stopwatch.isRunning().set(this.isRunning);
         this.durationMs += Date.now() - this.startTimeMs; //count all the time that has passed.
         clearInterval(this.notifyIntervalId);
     }
@@ -65,22 +65,17 @@ class Stopwatch {
         this.hasAlarmAlreadyPlayed = false;
         this.durationMs = 0;
         this.startTimeMs = 0;
-        appEventBus.stopwatchDuration().set(getDurationDataFromDurationMs(0));
+        appEventBus.stopwatch.durationUpdate().set(getDurationDataFromDurationMs(0));
     }
 
     getCurrentDurationMs(){
         if(this.startTimeMs === 0){ return 0; }
+        if(this.isRunning == false){ return this.durationMs; } //useful for Finish so that the current duration is returned.
         return (Date.now() - this.startTimeMs) + this.durationMs;
     }
 
     getStartTimeMs = ()=> this.startTimeMs
 
-    /**
-     * return HH:MM:SS formatted time
-     */
-    getFormattedTime(){
-        return getDurationDataFromDurationMs(this.durationMs).formattedDuration;
-    }
     getDurationData(){
         return getDurationDataFromDurationMs(this.durationMs);
     }

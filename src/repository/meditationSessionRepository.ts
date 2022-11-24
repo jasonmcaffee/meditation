@@ -38,7 +38,6 @@ export class MeditationSessionRepository {
         const dataContainer = await this.getDataContainer();
         dataContainer.meditationSessions.unshift(meditationSession); //insert at beginning;
         await this.saveDataContainer(dataContainer);
-        appEventBus.meditationSessionRepositorySave().set(meditationSession);
         appEventBus.meditationSessionRepository.meditationSessionsChanged().set(dataContainer.meditationSessions);
     }
 

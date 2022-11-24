@@ -9,21 +9,14 @@ import * as styles from '../../style/components/time-page/time-page.scss';
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import Page from "../../common-components/Page";
 import IconButton from "../../common-components/IconButton";
-// @ts-ignore
-// type Props = NativeStackScreenProps<RootStackParamList, 'Timer'>;
-type Props = { navigation: {
-        navigate: (to: string) => void
-    } };
 import {faBell} from "@fortawesome/free-regular-svg-icons";
 import {faPause} from "@fortawesome/free-solid-svg-icons/faPause";
 import {faPlay} from "@fortawesome/free-solid-svg-icons/faPlay";
 import {faGear} from "@fortawesome/free-solid-svg-icons/faGear";
 
 import timePage from "../../services/timePage";
-import Modal from "../../common-components/Modal";
 import FinishSessionModal from "./FinishSessionModal";
 import {IDurationUpdateData} from "../../services/stopwatch";
-import WheelPicker from "react-native-wheely";
 import DropDown from "../../common-components/DropDown";
 import SoundSettingsModal from "./SoundSettingsModal";
 import appEventBus from "../../services/appEventBus";
@@ -32,7 +25,7 @@ import appEventBus from "../../services/appEventBus";
 //https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
 
 // const TimePage = ({route, navigation}: Props) => {
-const TimePage = ({navigation}: Props) => {
+const TimePage = () => {
     const [durationData, setDurationData] = useState(timePage.getDurationData());
     const [isStopWatchRunning, setIsStopWatchRunning] = useState(false);
     const screenHeight = useWindowDimensions().height; // Dimensions.get('window').height;
@@ -46,32 +39,30 @@ const TimePage = ({navigation}: Props) => {
 
     async function startPauseStopwatch(){
         timePage.startPauseStopwatch();
-        setIsStopWatchRunning(timePage.isStopWatchRunning);
+        // setIsStopWatchRunning(timePage.isStopWatchRunning);
     }
 
     function finishSessionClicked(){
         timePage.finishSession();
-        setIsStopWatchRunning(timePage.isStopWatchRunning);
+        // setIsStopWatchRunning(timePage.isStopWatchRunning);
     }
 
     useEffect(()=>{
-        // const unregister = timePage.onDurationUpdated((durationUpdateData) => {
-        //     setDurationData(durationUpdateData);
-        // });
-        const unregister = appEventBus.stopwatchDuration().on(durationUpdateData => {
+        const unregister = appEventBus.stopwatch.durationUpdate().on(durationUpdateData => {
             setDurationData(durationUpdateData);
-        })
-        return ()=>{ unregister(); }
+        });
+        const unreg2 = appEventBus.stopwatch.isRunning().on(setIsStopWatchRunning);
+        return ()=>{ unregister(); unreg2(); }
     }, []);
 
     const finishSessionModal = shouldShowFinishSessionModal && meditationSession ? <FinishSessionModal meditationSession={meditationSession} onCloseClick={() => timePage.closeFinishSessionModal()} onSaveClick={(notes, rating) => timePage.saveSession(notes, rating)}/> : null;
     const soundSettingsModal = shouldShowSoundSettingsModal ? <SoundSettingsModal onCloseClick={() => timePage.closeSoundSettingsModal()}/> : null;
     //not possible to calculate with rn css, so have to do it with js.
     const timerTimeStyle = createTimerTimeStyle(screenWidth, screenHeight, styles.timerTime);
-    const minuteOptions = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]; //todo: 60 minutes here makes 1 hour and 60 minutes.
-    const hourOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+    const minuteOptions = timePage.minuteOptions;
+    const hourOptions = timePage.hourOptions;
     return (
-        <Page currentPage={"Timer"} navigation={navigation} modal={finishSessionModal || soundSettingsModal}>
+        <Page currentPage={"Timer"} modal={finishSessionModal || soundSettingsModal}>
             <Div className={styles.timer}>
                 <Div className={styles.rowOne}>
                     <Div className={styles.hoursAndMinutes}>

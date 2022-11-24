@@ -15,15 +15,14 @@ import {faVihara} from "@fortawesome/free-solid-svg-icons/faVihara";
 
 // @ts-ignore
 import * as styles from '../style/common-components/bottom-navigation.scss';
-const BottomNavigation = ({navigate, className, currentPage}: {currentPage: string, className?: string, navigate: (to: string) => void}) =>{
-    // const currentPage = useRoute().name;
-    // console.log(`rendering bottom nav`);
+import appEventBus from "../services/appEventBus";
+const BottomNavigation = ({className, currentPage}: {currentPage: string, className?: string}) =>{
     return (
         <Div className={[styles.bottomNavigation, className]}>
-            <Div className={currentPage == "Timer" ? styles.navigationItemActive : styles.navigationItem}  onClick={()=> navigate('Timer')}>
+            <Div className={currentPage == "Timer" ? styles.navigationItemActive : styles.navigationItem}  onClick={()=> appEventBus.navigation.goToPage().set('Timer')}>
                 <FontAwesomeIcon style={currentPage == "Timer" ? styles.navigationIconActive: styles.navigationIcon} icon={faOm} size={30}/>
             </Div>
-            <Div className={currentPage == "Sessions" ? styles.navigationItemActive : styles.navigationItem} onClick={()=> navigate('Sessions')}>
+            <Div className={currentPage == "Sessions" ? styles.navigationItemActive : styles.navigationItem} onClick={()=> appEventBus.navigation.goToPage().set('Sessions')}>
                 <FontAwesomeIcon style={currentPage == "Sessions" ? styles.navigationIconActive : styles.navigationIcon} icon={faVihara} size={30}/>
             </Div>
         </Div>

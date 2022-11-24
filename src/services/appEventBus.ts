@@ -3,13 +3,30 @@ import {createObserverProxy} from "./EventBus";
 import IMeditationSession from "../models/IMeditationSession";
 
 class AppEvents{
-    stopwatchDuration = {} as IDurationUpdateData;
-    meditationSessionRepositorySave = {} as IMeditationSession
+    stopwatch = {
+        durationUpdate: {} as IDurationUpdateData,
+        isRunning: false,
+        timerCompleted: false
+    }
     meditationSessionRepository = {
-        meditationSessionsChanged: [] as IMeditationSession[]
+        meditationSessionsChanged: [] as IMeditationSession[],
+    }
+    navigation = {
+        goToPage: ''
     }
 }
 
+// type TAppEvents = {
+//     stopwatch: {
+//         durationUpdate: IDurationUpdateData,
+//         isRunning: false,
+//     },
+//     meditationSessionRepository: {
+//         meditationSessionsChanged: IMeditationSession[],
+//     }
+// }
+
 const appEventBus = createObserverProxy(new AppEvents());
+// const appEventBus = createObserverProxy({} as TAppEvents);
 export default appEventBus;
 

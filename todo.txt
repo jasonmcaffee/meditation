@@ -1,4 +1,4 @@
-- remove powered by react native. better startup screen.
+- stopwatch shouldn't play audio.  emit event and have listener instead.
 - calendar integration? https://github.com/wmcmahan/react-native-calendar-events
 
 Later

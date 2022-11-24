@@ -5,20 +5,24 @@ import MeditationSessionsPage from "./src/components/meditation-sessions-page/Me
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import "react-native-gesture-handler";
 import Div from "./src/common-components/Div";
+import './src/services/audioNotifications';
+import appEventBus from "./src/services/appEventBus";
+//something needs to include this
 const Tab = createBottomTabNavigator();
 
 
 const App = () => {
     const [currentPage, setCurrentPage] = useState("Timer");
-    const navigation = {
-        navigate(to: string){
-            setCurrentPage(to);
-        }
-    }
-    let page = <TimePage navigation={navigation} />;
+    let page = <TimePage/>;
     if(currentPage == "Sessions"){
-        page = <MeditationSessionsPage navigation={navigation}/>
+        page = <MeditationSessionsPage/>
     }
+
+    useEffect(()=>{
+        return appEventBus.navigation.goToPage().on(page => {
+            setCurrentPage(page);
+        })
+    }, []);
   return (
       <Div>
           {page}
@@ -26,16 +30,4 @@ const App = () => {
 
   );
 };
-//
-// const App = () => {
-//     return (
-//         <NavigationContainer>
-//             <Tab.Navigator>
-//                 <Tab.Screen name={"Timer"}  component={TimePage} options={{ headerShown: false, tabBarStyle:{display: 'none'} }} />
-//                 <Tab.Screen name={"Sessions"}  component={MeditationSessionsPage} options={{ headerShown: false,  tabBarStyle:{display: 'none'}, }} />
-//             </Tab.Navigator>
-//         </NavigationContainer>
-//     );
-// };
-//{/* this causes flashing of bottom tabs --> unmountOnBlur:true */}
 export default App;

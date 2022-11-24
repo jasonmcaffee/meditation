@@ -12,6 +12,8 @@ class TimePage{
     setFinishSessionModal = (s: boolean) => {};
     setSoundSettingsModal = (s: boolean) => {};
     setMeditationSession = (s?: IMeditationSession) => {};
+    minuteOptions = [0, .05, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]; //todo: 60 minutes here makes 1 hour and 60 minutes.
+    hourOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
     meditationSession?: IMeditationSession;
     async startPauseStopwatch(){
         // audioPlayer.playChime();
@@ -102,8 +104,8 @@ class TimePage{
     }
 
     setAlarmMinutesFromHoursAndMinutes(hours: number, minutes: number){
-        console.log(`set hours: ${hours}  minutes: ${minutes}`);
         const value = (hours * 60) + minutes;
+        console.log(`set hours: ${hours}  minutes: ${minutes} totalMinutes: ${value}`);
         this.setAlarmMinutes(value);
     }
 
