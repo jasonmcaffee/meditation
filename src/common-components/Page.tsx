@@ -10,7 +10,7 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 type RootStackParamList = {};
 
 const Page: React.FC<PropsWithChildren<{currentPage: string, className?: any, modal?: ReactNode}>> = ({currentPage, children, className = null, modal}) => {
-    const bottom = StaticSafeAreaInsets?.safeAreaInsetsBottom ?? 0;
+    const bottom = StaticSafeAreaInsets?.safeAreaInsetsBottom ?? 10;
     const bottomPosition = {bottom};
     const bottomStyle = {...styles.bottomNavigation, ...bottomPosition};
     return <SafeAreaView style={styles.page}>
