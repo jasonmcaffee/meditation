@@ -3,11 +3,14 @@ import audioPlayer, {soundFiles} from "./audioPlayer";
 
 class AudioNotifications{
     soundFileToPlayAsAlarm?: string = soundFiles.chimeGentlePaced;
+    soundFileToPlayOnStartPause?: string = soundFiles.metalBowlStrikeHard2Gong;
     constructor() {
         appEventBus.stopwatch.timerCompleted().on(didComplete => {
-            if(this.soundFileToPlayAsAlarm){
-                audioPlayer.playFile(this.soundFileToPlayAsAlarm);
-            }
+            if(this.soundFileToPlayAsAlarm){  audioPlayer.playFile(this.soundFileToPlayAsAlarm); }
+        });
+
+        appEventBus.stopwatch.startPauseChange().on(isStart => {
+            if(this.soundFileToPlayOnStartPause){ audioPlayer.playFile(this.soundFileToPlayOnStartPause); }
         });
     }
 }

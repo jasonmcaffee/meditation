@@ -6,7 +6,8 @@ class AppEvents{
     stopwatch = {
         durationUpdate: {} as IDurationUpdateData,
         isRunning: false,
-        timerCompleted: false
+        timerCompleted: false,
+        startPauseChange: false,
     }
     meditationSessionRepository = {
         meditationSessionsChanged: [] as IMeditationSession[],

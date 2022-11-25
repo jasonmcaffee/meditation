@@ -25,6 +25,7 @@ class Stopwatch {
         this.isRunning = true;
         this.startTimeMs = Date.now();
         appEventBus.stopwatch.isRunning().set(this.isRunning);
+        appEventBus.stopwatch.startPauseChange().set(true);
         //@ts-ignore
         this.notifyIntervalId = setInterval(()=> {
             const durationData = getDurationDataFromDurationMs(this.getCurrentDurationMs());
@@ -48,6 +49,7 @@ class Stopwatch {
     pause(){
         this.isRunning = false;
         appEventBus.stopwatch.isRunning().set(this.isRunning);
+        appEventBus.stopwatch.startPauseChange().set(false);
         this.durationMs += Date.now() - this.startTimeMs; //count all the time that has passed.
         clearInterval(this.notifyIntervalId);
     }

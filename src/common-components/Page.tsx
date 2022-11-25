@@ -18,13 +18,13 @@ const Page: React.FC<PropsWithChildren<{pageName: string, className?: any, modal
     const pageContentStyle = {...styles.pageContent, opacity: fadeAnim};
     const animationDuration = 500;
     useEffect(()=>{
-        console.log(`${pageName} animating to 1 in duration$ {animationDuration}`)
+        // console.log(`${pageName} animating to 1 in duration$ {animationDuration}`);
         if(currentPageName == pageName){ //needed so that the animation actually fires the first time you go to the page.
             Animated.timing(fadeAnim, {useNativeDriver: true, toValue: 1, duration: animationDuration}).start();
         }
         const unreg = appEventBus.navigation.goToPage().on(newPageName => {
             setCurrentPageName(newPageName);
-            console.log(`starting animation this page: ${pageName} currentPageName ${newPageName} `, fadeAnim);
+            // console.log(`starting animation this page: ${pageName} currentPageName ${newPageName} `, fadeAnim);
             const toValue = newPageName == pageName ? 1 : 0;
             const duration = newPageName == pageName ? animationDuration : 0;
             Animated.timing(fadeAnim, {useNativeDriver: true, toValue, duration}).start();

@@ -16,28 +16,8 @@ class TimePage{
     hourOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
     meditationSession?: IMeditationSession;
     async startPauseStopwatch(){
-        // audioPlayer.playChime();
-        audioPlayer.playFile(soundFiles.metalBowlStrikeHard2Gong);
         stopwatch.startPause();
         this.isStopWatchRunning = stopwatch.isRunning;
-
-        // await meditationSessionRepository.deleteAll();
-        //
-        // const sessions: IMeditationSession[] = [];
-        // for(let i = 0; i < 1000; ++i){
-        //     sessions.push({
-        //         durationMs: 1000000,
-        //         rating: 5,
-        //         notes: 'good session fellas really enjoyed the whole thing maybe next time ill be here and youll be there you know. ---' + i,
-        //         dateMs: Date.now() + i,
-        //         id: (Date.now() + i).toString()
-        //     });
-        // }
-        //
-        // for(let session of sessions){
-        //     await meditationSessionRepository.saveMeditationSession(session);
-        // }
-        // await meditationSessionRepository.getDataContainer(true);
     }
 
     //when the finish button is pressed, show a modal and prompt for notes, rating, etc.
@@ -135,3 +115,22 @@ export default timePage;
 function getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
 }
+
+
+// await meditationSessionRepository.deleteAll();
+//
+// const sessions: IMeditationSession[] = [];
+// for(let i = 0; i < 1000; ++i){
+//     sessions.push({
+//         durationMs: 1000000,
+//         rating: 5,
+//         notes: 'good session fellas really enjoyed the whole thing maybe next time ill be here and youll be there you know. ---' + i,
+//         dateMs: Date.now() + i,
+//         id: (Date.now() + i).toString()
+//     });
+// }
+//
+// for(let session of sessions){
+//     await meditationSessionRepository.saveMeditationSession(session);
+// }
+// await meditationSessionRepository.getDataContainer(true);
