@@ -63,7 +63,7 @@ const TimePage = () => {
     const minuteOptions = timePage.minuteOptions;
     const hourOptions = timePage.hourOptions;
     return (
-        <Page currentPage={"Timer"} modal={finishSessionModal || soundSettingsModal}>
+        <Page pageName={'Timer'} modal={finishSessionModal || soundSettingsModal}>
             <Div className={styles.timer}>
                 <Div className={styles.rowOne}>
                     <Div className={styles.hoursAndMinutes}>

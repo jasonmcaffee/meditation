@@ -12,7 +12,7 @@ class AppEvents{
         meditationSessionsChanged: [] as IMeditationSession[],
     }
     navigation = {
-        goToPage: ''
+        goToPage: 'Timer'
     }
 }
 
