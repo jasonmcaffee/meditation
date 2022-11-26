@@ -17,6 +17,7 @@ const Page: React.FC<PropsWithChildren<{pageName: string, className?: any, modal
     const pageStyle = {...styles.page, ...style};
     const pageContentStyle = {...styles.pageContent, opacity: fadeAnim};
     const animationDuration = 500;
+
     useEffect(()=>{
         // console.log(`${pageName} animating to 1 in duration$ {animationDuration}`);
         if(currentPageName == pageName){ //needed so that the animation actually fires the first time you go to the page.

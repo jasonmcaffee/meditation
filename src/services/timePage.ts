@@ -1,9 +1,8 @@
-import stopwatch, {IDurationUpdateData} from "./stopwatch";
-import audioPlayer, {soundFiles} from "./audioPlayer";
+import stopwatch  from "./stopwatch";
 import {useState} from "react";
 import FinishSessionModal from "../components/time-page/FinishSessionModal";
 import IMeditationSession from "../models/IMeditationSession";
-import meditationSessionRepository, {MeditationSessionRepository} from "../repository/meditationSessionRepository";
+import meditationSessionRepository from "../repository/meditationSessionRepository";
 
 class TimePage{
     isStopWatchRunning = false;

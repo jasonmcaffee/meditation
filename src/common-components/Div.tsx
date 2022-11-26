@@ -1,8 +1,15 @@
 import React, {PropsWithChildren} from "react";
-import {Pressable} from "react-native";
+import {Pressable, StyleProp, ViewStyle} from "react-native";
 
-const Div: React.FC<PropsWithChildren<{ className?: any, onClick?: ()=> void, }>> = ({children, className = null, onClick}) => {
-    return <Pressable onPress={onClick} style={className}>{children}</Pressable>;
+type Props = PropsWithChildren<{
+    className?: StyleProp<ViewStyle>,
+    onClick?: ()=> void,
+}>;
+
+function Div({children, className = null, onClick}: Props) {
+    return <Pressable onPress={onClick} style={className}>
+        {children}
+    </Pressable>;
 }
 
 export default Div;

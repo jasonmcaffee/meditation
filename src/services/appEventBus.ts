@@ -1,6 +1,7 @@
 import {IDurationUpdateData} from "./stopwatch";
 import {createObserverProxy} from "./EventBus";
 import IMeditationSession from "../models/IMeditationSession";
+import {ReactNode} from "react";
 
 class AppEvents{
     stopwatch = {
@@ -14,6 +15,9 @@ class AppEvents{
     }
     navigation = {
         goToPage: 'Timer'
+    }
+    app = {
+        showModal: {} as ReactNode
     }
 }
 

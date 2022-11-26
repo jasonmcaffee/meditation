@@ -18,7 +18,6 @@ const Modal: Prop = ({children, className = null, windowClassName = null, onClos
     const sizeStyle = {height: screenHeight, width: screenWidth};
     const style = [styles.modal, sizeStyle, className];
     return <Div className={style}>
-        {/*<BlurView blurType={"light"} style={styles.blurView}/>*/}
         <Div className={[styles.modalWindow, windowClassName]}>
             <IconButton icon={faClose} onClick={onCloseClick} className={styles.modalCloseButton} iconClassName={styles.modalCloseButtonIcon} size={35}/>
             {children}

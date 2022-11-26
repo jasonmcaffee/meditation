@@ -1,6 +1,9 @@
 - modal select box
-- track configuration
--- sound
+
+- track timer configuration
+a track is comprised of N sounds timers, each repeating (or once) every N minutes/seconds
+-- sound configuration
+interval or timeout that plays a sound.  needs to take into consideration pause/reset of stopwatch, or perhaps higher level thing does that, but it needs to be able to pause.
 
 - set alarm time to 0 after the alarm has gone off
 - sound settings modal
