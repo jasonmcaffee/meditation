@@ -1,5 +1,6 @@
 import appEventBus from "./appEventBus";
-import audioPlayer, {soundFiles} from "./audioPlayer";
+import audioPlayer from "./audioPlayer";
+import {soundFiles} from "../config/soundFiles";
 
 class AudioNotifications{
     soundFileToPlayAsAlarm?: string = soundFiles.chimeGentlePaced;

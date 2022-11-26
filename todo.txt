@@ -1,11 +1,26 @@
+- modal select box
+- track configuration
+-- sound
+
 - set alarm time to 0 after the alarm has gone off
 - sound settings modal
 - show modal event?
+
+- android
+-- file system write ENOENT
+-- fix font
+-- did a hack for sound file naming to use _ instead of -, but we need to change all sound files to be one naming with _
+
+
 - export data
-- do not disturb mode
 - calendar integration? https://github.com/wmcmahan/react-native-calendar-events
-- animate pages
+- sound alarm when app is in background.  not sure this is useful.
 
 Later
 ============================
 SQLite didn't work out of the box.  Revisit later.  File system will work for the next couple of years.
+
+- do not disturb mode is not possible
+
+- maybe its best if the guided meditations are by me?  might be weird to listen to though...
+otherwise need licensing permission? or embed youtube & soundslice?

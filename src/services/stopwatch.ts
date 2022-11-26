@@ -1,4 +1,4 @@
-import audioPlayer, {soundFiles} from "./audioPlayer";
+
 import appEventBus from "./appEventBus";
 import app from "../../App";
 
@@ -19,7 +19,6 @@ class Stopwatch {
     isAlarmEnabled = false;
     alarmMinutes = 0;
     hasAlarmAlreadyPlayed = false;
-    soundFileToPlayAsAlarm?: string = soundFiles.chimeGentlePaced;
 
     start(){
         this.isRunning = true;
@@ -32,7 +31,7 @@ class Stopwatch {
             appEventBus.stopwatch.durationUpdate().set(durationData);
             const totalMinutes = this.getCurrentDurationMs() / 1000 / 60;
             const shouldAlarmPlay = !this.hasAlarmAlreadyPlayed && this.isAlarmEnabled && totalMinutes >= this.alarmMinutes;
-            if(this.soundFileToPlayAsAlarm && shouldAlarmPlay){
+            if(shouldAlarmPlay){
                 // audioPlayer.playFile(this.soundFileToPlayAsAlarm);
                 console.log(`timer is completed`);
                 appEventBus.stopwatch.timerCompleted().set(true);

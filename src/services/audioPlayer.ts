@@ -1,21 +1,10 @@
+import {soundFiles} from "../config/soundFiles";
+
 const Sound = require('react-native-sound');
 // Enable playback in silence mode
 Sound.setCategory('Playback');
 //@ts-ignore use an alias due to TS having issue with value being same name as type Sound
 type S = Sound;
-
-export const soundFiles = {
-    chimeGentlePaced: 'chime-gentle-paced.mp3',
-    chimeMediumPace: 'chime-medium-paced.mp3',
-    chimeMediumSingle: 'chime-medium-single.mp3',
-    metalBowlSingGoodLongWooden: 'metal-bowl-sing-good-long-wooden.mp3',
-    metalBowlSingQuiet: 'metal-bowl-sing-quiet.mp3',
-    metalBowlStrikeHard2Gong: 'metal-bowl-strike-hard2-gong.mp3',
-    metalBowlStrikeMedium7Deep: 'metal-bowl-strike-medium7-deep.mp3',
-    metalBowlStrikeMedium18Vibrato: 'metal-bowl-strike-medium18-vibrato.mp3',
-    metalBowlStrikeSoft6: 'metal-bowl-strike-soft6.mp3',
-    chime: 'chime.mp3',
-}
 
 function createSound(fileName: string): Promise<S>{
     return new Promise<S>((resolve, reject)=>{
