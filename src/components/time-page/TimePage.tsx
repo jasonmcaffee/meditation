@@ -54,7 +54,7 @@ const TimePage = () => {
         const unregister = appEventBus.stopwatch.durationUpdate().on(durationUpdateData => {
             setDurationData(durationUpdateData);
         });
-        const unreg2 = appEventBus.stopwatch.isRunning().on(setIsStopWatchRunning);
+        const unreg2 = appEventBus.stopwatch.isRunning().on(setIsStopWatchRunning)
         return ()=>{ unregister(); unreg2(); }
     }, []);
 
