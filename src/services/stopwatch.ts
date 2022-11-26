@@ -25,18 +25,24 @@ class Stopwatch {
         this.startTimeMs = Date.now();
         appEventBus.stopwatch.isRunning().set(this.isRunning);
         appEventBus.stopwatch.startPauseChange().set(true);
+        let previousDurationData = getDurationDataFromDurationMs(this.getCurrentDurationMs());
         //@ts-ignore
         this.notifyIntervalId = setInterval(()=> {
             const durationData = getDurationDataFromDurationMs(this.getCurrentDurationMs());
-            appEventBus.stopwatch.durationUpdate().set(durationData);
-            const totalMinutes = this.getCurrentDurationMs() / 1000 / 60;
-            const shouldAlarmPlay = !this.hasAlarmAlreadyPlayed && this.isAlarmEnabled && totalMinutes >= this.alarmMinutes;
-            if(shouldAlarmPlay){
-                // audioPlayer.playFile(this.soundFileToPlayAsAlarm);
-                console.log(`timer is completed`);
-                appEventBus.stopwatch.timerCompleted().set(true);
-                this.hasAlarmAlreadyPlayed = true;
+            if(previousDurationData.seconds != durationData.seconds){ //only send updates on the second change so we can avoid re-renders.
+                // console.log(`previous duration seconds: ${previousDurationData.seconds}  current: ${durationData.seconds}`);
+                appEventBus.stopwatch.durationUpdate().set(durationData);
+                const totalMinutes = this.getCurrentDurationMs() / 1000 / 60;
+                const shouldAlarmPlay = !this.hasAlarmAlreadyPlayed && this.isAlarmEnabled && totalMinutes >= this.alarmMinutes;
+                if(shouldAlarmPlay){
+                    // audioPlayer.playFile(this.soundFileToPlayAsAlarm);
+                    console.log(`timer is completed`);
+                    appEventBus.stopwatch.timerCompleted().set(true);
+                    this.hasAlarmAlreadyPlayed = true;
+                }
             }
+            previousDurationData = durationData;
+
         }, 50);
     }
 

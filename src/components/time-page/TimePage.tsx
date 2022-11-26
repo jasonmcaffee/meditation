@@ -31,13 +31,10 @@ import {pageState, proxyUseState, wrappedUseState} from "../../react-utils/proxy
 const TimePage = () => {
     const state = timePage.usePageState();
 
-    const [durationData, setDurationData] = useState(timePage.getDurationData());
-    const [isStopWatchRunning, setIsStopWatchRunning] = useState(false);
     const screenHeight = useWindowDimensions().height; // Dimensions.get('window').height;
     const screenWidth = useWindowDimensions().width; //Dimensions.get('window').width;
 
-    const shouldShowSoundSettingsModal = timePage.useShouldDisplaySoundSettingsModal();
-    const meditationSession = timePage.useMeditationSession();
+    // const meditationSession = timePage.useMeditationSession();
     const isAlarmEnabled = timePage.useIsAlarmEnabled();
     const alarmMinutes = timePage.useAlarmMinutes();
     const {hours, minutes} = convertMinutesToHoursAndMinutes(alarmMinutes);
@@ -53,14 +50,14 @@ const TimePage = () => {
 
     useEffect(()=>{
         const unregister = appEventBus.stopwatch.durationUpdate().on(durationUpdateData => {
-            setDurationData(durationUpdateData);
+            state.durationData = durationUpdateData;
         });
-        const unreg2 = appEventBus.stopwatch.isRunning().on(setIsStopWatchRunning)
+        const unreg2 = appEventBus.stopwatch.isRunning().on(isRunning => state.isStopWatchRunning = isRunning);
         return ()=>{ unregister(); unreg2(); }
     }, []);
 
-    const finishSessionModal = state.shouldDisplayFinishSessionModal && meditationSession ? <FinishSessionModal meditationSession={meditationSession} onCloseClick={() => timePage.closeFinishSessionModal()} onSaveClick={(notes, rating) => timePage.saveSession(notes, rating)}/> : null;
-    const soundSettingsModal = shouldShowSoundSettingsModal ? <SoundSettingsModal onCloseClick={() => timePage.closeSoundSettingsModal()}/> : null;
+    const finishSessionModal = state.shouldDisplayFinishSessionModal && state.meditationSession ? <FinishSessionModal meditationSession={state.meditationSession} onCloseClick={() => state.shouldDisplayFinishSessionModal = false} onSaveClick={(notes, rating) => timePage.saveSession(notes, rating)}/> : null;
+    const soundSettingsModal = state.shouldDisplaySoundSettingsModal ? <SoundSettingsModal onCloseClick={() => state.shouldDisplaySoundSettingsModal = false}/> : null;
     //not possible to calculate with rn css, so have to do it with js.
     const timerTimeStyle = createTimerTimeStyle(screenWidth, screenHeight, styles.timerTime);
     const minuteOptions = timePage.minuteOptions;
@@ -75,17 +72,17 @@ const TimePage = () => {
                         <IconButton icon={faBell} className={styles.bellIconButton} iconClassName={isAlarmEnabled ? styles.bellIconButtonIcon : styles.bellIconButtonIconDisabled}/>
                         <DropDown value={hours} onSelected={(h)=>{ timePage.setAlarmMinutesFromHoursAndMinutes(h, minutes); }} data={hourOptions} label={"hours"} className={styles.hours}/>
                         <DropDown value={minutes} onSelected={(m)=>{ timePage.setAlarmMinutesFromHoursAndMinutes(hours, m); }} data={minuteOptions} label={"min"}/>
-                        <IconButton icon={faGear} className={styles.bellIconButton} iconClassName={styles.gearIconButtonIcon} onClick={()=> timePage.setSoundSettingsModal(true) }/>
+                        <IconButton icon={faGear} className={styles.bellIconButton} iconClassName={styles.gearIconButtonIcon} onClick={()=> state.shouldDisplaySoundSettingsModal = true }/>
                     </Div>
                     <Div className={timerTimeStyle}>
-                        {createTimeEl(durationData)}
+                        {createTimeEl(state.durationData)}
                     </Div>
                 </Div>
                 <Div className={styles.rowTwo}>
                     {/*<ModalSelector options={[1, 2, 3, 4, 5]} value={state.selected} onOptionRowClick={o => state.selected = o} />*/}
                     <Div className={styles.timerButtons}>
                         <Div className={styles.timerButtonsColumn}>
-                            <IconButton icon={isStopWatchRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={startPauseStopwatch}/>
+                            <IconButton icon={state.isStopWatchRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={startPauseStopwatch}/>
                         </Div>
                         <Div className={styles.timerButtonsColumn}>
                             <Button text={"Finish"} className={styles.timerButton} onClick={finishSessionClicked}/>
