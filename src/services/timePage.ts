@@ -9,7 +9,6 @@ class TimePage{
     isStopWatchRunning = false;
     setAlarmMinutes = (m: number) => {};
     setIsAlarmEnabled = (s: boolean) => {};
-    setFinishSessionModal = (s: boolean) => {};
     setSoundSettingsModal = (s: boolean) => {};
     setMeditationSession = (s?: IMeditationSession) => {};
     minuteOptions = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]; //todo: 60 minutes here makes 1 hour and 60 minutes.
@@ -17,8 +16,9 @@ class TimePage{
     meditationSession?: IMeditationSession;
     state = {
         selected: 1,
+        shouldDisplayFinishSessionModal: false,
     };
-    pageState?: { selected: number; };
+    pageState?: TimePage['state']; //I don't want to have to type out this Type somewhere else, so I can just reference the definition place
     usePageState(){
          this.pageState = pageState(this.state);
          return this.pageState;
@@ -37,7 +37,7 @@ class TimePage{
         this.meditationSession = createMeditationSessionBasedOnDurationData(durationMs, createdDateMs);
         this.setMeditationSession(this.meditationSession);
         //show modal
-        this.setFinishSessionModal(true);
+        this.pageState!.shouldDisplayFinishSessionModal = true;
     }
 
     async saveSession(notes: string, rating: number){
@@ -54,11 +54,6 @@ class TimePage{
         return stopwatch.getDurationData();
     }
 
-    useShouldDisplayFinishSessionModal(){
-        const [shouldDisplayFinishSessionModal, setFinishSessionModal] = useState(false);
-        this.setFinishSessionModal = (s) => setFinishSessionModal(s);
-        return shouldDisplayFinishSessionModal;
-    }
     useShouldDisplaySoundSettingsModal(){
         const [shouldDisplaySoundSettingsModal, setShouldDisplaySoundSettingsModal] = useState(false);
         this.setSoundSettingsModal = (s) => setShouldDisplaySoundSettingsModal(s);
@@ -98,7 +93,7 @@ class TimePage{
     }
 
     closeFinishSessionModal(){
-        this.setFinishSessionModal(false);
+        this.pageState!.shouldDisplayFinishSessionModal = false;
     }
     closeSoundSettingsModal(){
         this.setSoundSettingsModal(false);
