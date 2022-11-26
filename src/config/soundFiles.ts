@@ -1,19 +1,5 @@
-import {Platform} from "react-native";
 
-const soundFilesIos = {
-    chimeGentlePaced: 'chime-gentle-paced.mp3',
-    chimeMediumPace: 'chime-medium-paced.mp3',
-    chimeMediumSingle: 'chime-medium-single.mp3',
-    metalBowlSingGoodLongWooden: 'metal-bowl-sing-good-long-wooden.mp3',
-    metalBowlSingQuiet: 'metal-bowl-sing-quiet.mp3',
-    metalBowlStrikeHard2Gong: 'metal-bowl-strike-hard2-gong.mp3',
-    metalBowlStrikeMedium7Deep: 'metal-bowl-strike-medium7-deep.mp3',
-    metalBowlStrikeMedium18Vibrato: 'metal-bowl-strike-medium18-vibrato.mp3',
-    metalBowlStrikeSoft6: 'metal-bowl-strike-soft6.mp3',
-    chime: 'chime.mp3',
-};
-
-const soundFilesAndroid = {
+export const soundFiles = {
     chimeGentlePaced: 'chime_gentle_paced.mp3',
     chimeMediumPace: 'chime_medium_paced.mp3',
     chimeMediumSingle: 'chime_medium_single.mp3',
@@ -26,6 +12,4 @@ const soundFilesAndroid = {
     chime: 'chime.mp3',
 }
 
-export const soundFiles = Platform.OS == 'ios' ? soundFilesIos : soundFilesAndroid;
-
-const soundFilesArray = Object.entries(soundFilesIos).map(([key, value]) => value);
+// const soundFilesArray = Object.entries(soundFilesIos).map(([key, value]) => value);

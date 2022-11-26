@@ -33,17 +33,17 @@
 		89C9BE2FC2EE4CB1B78386F0 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB2DD4E3DC3945539A3FEF14 /* Montserrat-Thin.ttf */; };
 		90BCD5E4D3CB4D2E9842564C /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07F36E6723C44DAB909601A6 /* Montserrat-VariableFont_wght.ttf */; };
 		910FD42B88E241C291B8AB61 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3381FB3DC2EF4234A7BAAB3C /* Montserrat-SemiBold.ttf */; };
+		96AF4D4229327BA200462AC5 /* metal_bowl_strike_medium7_deep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96AF4D3829327BA100462AC5 /* metal_bowl_strike_medium7_deep.mp3 */; };
+		96AF4D4329327BA200462AC5 /* metal_bowl_strike_medium18_vibrato.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96AF4D3929327BA100462AC5 /* metal_bowl_strike_medium18_vibrato.mp3 */; };
+		96AF4D4429327BA200462AC5 /* metal_bowl_sing_quiet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96AF4D3A29327BA100462AC5 /* metal_bowl_sing_quiet.mp3 */; };
+		96AF4D4529327BA200462AC5 /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96AF4D3B29327BA100462AC5 /* chime.mp3 */; };
+		96AF4D4629327BA200462AC5 /* chime_medium_paced.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96AF4D3C29327BA100462AC5 /* chime_medium_paced.mp3 */; };
+		96AF4D4729327BA200462AC5 /* metal_bowl_sing_good_long_wooden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96AF4D3D29327BA100462AC5 /* metal_bowl_sing_good_long_wooden.mp3 */; };
+		96AF4D4829327BA200462AC5 /* chime_gentle_paced.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96AF4D3E29327BA100462AC5 /* chime_gentle_paced.mp3 */; };
+		96AF4D4929327BA200462AC5 /* metal_bowl_strike_hard2_gong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96AF4D3F29327BA100462AC5 /* metal_bowl_strike_hard2_gong.mp3 */; };
+		96AF4D4A29327BA200462AC5 /* chime_medium_single.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96AF4D4029327BA200462AC5 /* chime_medium_single.mp3 */; };
+		96AF4D4B29327BA200462AC5 /* metal_bowl_strike_soft6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96AF4D4129327BA200462AC5 /* metal_bowl_strike_soft6.mp3 */; };
 		96BCD9A32929E81000255B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96BCD9A22929E81000255B20 /* Assets.xcassets */; };
-		96E5296B2919542D0003A44F /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E5296A2919542D0003A44F /* chime.mp3 */; };
-		96E529702919EB0D0003A44F /* chime-gentle-paced.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E5296F2919EB0D0003A44F /* chime-gentle-paced.mp3 */; };
-		96E529792919EFB20003A44F /* metal-bowl-strike-medium18-vibrato.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E529712919EFB20003A44F /* metal-bowl-strike-medium18-vibrato.mp3 */; };
-		96E5297A2919EFB20003A44F /* metal-bowl-strike-medium7-deep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E529722919EFB20003A44F /* metal-bowl-strike-medium7-deep.mp3 */; };
-		96E5297B2919EFB20003A44F /* chime-medium-single.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E529732919EFB20003A44F /* chime-medium-single.mp3 */; };
-		96E5297C2919EFB20003A44F /* chime-medium-paced.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E529742919EFB20003A44F /* chime-medium-paced.mp3 */; };
-		96E5297D2919EFB20003A44F /* metal-bowl-strike-soft6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E529752919EFB20003A44F /* metal-bowl-strike-soft6.mp3 */; };
-		96E5297E2919EFB20003A44F /* metal-bowl-sing-quiet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E529762919EFB20003A44F /* metal-bowl-sing-quiet.mp3 */; };
-		96E5297F2919EFB20003A44F /* metal-bowl-strike-hard2-gong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E529772919EFB20003A44F /* metal-bowl-strike-hard2-gong.mp3 */; };
-		96E529802919EFB20003A44F /* metal-bowl-sing-good-long-wooden.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 96E529782919EFB20003A44F /* metal-bowl-sing-good-long-wooden.mp3 */; };
 		98C26E30571D47EB9D6C7FAE /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DCF68E1AFB184166A52DA4C2 /* Montserrat-Light.ttf */; };
 		AF6F4D0559FC42F399E55054 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E1980E55BFB43BC9F72F851 /* Montserrat-BlackItalic.ttf */; };
 		F13DB26B287A4D4CA8D7CAF7 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DA2A69396BD442D83C415ED /* Montserrat-ThinItalic.ttf */; };
@@ -89,17 +89,17 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = meditation/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CE5E569D0D34F158D33E92A /* Montserrat-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Black.ttf"; path = "../assets/fonts/Montserrat/static/Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		923E8DDA53974E8E937D7C81 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat/static/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		96AF4D3829327BA100462AC5 /* metal_bowl_strike_medium7_deep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = metal_bowl_strike_medium7_deep.mp3; path = ../../assets/sounds/metal_bowl_strike_medium7_deep.mp3; sourceTree = "<group>"; };
+		96AF4D3929327BA100462AC5 /* metal_bowl_strike_medium18_vibrato.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = metal_bowl_strike_medium18_vibrato.mp3; path = ../../assets/sounds/metal_bowl_strike_medium18_vibrato.mp3; sourceTree = "<group>"; };
+		96AF4D3A29327BA100462AC5 /* metal_bowl_sing_quiet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = metal_bowl_sing_quiet.mp3; path = ../../assets/sounds/metal_bowl_sing_quiet.mp3; sourceTree = "<group>"; };
+		96AF4D3B29327BA100462AC5 /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chime.mp3; path = ../../assets/sounds/chime.mp3; sourceTree = "<group>"; };
+		96AF4D3C29327BA100462AC5 /* chime_medium_paced.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chime_medium_paced.mp3; path = ../../assets/sounds/chime_medium_paced.mp3; sourceTree = "<group>"; };
+		96AF4D3D29327BA100462AC5 /* metal_bowl_sing_good_long_wooden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = metal_bowl_sing_good_long_wooden.mp3; path = ../../assets/sounds/metal_bowl_sing_good_long_wooden.mp3; sourceTree = "<group>"; };
+		96AF4D3E29327BA100462AC5 /* chime_gentle_paced.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chime_gentle_paced.mp3; path = ../../assets/sounds/chime_gentle_paced.mp3; sourceTree = "<group>"; };
+		96AF4D3F29327BA100462AC5 /* metal_bowl_strike_hard2_gong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = metal_bowl_strike_hard2_gong.mp3; path = ../../assets/sounds/metal_bowl_strike_hard2_gong.mp3; sourceTree = "<group>"; };
+		96AF4D4029327BA200462AC5 /* chime_medium_single.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chime_medium_single.mp3; path = ../../assets/sounds/chime_medium_single.mp3; sourceTree = "<group>"; };
+		96AF4D4129327BA200462AC5 /* metal_bowl_strike_soft6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = metal_bowl_strike_soft6.mp3; path = ../../assets/sounds/metal_bowl_strike_soft6.mp3; sourceTree = "<group>"; };
 		96BCD9A22929E81000255B20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		96E5296A2919542D0003A44F /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chime.mp3; path = ../assets/chime.mp3; sourceTree = "<group>"; };
-		96E5296F2919EB0D0003A44F /* chime-gentle-paced.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "chime-gentle-paced.mp3"; path = "../assets/chime-gentle-paced.mp3"; sourceTree = "<group>"; };
-		96E529712919EFB20003A44F /* metal-bowl-strike-medium18-vibrato.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "metal-bowl-strike-medium18-vibrato.mp3"; path = "../assets/metal-bowl-strike-medium18-vibrato.mp3"; sourceTree = "<group>"; };
-		96E529722919EFB20003A44F /* metal-bowl-strike-medium7-deep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "metal-bowl-strike-medium7-deep.mp3"; path = "../assets/metal-bowl-strike-medium7-deep.mp3"; sourceTree = "<group>"; };
-		96E529732919EFB20003A44F /* chime-medium-single.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "chime-medium-single.mp3"; path = "../assets/chime-medium-single.mp3"; sourceTree = "<group>"; };
-		96E529742919EFB20003A44F /* chime-medium-paced.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "chime-medium-paced.mp3"; path = "../assets/chime-medium-paced.mp3"; sourceTree = "<group>"; };
-		96E529752919EFB20003A44F /* metal-bowl-strike-soft6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "metal-bowl-strike-soft6.mp3"; path = "../assets/metal-bowl-strike-soft6.mp3"; sourceTree = "<group>"; };
-		96E529762919EFB20003A44F /* metal-bowl-sing-quiet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "metal-bowl-sing-quiet.mp3"; path = "../assets/metal-bowl-sing-quiet.mp3"; sourceTree = "<group>"; };
-		96E529772919EFB20003A44F /* metal-bowl-strike-hard2-gong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "metal-bowl-strike-hard2-gong.mp3"; path = "../assets/metal-bowl-strike-hard2-gong.mp3"; sourceTree = "<group>"; };
-		96E529782919EFB20003A44F /* metal-bowl-sing-good-long-wooden.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "metal-bowl-sing-good-long-wooden.mp3"; path = "../assets/metal-bowl-sing-good-long-wooden.mp3"; sourceTree = "<group>"; };
 		99249E8D2C3C4F3483B107D4 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraLightItalic.ttf"; path = "../assets/fonts/Montserrat/static/Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		AB2DD4E3DC3945539A3FEF14 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Thin.ttf"; path = "../assets/fonts/Montserrat/static/Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		B9CF0DD1C87F496B8990973D /* OFL.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OFL.txt; path = ../assets/fonts/Montserrat/OFL.txt; sourceTree = "<group>"; };
@@ -182,16 +182,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				96E529742919EFB20003A44F /* chime-medium-paced.mp3 */,
-				96E529732919EFB20003A44F /* chime-medium-single.mp3 */,
-				96E529782919EFB20003A44F /* metal-bowl-sing-good-long-wooden.mp3 */,
-				96E529762919EFB20003A44F /* metal-bowl-sing-quiet.mp3 */,
-				96E529772919EFB20003A44F /* metal-bowl-strike-hard2-gong.mp3 */,
-				96E529722919EFB20003A44F /* metal-bowl-strike-medium7-deep.mp3 */,
-				96E529712919EFB20003A44F /* metal-bowl-strike-medium18-vibrato.mp3 */,
-				96E529752919EFB20003A44F /* metal-bowl-strike-soft6.mp3 */,
-				96E5296F2919EB0D0003A44F /* chime-gentle-paced.mp3 */,
-				96E5296A2919542D0003A44F /* chime.mp3 */,
+				96AF4D3729327B4200462AC5 /* sounds */,
 				96BCD9A22929E81000255B20 /* Assets.xcassets */,
 				13B07FAE1A68108700A75B9A /* meditation */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -213,6 +204,23 @@
 				00E356EE1AD99517003FC87E /* meditationTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		96AF4D3729327B4200462AC5 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				96AF4D3E29327BA100462AC5 /* chime_gentle_paced.mp3 */,
+				96AF4D3C29327BA100462AC5 /* chime_medium_paced.mp3 */,
+				96AF4D4029327BA200462AC5 /* chime_medium_single.mp3 */,
+				96AF4D3B29327BA100462AC5 /* chime.mp3 */,
+				96AF4D3D29327BA100462AC5 /* metal_bowl_sing_good_long_wooden.mp3 */,
+				96AF4D3A29327BA100462AC5 /* metal_bowl_sing_quiet.mp3 */,
+				96AF4D3F29327BA100462AC5 /* metal_bowl_strike_hard2_gong.mp3 */,
+				96AF4D3829327BA100462AC5 /* metal_bowl_strike_medium7_deep.mp3 */,
+				96AF4D3929327BA100462AC5 /* metal_bowl_strike_medium18_vibrato.mp3 */,
+				96AF4D4129327BA200462AC5 /* metal_bowl_strike_soft6.mp3 */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 		B266096CD95544E5B5AC31E5 /* Resources */ = {
@@ -349,27 +357,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96E5297B2919EFB20003A44F /* chime-medium-single.mp3 in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				96E5297F2919EFB20003A44F /* metal-bowl-strike-hard2-gong.mp3 in Resources */,
-				96E5297E2919EFB20003A44F /* metal-bowl-sing-quiet.mp3 in Resources */,
+				96AF4D4829327BA200462AC5 /* chime_gentle_paced.mp3 in Resources */,
 				96BCD9A32929E81000255B20 /* Assets.xcassets in Resources */,
-				96E5296B2919542D0003A44F /* chime.mp3 in Resources */,
-				96E529802919EFB20003A44F /* metal-bowl-sing-good-long-wooden.mp3 in Resources */,
-				96E5297D2919EFB20003A44F /* metal-bowl-strike-soft6.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				96E5297A2919EFB20003A44F /* metal-bowl-strike-medium7-deep.mp3 in Resources */,
-				96E529792919EFB20003A44F /* metal-bowl-strike-medium18-vibrato.mp3 in Resources */,
-				96E5297C2919EFB20003A44F /* chime-medium-paced.mp3 in Resources */,
-				96E529702919EB0D0003A44F /* chime-gentle-paced.mp3 in Resources */,
+				96AF4D4429327BA200462AC5 /* metal_bowl_sing_quiet.mp3 in Resources */,
+				96AF4D4A29327BA200462AC5 /* chime_medium_single.mp3 in Resources */,
+				96AF4D4529327BA200462AC5 /* chime.mp3 in Resources */,
+				96AF4D4629327BA200462AC5 /* chime_medium_paced.mp3 in Resources */,
 				36F6BACB3AF54F359EAF9B58 /* Montserrat-Italic-VariableFont_wght.ttf in Resources */,
+				96AF4D4929327BA200462AC5 /* metal_bowl_strike_hard2_gong.mp3 in Resources */,
+				96AF4D4329327BA200462AC5 /* metal_bowl_strike_medium18_vibrato.mp3 in Resources */,
 				90BCD5E4D3CB4D2E9842564C /* Montserrat-VariableFont_wght.ttf in Resources */,
 				80E94D4EC6C3474E8D67B6C8 /* Montserrat-Black.ttf in Resources */,
 				AF6F4D0559FC42F399E55054 /* Montserrat-BlackItalic.ttf in Resources */,
 				605216383F0C440DB7459DCA /* Montserrat-Bold.ttf in Resources */,
 				7FFE2F7A70A8419899B37E29 /* Montserrat-BoldItalic.ttf in Resources */,
 				21F4B7C1CBAF43DF89BE0157 /* Montserrat-ExtraBold.ttf in Resources */,
+				96AF4D4729327BA200462AC5 /* metal_bowl_sing_good_long_wooden.mp3 in Resources */,
 				744A9EAF085040CC8E2D47FD /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				96AF4D4B29327BA200462AC5 /* metal_bowl_strike_soft6.mp3 in Resources */,
 				19CED71E155C412292B1823E /* Montserrat-ExtraLight.ttf in Resources */,
 				74925FD3FD4948F7A9739381 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				0CCD5D399BE04287BC43F0D3 /* Montserrat-Italic.ttf in Resources */,
@@ -384,6 +391,7 @@
 				F13DB26B287A4D4CA8D7CAF7 /* Montserrat-ThinItalic.ttf in Resources */,
 				19F817C2508A4D92B588BB87 /* OFL.txt in Resources */,
 				6799B15079424E64B617033A /* README.txt in Resources */,
+				96AF4D4229327BA200462AC5 /* metal_bowl_strike_medium7_deep.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
