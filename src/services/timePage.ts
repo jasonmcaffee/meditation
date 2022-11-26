@@ -6,13 +6,10 @@ import meditationSessionRepository from "../repository/meditationSessionReposito
 import {pageState} from "../react-utils/proxyUseState";
 
 class TimePage{
-    isStopWatchRunning = false;
     setAlarmMinutes = (m: number) => {};
     setIsAlarmEnabled = (s: boolean) => {};
-    setMeditationSession = (s?: IMeditationSession) => {};
     minuteOptions = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]; //todo: 60 minutes here makes 1 hour and 60 minutes.
     hourOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
-    meditationSession?: IMeditationSession;
     state = {
         selected: 1,
         shouldDisplayFinishSessionModal: false,
@@ -28,7 +25,6 @@ class TimePage{
     }
     async startPauseStopwatch(){
         stopwatch.startPause();
-        this.isStopWatchRunning = stopwatch.isRunning;
     }
 
     //when the finish button is pressed, show a modal and prompt for notes, rating, etc.
@@ -36,33 +32,24 @@ class TimePage{
         const durationMs = stopwatch.getCurrentDurationMs();
         const createdDateMs = stopwatch.getStartTimeMs();
         stopwatch.reset();
-        this.isStopWatchRunning = stopwatch.isRunning;
-        const meditationSession = createMeditationSessionBasedOnDurationData(durationMs, createdDateMs);
-        this.meditationSession = meditationSession;
-        // this.setMeditationSession(this.meditationSession);
-        this.pageState!.meditationSession = meditationSession;
+        this.pageState!.meditationSession = createMeditationSessionBasedOnDurationData(durationMs, createdDateMs);;
         //show modal
         this.pageState!.shouldDisplayFinishSessionModal = true;
     }
 
     async saveSession(notes: string, rating: number){
-        if(!this.meditationSession) { return console.warn('no meditation session was set to save'); }
-        this.meditationSession.notes = notes;
-        this.meditationSession.rating = rating;
+        if(!this.pageState!.meditationSession) { return console.warn('no meditation session was set to save'); }
+        this.pageState!.meditationSession.notes = notes;
+        this.pageState!.meditationSession.rating = rating;
 
-        await meditationSessionRepository.saveMeditationSession(this.meditationSession);
-
-        this.meditationSession = undefined;
-        // this.setMeditationSession(this.meditationSession);
-        this.pageState!.meditationSession = this.meditationSession;
-
+        await meditationSessionRepository.saveMeditationSession(this.pageState!.meditationSession);
+        this.pageState!.meditationSession = undefined;
     }
 
     useIsAlarmEnabled(){
         const [isAlarmEnabled, setIsAlarmEnabled] = useState(stopwatch.isAlarmEnabled);
         this.setIsAlarmEnabled = function(val){
             stopwatch.isAlarmEnabled = val;
-            console.log(`isAlarmEnabled: `, stopwatch.isAlarmEnabled);
             setIsAlarmEnabled(val);
         }
         return isAlarmEnabled;
@@ -71,7 +58,6 @@ class TimePage{
     useAlarmMinutes(){
         const [alarmMinutes, setAlarmMinutes] = useState(stopwatch.alarmMinutes);
         this.setAlarmMinutes = function(minutes){
-            console.log(`setAlarmMinutes: ${minutes}`);
             stopwatch.setAlarmMinutes(minutes);
             this.setIsAlarmEnabled(stopwatch.isAlarmEnabled);
             setAlarmMinutes(stopwatch.alarmMinutes);
@@ -81,7 +67,6 @@ class TimePage{
 
     setAlarmMinutesFromHoursAndMinutes(hours: number, minutes: number){
         const value = (hours * 60) + minutes;
-        console.log(`set hours: ${hours}  minutes: ${minutes} totalMinutes: ${value}`);
         this.setAlarmMinutes(value);
     }
 

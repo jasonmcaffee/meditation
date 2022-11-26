@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, StyleSheetProperties,  Text, useWindowDimensions} from 'react-native';
+import {StyleSheetProperties,  Text, useWindowDimensions} from 'react-native';
 import Div from "../../common-components/Div";
 import Button from "../../common-components/Button";
-import SelectDropdown from 'react-native-select-dropdown'
 // import ScrollPicker from 'react-native-wheel-scrollview-picker';
 // @ts-ignore
 import * as styles from '../../style/components/time-page/time-page.scss';
@@ -20,13 +19,6 @@ import {IDurationUpdateData} from "../../services/stopwatch";
 import DropDown from "../../common-components/DropDown";
 import SoundSettingsModal from "./SoundSettingsModal";
 import appEventBus from "../../services/appEventBus";
-import fileSystem from "../../services/fileSystem";
-import RNFS from "react-native-fs";
-import ModalSelector from "../../common-components/ModalSelector";
-import {pageState, proxyUseState, wrappedUseState} from "../../react-utils/proxyUseState";
-//todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
-//https://react-native-track-player.js.org/docs/basics/getting-started
-//https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
 
 const TimePage = () => {
     const state = timePage.usePageState();
@@ -34,7 +26,6 @@ const TimePage = () => {
     const screenHeight = useWindowDimensions().height; // Dimensions.get('window').height;
     const screenWidth = useWindowDimensions().width; //Dimensions.get('window').width;
 
-    // const meditationSession = timePage.useMeditationSession();
     const isAlarmEnabled = timePage.useIsAlarmEnabled();
     const alarmMinutes = timePage.useAlarmMinutes();
     const {hours, minutes} = convertMinutesToHoursAndMinutes(alarmMinutes);
@@ -45,7 +36,6 @@ const TimePage = () => {
 
     function finishSessionClicked(){
         timePage.finishSession();
-        // setIsStopWatchRunning(timePage.isStopWatchRunning);
     }
 
     useEffect(()=>{

@@ -27,3 +27,8 @@ SQLite didn't work out of the box.  Revisit later.  File system will work for th
 
 - maybe its best if the guided meditations are by me?  might be weird to listen to though...
 otherwise need licensing permission? or embed youtube & soundslice?
+
+
+//todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
+//https://react-native-track-player.js.org/docs/basics/getting-started
+//https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
