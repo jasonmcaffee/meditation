@@ -1,18 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheetProperties,  Text, useWindowDimensions} from 'react-native';
 import Div from "../../common-components/Div";
 import Button from "../../common-components/Button";
-// import ScrollPicker from 'react-native-wheel-scrollview-picker';
 // @ts-ignore
 import * as styles from '../../style/components/time-page/time-page.scss';
-import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import Page from "../../common-components/Page";
 import IconButton from "../../common-components/IconButton";
 import {faBell} from "@fortawesome/free-regular-svg-icons";
 import {faPause} from "@fortawesome/free-solid-svg-icons/faPause";
 import {faPlay} from "@fortawesome/free-solid-svg-icons/faPlay";
 import {faGear} from "@fortawesome/free-solid-svg-icons/faGear";
-
 import timePage from "../../services/timePage";
 import FinishSessionModal from "./FinishSessionModal";
 import {IDurationUpdateData} from "../../services/stopwatch";
@@ -79,6 +76,7 @@ function createTimeEl(durationData: IDurationUpdateData){
     const els = chars.map( (c, i) => <Text key={i} adjustsFontSizeToFit style={styles.timeTextChar}>{c}</Text>);
     return <Div className={styles.timeTextCharContainer}>{els}</Div>
 }
+
 function createTimerTimeStyle(screenWidth: number, screenHeight: number, timerTimeStyleSheet: StyleSheetProperties){
     //not possible to calculate with rn css, so have to do it with js.
     const circleDiameter = (screenWidth < screenHeight ? screenWidth - 50 : screenHeight - 100);
@@ -96,7 +94,5 @@ function convertMinutesToHoursAndMinutes(minutes: number){
     const remainingMinutes = minutes % 60;
     return {hours, minutes: remainingMinutes};
 }
-
-
 
 export default TimePage;
