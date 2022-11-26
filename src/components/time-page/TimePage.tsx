@@ -23,13 +23,15 @@ import appEventBus from "../../services/appEventBus";
 import fileSystem from "../../services/fileSystem";
 import RNFS from "react-native-fs";
 import ModalSelector from "../../common-components/ModalSelector";
-import {proxyUseState, wrappedUseState} from "../../react-utils/proxyUseState";
+import {pageState, proxyUseState, wrappedUseState} from "../../react-utils/proxyUseState";
 //todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
 //https://react-native-track-player.js.org/docs/basics/getting-started
 //https://medium.com/@bharat.tiwari/creating-an-audio-player-in-react-native-2628c4262db4
 
 // const TimePage = ({route, navigation}: Props) => {
 const TimePage = () => {
+    const state = timePage.usePageState();
+
     const [durationData, setDurationData] = useState(timePage.getDurationData());
     const [isStopWatchRunning, setIsStopWatchRunning] = useState(false);
     const screenHeight = useWindowDimensions().height; // Dimensions.get('window').height;
@@ -64,7 +66,7 @@ const TimePage = () => {
     const timerTimeStyle = createTimerTimeStyle(screenWidth, screenHeight, styles.timerTime);
     const minuteOptions = timePage.minuteOptions;
     const hourOptions = timePage.hourOptions;
-    const selected = wrappedUseState(1);
+
 
     return (
         <Page pageName={'Timer'} modal={finishSessionModal || soundSettingsModal}>
@@ -81,7 +83,7 @@ const TimePage = () => {
                     </Div>
                 </Div>
                 <Div className={styles.rowTwo}>
-                    {/*<ModalSelector options={[1, 2, 3, 4, 5]} value={selected.get()} onOptionRowClick={o => selected.set(o)} />*/}
+                    <ModalSelector options={[1, 2, 3, 4, 5]} value={state.selected} onOptionRowClick={o => state.selected = o} />
                     <Div className={styles.timerButtons}>
                         <Div className={styles.timerButtonsColumn}>
                             <IconButton icon={isStopWatchRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={startPauseStopwatch}/>

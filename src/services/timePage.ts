@@ -3,6 +3,7 @@ import {useState} from "react";
 import FinishSessionModal from "../components/time-page/FinishSessionModal";
 import IMeditationSession from "../models/IMeditationSession";
 import meditationSessionRepository from "../repository/meditationSessionRepository";
+import {pageState} from "../react-utils/proxyUseState";
 
 class TimePage{
     isStopWatchRunning = false;
@@ -14,6 +15,14 @@ class TimePage{
     minuteOptions = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]; //todo: 60 minutes here makes 1 hour and 60 minutes.
     hourOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
     meditationSession?: IMeditationSession;
+    state = {
+        selected: 1,
+    };
+    pageState?: { selected: number; };
+    usePageState(){
+         this.pageState = pageState(this.state);
+         return this.pageState;
+    }
     async startPauseStopwatch(){
         stopwatch.startPause();
         this.isStopWatchRunning = stopwatch.isRunning;
