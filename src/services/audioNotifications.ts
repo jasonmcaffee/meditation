@@ -1,10 +1,10 @@
 import appEventBus from "./appEventBus";
 import audioPlayer from "./audioPlayer";
-import {soundFiles} from "../config/soundFiles";
+import {soundOptions} from "../config/soundFiles";
 
 class AudioNotifications{
-    soundFileToPlayAsAlarm?: string = soundFiles.chimeGentlePaced;
-    soundFileToPlayOnStartPause?: string = soundFiles.metalBowlStrikeHard2Gong;
+    soundFileToPlayAsAlarm?: string = soundOptions.chimeGentlePaced.file;
+    soundFileToPlayOnStartPause?: string = soundOptions.metalBowlStrikeHard2Gong.file;
     constructor() {
         appEventBus.stopwatch.timerCompleted().on(didComplete => {
             if(this.soundFileToPlayAsAlarm){  audioPlayer.playFile(this.soundFileToPlayAsAlarm); }

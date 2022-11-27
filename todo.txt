@@ -9,6 +9,7 @@ interval or timeout that plays a sound.  needs to take into consideration pause/
 - sound settings modal
 - show modal event?
 
+- group sounds by type.  e.g. metal bowl strike, metal bowl ring, chimes.  Perhaps use a tag for grouping?  or just use sub objects.
 - android
 -- file system write ENOENT
 -- fix font

@@ -1,4 +1,4 @@
-import {soundFiles} from "../config/soundFiles";
+import {soundOptions} from "../config/soundFiles";
 
 const Sound = require('react-native-sound');
 // Enable playback in silence mode
@@ -22,19 +22,27 @@ function createSound(fileName: string): Promise<S>{
  * Note: you can't play the same sound instance more than once at a time, but you can play the same sound with multiple instances.
  */
 class AudioPlayer{
-    chime: S;
-
+    currentSample?: S;
     constructor() {}
-
-    async playChime({volume} = {volume: 1}){
-        return this.playFile( soundFiles.chimeGentlePaced, volume);
-    }
 
     // async playFile({volume, fileName} = {volume: 1, fileName: 'chime.mp3'}): Promise<S>{
     async playFile(fileName:string, volume = 1): Promise<S>{
         const sound = await createSound(fileName);
         sound.setVolume(volume);
         return playSound(sound);
+    }
+
+    async playSample(fileName: string){
+        await this.stopCurrentSample();
+        this.currentSample = await createSound(fileName);
+        return playSound(this.currentSample);
+    }
+
+    async stopCurrentSample(){
+        if(this.currentSample){
+            await this.currentSample.stop();
+        }
+        this.currentSample = undefined;
     }
 }
 
