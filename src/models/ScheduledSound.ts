@@ -20,6 +20,7 @@ export default class ScheduledSound {
     currentSound: S;
     lastIntervalTimeMs: number = 0;
     playImmediately = false;
+    isPaused = false;
 
     constructor({shouldLoop, playEveryNms, soundOption, volume = 1, playImmediately=false}: Options) {
         this.shouldLoop = shouldLoop;
@@ -30,11 +31,18 @@ export default class ScheduledSound {
         this.playImmediately = playImmediately;
     }
 
-    async play(){
+    async play(playImmediately = this.playImmediately){
         if(this.playEveryNms){
-            if(this.playImmediately || this.nextIntervalMs !== this.playEveryNms){
-                this.currentSound = this.currentSound || await audioPlayer.playFile(this.soundOption.file, this.volume, this.shouldLoop);
-                this.currentSound.play();
+            if(this.playImmediately){
+                if(this.isPaused){
+                    console.log(`resuming from pause.  if not played the first time, this should make now sound.`);
+                    this.currentSound?.play();
+                }else{
+                    this.currentSound = this.currentSound || await audioPlayer.playFile(this.soundOption.file, this.volume, this.shouldLoop);
+                    this.currentSound.play();
+                }
+            }else if(this.isPaused){
+                this.currentSound?.play();
             }
             console.log(`Play: nextIntervalMs: ${this.nextIntervalMs}`);
             this.lastIntervalTimeMs = Date.now();
@@ -54,10 +62,12 @@ export default class ScheduledSound {
             this.currentSound = this.currentSound || await audioPlayer.playFile(this.soundOption.file, this.volume, this.shouldLoop);
             this.currentSound.play();
         }
+        this.isPaused = false;
         console.log(`currentSound: `, this.currentSound);
     }
 
     async pause(){
+        this.isPaused = true;
         this.currentSound?.pause();
         if(this.playEveryNms){
             clearInterval(this.intervalId);
