@@ -37,6 +37,7 @@ class TimePage{
     finishSession(){
         const durationMs = stopwatch.getCurrentDurationMs();
         const createdDateMs = stopwatch.getStartTimeMs();
+        this.pageState!.selectedScheduledTrackOption.value.stop();
         stopwatch.reset();
         this.pageState!.meditationSession = createMeditationSessionBasedOnDurationData(durationMs, createdDateMs);;
         //show modal
@@ -92,26 +93,3 @@ function createMeditationSessionBasedOnDurationData(durationMs: number, dateMs: 
 
 const timePage = new TimePage();
 export default timePage;
-
-function getRandomInt(max: number) {
-    return Math.floor(Math.random() * max);
-}
-
-
-// await meditationSessionRepository.deleteAll();
-//
-// const sessions: IMeditationSession[] = [];
-// for(let i = 0; i < 1000; ++i){
-//     sessions.push({
-//         durationMs: 1000000,
-//         rating: 5,
-//         notes: 'good session fellas really enjoyed the whole thing maybe next time ill be here and youll be there you know. ---' + i,
-//         dateMs: Date.now() + i,
-//         id: (Date.now() + i).toString()
-//     });
-// }
-//
-// for(let session of sessions){
-//     await meditationSessionRepository.saveMeditationSession(session);
-// }
-// await meditationSessionRepository.getDataContainer(true);
