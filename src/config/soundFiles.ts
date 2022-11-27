@@ -7,8 +7,8 @@ export interface ISoundOption{
     label: string,
     durationSeconds: number,
 }
-
-export const soundOptions: {[k: string]: ISoundOption} = {
+//{[k: string]: ISoundOption}
+export const soundOptions = {
     chimeGentlePaced: { file: 'chime_gentle_paced.mp3', label: 'Chime - Gentle Paced', durationSeconds: 14 },
     chimeMediumPace: { file: 'chime_medium_paced.mp3', label: 'Chime - Medium Paced', durationSeconds: 18 },
     chimeMediumSingle: { file: 'chime_medium_single.mp3', label: 'Chime - Medium Single', durationSeconds: 6 },

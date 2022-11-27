@@ -11,7 +11,7 @@ class AudioNotifications{
         });
 
         appEventBus.stopwatch.startPauseChange().on(isStart => {
-            if(this.soundFileToPlayOnStartPause){ audioPlayer.playFile(this.soundFileToPlayOnStartPause); }
+            // if(this.soundFileToPlayOnStartPause){ audioPlayer.playFile(this.soundFileToPlayOnStartPause); }
         });
     }
 }

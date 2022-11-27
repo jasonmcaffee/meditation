@@ -4,9 +4,9 @@ const Sound = require('react-native-sound');
 // Enable playback in silence mode
 Sound.setCategory('Playback');
 //@ts-ignore use an alias due to TS having issue with value being same name as type Sound
-type S = Sound;
+export type S = Sound;
 
-function createSound(fileName: string): Promise<S>{
+export function createSound(fileName: string): Promise<S>{
     return new Promise<S>((resolve, reject)=>{
        let s = new Sound(fileName, Sound.MAIN_BUNDLE, (error: any) =>{
            if(error){
@@ -26,10 +26,14 @@ class AudioPlayer{
     constructor() {}
 
     // async playFile({volume, fileName} = {volume: 1, fileName: 'chime.mp3'}): Promise<S>{
-    async playFile(fileName:string, volume = 1): Promise<S>{
+    async playFile(fileName:string, volume = 1, shouldLoop = false): Promise<S>{
         const sound = await createSound(fileName);
+        if(shouldLoop){
+            sound.setNumberOfLoops(-1);
+        }
         sound.setVolume(volume);
-        return playSound(sound);
+        playSound(sound);
+        return sound;
     }
 
     async playSample(fileName: string){

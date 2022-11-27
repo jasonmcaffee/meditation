@@ -2,7 +2,7 @@ import React, {PropsWithChildren, useState} from "react";
 import {Pressable, StyleProp, ViewStyle, View, Text} from "react-native";
 //@ts-ignore
 import * as styles from '../style/common-components/sound-select-dropdown.scss';
-import {ISoundOption} from "../config/soundFiles";
+import {ISoundOption, soundOptionsArray} from "../config/soundFiles";
 import SelectDropdown from "react-native-select-dropdown";
 import {faPlay} from "@fortawesome/free-solid-svg-icons/faPlay";
 import {faStop} from "@fortawesome/free-solid-svg-icons/faStop";
@@ -11,12 +11,13 @@ import audioPlayer from "../services/audioPlayer";
 
 type Props = PropsWithChildren<{
     currentValue: ISoundOption,
-    options: ISoundOption[],
+    options?: ISoundOption[],
     onOptionSelected: (soundOption: ISoundOption) => void,
     // className?: StyleProp<ViewStyle>,
 }>;
 
 function SoundSelectDropDown({currentValue, options, onOptionSelected}: Props) {
+    options = options || soundOptionsArray;
     const [selectOptionSamplePlaying, setSelectOptionSamplePlaying] = useState<ISoundOption>();
 
     async function handleSoundOptionClick(option: ISoundOption){

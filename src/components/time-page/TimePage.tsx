@@ -18,6 +18,7 @@ import SoundSettingsModal from "./SoundSettingsModal";
 import appEventBus from "../../services/appEventBus";
 import createUnregisterFunction from "../../react-utils/createUnregisterFunction";
 import SoundSelectDropDown from "../../common-components/SoundSelectDropDown";
+import TDropDown from "../../common-components/TDropDown";
 
 const TimePage = () => {
     const state = timePage.usePageState();
@@ -57,7 +58,8 @@ const TimePage = () => {
                     </Div>
                 </Div>
                 <Div className={styles.rowTwo}>
-                    <SoundSelectDropDown currentValue={state.selectedSoundOption} options={timePage.soundOptions} onOptionSelected={(o) => state.selectedSoundOption = o}/>
+                    {/*<SoundSelectDropDown currentValue={state.selectedSoundOption} onOptionSelected={(o) => state.selectedSoundOption = o}/>*/}
+                    <TDropDown currentOption={state.selectedScheduledTrackOption} options={timePage.scheduledTrackOptions} onSelected={o => state.selectedScheduledTrackOption = o }/>
                     <Div className={styles.timerButtons}>
                         <Div className={styles.timerButtonsColumn}>
                             <IconButton icon={state.isStopWatchRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={() => timePage.startPauseStopwatch()}/>
