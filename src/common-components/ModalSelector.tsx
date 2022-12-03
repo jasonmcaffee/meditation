@@ -5,18 +5,24 @@ import * as styles from '../style/common-components/modal-selector.scss';
 import Modal from "./Modal";
 import appEventBus from "../services/appEventBus";
 
+
+export interface IDropDownOption<TValue> {
+    value: TValue;
+    label: string;
+}
+
 type OptionRowClick<TOption> = (option:TOption) => void;
 type RenderOption<TOption> = (option: TOption, onOptionRowClick?: OptionRowClick<TOption>) => React.ReactNode;
 
-type Props<TOption> = PropsWithChildren<{
+type Props<TValue, TOption extends IDropDownOption<TValue>> = {
     className?: StyleProp<ViewStyle>,
     options: TOption[],
-    value: TOption,
+    currentOption: TOption,
     renderOption?: RenderOption<TOption>,
     onOptionRowClick?: OptionRowClick<TOption>
-}>;
+};
 
-function ModalSelector<TOption>({value, className = null, options, renderOption=defaultRenderOption, onOptionRowClick}: Props<TOption>) {
+function ModalSelector<TValue, TOption extends IDropDownOption<TValue>>({currentOption, className = null, options, renderOption=defaultRenderOption, onOptionRowClick}: Props<TValue, TOption>) {
     //update state and close modal.
     function mandatoryOnOptionClick(option: TOption){
         appEventBus.app.showModal().set(null);
@@ -34,30 +40,30 @@ function ModalSelector<TOption>({value, className = null, options, renderOption=
     const modalEl = createModal(options, mandatoryOnOptionClick, renderOption, onModalCloseClick);
 
     return <Pressable onPress={onModalSelectorClick} style={[styles.modalSelector,className]}>
-        <Text>{value + ''}</Text>
+        <Text>{currentOption.label}</Text>
     </Pressable>;
 }
 
-function createModal<TOption>(options: TOption[], mandatoryOnClick: OptionRowClick<TOption>, renderOption: RenderOption<TOption>,  onModalCloseClick: ()=> void){
+function createModal<TValue, TOption extends IDropDownOption<TValue>>(options: TOption[], mandatoryOnClick: OptionRowClick<TOption>, renderOption: RenderOption<TOption>,  onModalCloseClick: ()=> void){
     const optionEls = createOptionEls(options, mandatoryOnClick, renderOption);
     return <Modal onCloseClick={onModalCloseClick}>
         {optionEls}
     </Modal>
 }
 
-function createOptionEls<TOption>(options: TOption[], mandatoryOnClick: OptionRowClick<TOption>, renderOption: RenderOption<TOption>){
+function createOptionEls<TValue, TOption extends IDropDownOption<TValue>>(options: TOption[], mandatoryOnClick: OptionRowClick<TOption>, renderOption: RenderOption<TOption>){
     return options.map( (o, i) => createRenderOptionWrapper(o, i, mandatoryOnClick, renderOption));
 }
 
-function createRenderOptionWrapper<TOption>(option: TOption, index: number, mandatoryOnClick: OptionRowClick<TOption>, renderOption: RenderOption<TOption> ){
+function createRenderOptionWrapper<TValue, TOption extends IDropDownOption<TValue>>(option: TOption, index: number, mandatoryOnClick: OptionRowClick<TOption>, renderOption: RenderOption<TOption> ){
     return <View key={`optionRowWrapper${index}`} style={styles.optionRowWrapper}>
         {renderOption(option, mandatoryOnClick)}
     </View>
 }
 
-function defaultRenderOption<TOption>(option: TOption, onOptionRowClick?: OptionRowClick<TOption>){
+function defaultRenderOption<TValue, TOption extends IDropDownOption<TValue>>(option: TOption, onOptionRowClick?: OptionRowClick<TOption>){
     return <Pressable style={styles.defaultOptionRow} onPress={() => onOptionRowClick && onOptionRowClick(option) }>
-        <Text>{option + ''}</Text>
+        <Text>{option.label}</Text>
     </Pressable>
 }
 
