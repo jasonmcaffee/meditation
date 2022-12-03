@@ -10,12 +10,13 @@ import IconButton from "../../common-components/IconButton";
 import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
 import {RectButton, Swipeable} from "react-native-gesture-handler";
 import AnimatedInterpolation = Animated.AnimatedInterpolation;
-type Type = React.FC<PropsWithChildren<{
+
+type Props = PropsWithChildren<{
     onDeleteClick: (i: IMeditationSession) => void,
     meditationSession: IMeditationSession,
-}>>;
+}>;
 
-const MeditationSession: Type = ({children, onDeleteClick, meditationSession}) => {
+function MeditationSession({children, onDeleteClick, meditationSession}: Props){
     // const starColor = "rgb(37,37,37)";
     const starColor = "rgb(174, 174, 174 )";
     const emptyColor = "rgb(174, 174, 174 )";

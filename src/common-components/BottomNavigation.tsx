@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Button} from "react-native";
+import React, {PropsWithChildren, useEffect, useState} from 'react';
+import {View, Text, Button, StyleProp, ViewStyle} from "react-native";
 import Div from "./Div";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 //dharma wheel
@@ -11,7 +11,12 @@ import {faVihara} from "@fortawesome/free-solid-svg-icons/faVihara";
 import * as styles from '../style/common-components/bottom-navigation.scss';
 import appEventBus from "../services/appEventBus";
 
-const BottomNavigation = ({className}: {className?: string}) =>{
+type Props = PropsWithChildren<{
+    className?: StyleProp<ViewStyle>,
+    onClick?: ()=> void,
+}>;
+
+function BottomNavigation({className}: Props){
     const [currentPage, setCurrentPage] = useState(appEventBus.navigation.goToPage().get());
     useEffect(() => {
         const unregister = appEventBus.navigation.goToPage().on(setCurrentPage);

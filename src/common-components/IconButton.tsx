@@ -7,7 +7,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import {IconDefinition} from "@fortawesome/free-solid-svg-icons";
 import {StyleProp, ViewStyle} from "react-native";
 
-type Prop = PropsWithChildren<{
+type Props = PropsWithChildren<{
     className?: StyleProp<ViewStyle>,
     iconClassName?: StyleProp<ViewStyle>,
     onClick?: ()=> void,
@@ -15,7 +15,7 @@ type Prop = PropsWithChildren<{
     size?: number
 }>;
 
-function Button({children, className = null, iconClassName = null, onClick, icon=faOm, size=20}: Prop){
+function Button({children, className = null, iconClassName = null, onClick, icon=faOm, size=20}: Props){
     const style = [styles.iconButton, className];
     const iconStyle = [styles.icon, iconClassName];
     return <Div className={style} onClick={onClick}>

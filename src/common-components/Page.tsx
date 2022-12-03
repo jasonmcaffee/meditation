@@ -7,13 +7,13 @@ import {SafeAreaView, ScrollView, Text, Animated, StyleProp, ViewStyle} from "re
 import BottomNavigation from "./BottomNavigation";
 import appEventBus from "../services/appEventBus";
 
-type Prop = PropsWithChildren<{
+type Props = PropsWithChildren<{
     pageName: string,
     className?: StyleProp<ViewStyle>,
     modal?: ReactNode
 }>;
 
-function Page({pageName, children, className = null, modal}: Prop){
+function Page({pageName, children, className = null, modal}: Props){
     const bottom = StaticSafeAreaInsets?.safeAreaInsetsBottom ?? 10;
     const bottomPosition = {bottom};
     const bottomStyle = {...styles.bottomNavigation, ...bottomPosition};

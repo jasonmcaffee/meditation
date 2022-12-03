@@ -6,14 +6,14 @@ import {faClose} from "@fortawesome/free-solid-svg-icons/faClose";
 import IconButton from "./IconButton";
 import {StyleProp, useWindowDimensions, ViewStyle} from "react-native";
 
-type Prop = PropsWithChildren<{
+type Props = PropsWithChildren<{
     className?: StyleProp<ViewStyle>,
     onCloseClick?: ()=> void,
     windowClassName?: StyleProp<ViewStyle>,
     showCloseButton?: boolean,
 }>;
 
-function Modal({children, className = null, windowClassName = null, onCloseClick, showCloseButton = true}: Prop){
+function Modal({children, className = null, windowClassName = null, onCloseClick, showCloseButton = true}: Props){
     //the css approach doesn't work well, so we need to get the device's height and width programmatically.
     const screenHeight = useWindowDimensions().height;
     const screenWidth = useWindowDimensions().width;

@@ -5,7 +5,7 @@ import SelectDropdown from "react-native-select-dropdown";
 import * as styles from '../style/common-components/dropdown.scss';
 import Div from "./Div";
 
-type Prop = PropsWithChildren<{
+type Props = PropsWithChildren<{
     value?: any,
     className?: StyleProp<ViewStyle>,
     onSelected: (item: any)=> void,
@@ -13,7 +13,7 @@ type Prop = PropsWithChildren<{
     label?: string
 }>;
 
-function DropDown({value, label, children, className = null, onSelected, data}: Prop){
+function DropDown({value, label, children, className = null, onSelected, data}: Props){
 
     return <Div className={className}>
         <SelectDropdown

@@ -9,7 +9,7 @@ import Page from "../../common-components/Page";
 import MeditationSession from "./MeditationSession";
 import appEventBus from "../../services/appEventBus";
 
-const MeditationSessionsPage = () => {
+function MeditationSessionsPage(){
     const [meditationSessions, setMeditationSessions] = useState([] as IMeditationSession[]);
     useEffect(()=>{
         refreshMeditationSessions();

@@ -6,7 +6,7 @@ import Div from "../../common-components/Div";
 import Modal from "../../common-components/Modal";
 import IMeditationSession, {getFormattedDuration} from "../../models/IMeditationSession";
 import IconButton from "../../common-components/IconButton";
-type Prop = PropsWithChildren<{
+type Props = PropsWithChildren<{
     onCloseClick?: ()=> void,
     onSaveClick?: (notes: string, rating: number)=> void,
     meditationSession: IMeditationSession,
@@ -26,7 +26,7 @@ import StarRating from 'react-native-star-rating-widget';
  * @param onCloseClick
  * @constructor
  */
-function FinishSessionModal({meditationSession, children, onCloseClick, onSaveClick}: Prop) {
+function FinishSessionModal({meditationSession, children, onCloseClick, onSaveClick}: Props) {
     const [notes, setNotes] = useState<string>(meditationSession.notes);
     const [rating, setRating] = useState(0);
     const [selectedIndex, setSelectedIndex] = useState(0);

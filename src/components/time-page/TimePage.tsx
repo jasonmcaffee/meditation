@@ -21,7 +21,7 @@ import SoundSelectDropDown from "../../common-components/SoundSelectDropDown";
 import TDropDown from "../../common-components/TDropDown";
 import ModalSelector from "../../common-components/ModalSelector";
 
-const TimePage = () => {
+function TimePage(){
     const state = timePage.usePageState();
 
     const screenHeight = useWindowDimensions().height; // Dimensions.get('window').height;
