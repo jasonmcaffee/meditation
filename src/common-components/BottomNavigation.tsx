@@ -10,6 +10,7 @@ import {faVihara} from "@fortawesome/free-solid-svg-icons/faVihara";
 // @ts-ignore
 import * as styles from '../style/common-components/bottom-navigation.scss';
 import appEventBus from "../services/appEventBus";
+import createUnregisterFunction from "../react-utils/createUnregisterFunction";
 
 type Props = PropsWithChildren<{
     className?: StyleProp<ViewStyle>,
@@ -19,9 +20,9 @@ type Props = PropsWithChildren<{
 function BottomNavigation({className}: Props){
     const [currentPage, setCurrentPage] = useState(appEventBus.navigation.goToPage().get());
     useEffect(() => {
-        const unregister = appEventBus.navigation.goToPage().on(setCurrentPage);
-        return () => unregister();
+        return createUnregisterFunction(appEventBus.navigation.goToPage().on(setCurrentPage));
     }, []);
+
     return (
         <Div className={[styles.bottomNavigation, className]}>
             <Div className={currentPage == "Timer" ? styles.navigationItemActive : styles.navigationItem}  onClick={()=> appEventBus.navigation.goToPage().set('Timer')}>
