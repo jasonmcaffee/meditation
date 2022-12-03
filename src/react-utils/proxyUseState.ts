@@ -17,26 +17,18 @@ export function pageState<TPageState extends object>(pageState: TPageState){
         keyUseStateMap[key] = useState(value)
     });
 
-    // console.log(`keyUseStateMap is: `, keyUseStateMap);
-
     const handler = {
         set(obj: TPageState, key: keyof TPageState, value: TPageState[keyof TPageState]) {
             // console.log(`setting key: ${key.toString()} = ${value} on object: `, obj);
             obj[key] = value;
             const setValue = keyUseStateMap[key][1];
             setValue(value);
-            // console.log(`obj now: `, obj);
-            //@ts-ignore
-            // return Reflect.set(...arguments);
             return true;
         },
         get(obj: TPageState, key: keyof TPageState){
             //@ts-ignore
             // console.log(`getting prop ${key} with value: ${obj[key]} object: `, obj);
-            //@ts-ignore
-            // return obj[key];
             const value = keyUseStateMap[key][0];
-            // console.log(`obj[key] is: ${obj[key]} compared to useState value: ${value}`);
             return value;
         }
     };

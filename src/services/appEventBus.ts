@@ -21,17 +21,6 @@ class AppEvents{
     }
 }
 
-// type TAppEvents = {
-//     stopwatch: {
-//         durationUpdate: IDurationUpdateData,
-//         isRunning: false,
-//     },
-//     meditationSessionRepository: {
-//         meditationSessionsChanged: IMeditationSession[],
-//     }
-// }
-
 const appEventBus = createObserverProxy(new AppEvents());
-// const appEventBus = createObserverProxy({} as TAppEvents);
 export default appEventBus;
 
