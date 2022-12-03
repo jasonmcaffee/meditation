@@ -5,7 +5,6 @@ import * as styles from '../style/common-components/modal-selector.scss';
 import Modal from "./Modal";
 import appEventBus from "../services/appEventBus";
 
-
 export interface IDropDownOption<TValue> {
     value: TValue;
     label: string;
@@ -29,24 +28,19 @@ function ModalSelector<TValue, TOption extends IDropDownOption<TValue>>({current
         onOptionRowClick && onOptionRowClick(option);
     }
 
-    //show modal
-    function onModalSelectorClick(){
-        appEventBus.app.showModal().set(modalEl);
-    }
-    function onModalCloseClick(){
-        appEventBus.app.showModal().set(null);
-    }
+    const onModalSelectorClick = ()=> appEventBus.app.showModal().set(modalEl);
+    const onModalCloseClick = ()=> appEventBus.app.showModal().set(null);
 
-    const modalEl = createModal(options, mandatoryOnOptionClick, renderOption, onModalCloseClick);
+    const modalEl = createModal(options, mandatoryOnOptionClick, renderOption, onModalCloseClick, styles.modal, styles.modalWindow);
 
     return <Pressable onPress={onModalSelectorClick} style={[styles.modalSelector,className]}>
-        <Text>{currentOption.label}</Text>
+        <Text style={styles.modalSelectorText}>{currentOption.label}</Text>
     </Pressable>;
 }
 
-function createModal<TValue, TOption extends IDropDownOption<TValue>>(options: TOption[], mandatoryOnClick: OptionRowClick<TOption>, renderOption: RenderOption<TOption>,  onModalCloseClick: ()=> void){
+function createModal<TValue, TOption extends IDropDownOption<TValue>>(options: TOption[], mandatoryOnClick: OptionRowClick<TOption>, renderOption: RenderOption<TOption>,  onModalCloseClick: ()=> void, modalClassName: string, modalWindowClassName: string){
     const optionEls = createOptionEls(options, mandatoryOnClick, renderOption);
-    return <Modal onCloseClick={onModalCloseClick}>
+    return <Modal showCloseButton={false} className={modalClassName} windowClassName={modalWindowClassName} onCloseClick={onModalCloseClick}>
         {optionEls}
     </Modal>
 }
@@ -63,7 +57,7 @@ function createRenderOptionWrapper<TValue, TOption extends IDropDownOption<TValu
 
 function defaultRenderOption<TValue, TOption extends IDropDownOption<TValue>>(option: TOption, onOptionRowClick?: OptionRowClick<TOption>){
     return <Pressable style={styles.defaultOptionRow} onPress={() => onOptionRowClick && onOptionRowClick(option) }>
-        <Text>{option.label}</Text>
+        <Text style={styles.defaultOptionRowText}>{option.label}</Text>
     </Pressable>
 }
 

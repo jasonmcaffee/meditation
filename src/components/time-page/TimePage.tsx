@@ -60,7 +60,7 @@ const TimePage = () => {
                 </Div>
                 <Div className={styles.rowTwo}>
                     <ModalSelector options={timePage.scheduledTrackOptions} currentOption={state.selectedScheduledTrackOption} onOptionRowClick={o => state.selectedScheduledTrackOption = o}/>
-                    <TDropDown currentOption={state.selectedScheduledTrackOption} options={timePage.scheduledTrackOptions} onSelected={o => state.selectedScheduledTrackOption = o }/>
+                    {/*<TDropDown currentOption={state.selectedScheduledTrackOption} options={timePage.scheduledTrackOptions} onSelected={o => state.selectedScheduledTrackOption = o }/>*/}
                     <Div className={styles.timerButtons}>
                         <Div className={styles.timerButtonsColumn}>
                             <IconButton icon={state.isStopWatchRunning ? faPause : faPlay} className={styles.timerButton} iconClassName={styles.timerButtonIcon} onClick={() => timePage.startPauseStopwatch()}/>

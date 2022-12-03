@@ -22,14 +22,8 @@
 }
 .buttonTextStyle{
   display: flex;
-  //flex: 1;
-  //height: 100%;
-  //width: 100%;
-  //padding-top: 3px;
   @extend %font;
   color: white;
-  //background-color: $buttonBackgroundColor;
-  //width: 50px;
 }
 .dropDownStyle{
   //background-color: $buttonBackgroundColor;
