@@ -4,6 +4,8 @@ This is the open source repository for the Jhana Meditation app.
 This app provides several features to assist your meditation practice, including:
 - Meditation timer
 - Session rating and notes so you can track your progress
+- All data is stored locally on your device.
+- Completely free of cost and ad free.
 - Soon to have audio tracks, including guided meditations.
 
 [App Store Link](https://apps.apple.com/us/app/jhana-meditation/id6444243938)
