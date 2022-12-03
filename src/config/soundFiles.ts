@@ -19,6 +19,9 @@ export const soundOptions = {
     metalBowlStrikeMedium18Vibrato: { file: 'metal_bowl_strike_medium18_vibrato.mp3', label: 'Metal Bowl - Strike Medium - Vibrato', durationSeconds: 28 },
     metalBowlStrikeSoft6: { file: 'metal_bowl_strike_soft6.mp3', label: 'Metal Bowl - Strike Soft', durationSeconds: 25 },
     chime: { file: 'chime.mp3', label: 'Chime - Medium Single 2', durationSeconds: 6 },
+    softStream: {file: 'soft_stream.mp3', label: 'Stream - Soft', durationSeconds: 4 * 60 + 35},
+    mediumStream: {file: 'medium_stream.mp3', label: 'Stream - Medium', durationSeconds: 7 * 60 + 23},
+    strongStream: {file: 'strong_stream.mp3', label: 'Stream - Strong', durationSeconds: 4 * 60 + 50},
 }
 
 export const soundOptionsArray = Object.entries(soundOptions).map(([key, value]) => value);

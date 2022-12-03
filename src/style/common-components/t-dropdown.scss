@@ -1,14 +1,15 @@
 @import "./src/style/common";
 
 .tDropDown{
-
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .buttonStyle{
   display: flex;
   //background-color: rgb(62, 62, 62); // $buttonBackgroundColor;
   background-color: rgba(62, 62, 62, 0.5); // $buttonBackgroundColor;
-  width: 120px;
+  width: 100%;
   border-radius: 10px;
   padding: 0px;
   height: 40px;
@@ -45,5 +46,6 @@
   @extend %font;
   font-size: 20px;
   color: white;
-  text-align: center;
+  text-align: left;
+  flex: 1;
 }

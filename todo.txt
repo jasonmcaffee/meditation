@@ -1,9 +1,14 @@
 
 
-- track timer configuration
-a track is comprised of N sounds timers, each repeating (or once) every N minutes/seconds
--- sound configuration
-interval or timeout that plays a sound.  needs to take into consideration pause/reset of stopwatch, or perhaps higher level thing does that, but it needs to be able to pause.
+- modal select box for tracks
+-- group tracks together
+-- have a description for each track
+
+- don't allow switching tracks after play has been pressed.
+- cancel/destroy all sounds in current track when track is switched (because they have time info stored)
+
+
+
 
 - set alarm time to 0 after the alarm has gone off
 - sound settings modal
@@ -29,7 +34,7 @@ SQLite didn't work out of the box.  Revisit later.  File system will work for th
 - maybe its best if the guided meditations are by me?  might be weird to listen to though...
 otherwise need licensing permission? or embed youtube & soundslice?
 
-- modal select box.  This is annoying to do.  Use the existing select box.
+
 
 //todo: follow setup: https://github.com/doublesymmetry/react-native-track-player/issues/1468
 //https://react-native-track-player.js.org/docs/basics/getting-started
