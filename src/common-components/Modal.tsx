@@ -4,12 +4,12 @@ import * as styles from "../style/common-components/modal.scss";
 import Div from "../common-components/Div";
 import {faClose} from "@fortawesome/free-solid-svg-icons/faClose";
 import IconButton from "./IconButton";
-import {useWindowDimensions} from "react-native";
+import {StyleProp, useWindowDimensions, ViewStyle} from "react-native";
 
 type Prop = PropsWithChildren<{
-    className?: any,
+    className?: StyleProp<ViewStyle>,
     onCloseClick?: ()=> void,
-    windowClassName?: any,
+    windowClassName?: StyleProp<ViewStyle>,
     showCloseButton?: boolean,
 }>;
 

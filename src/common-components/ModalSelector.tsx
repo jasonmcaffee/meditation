@@ -38,7 +38,7 @@ function ModalSelector<TValue, TOption extends IDropDownOption<TValue>>({current
     </Pressable>;
 }
 
-function createModal<TValue, TOption extends IDropDownOption<TValue>>(options: TOption[], mandatoryOnClick: OptionRowClick<TOption>, renderOption: RenderOption<TOption>,  onModalCloseClick: ()=> void, modalClassName: string, modalWindowClassName: string){
+function createModal<TValue, TOption extends IDropDownOption<TValue>>(options: TOption[], mandatoryOnClick: OptionRowClick<TOption>, renderOption: RenderOption<TOption>,  onModalCloseClick: ()=> void, modalClassName: StyleProp<ViewStyle>, modalWindowClassName: StyleProp<ViewStyle>){
     const optionEls = createOptionEls(options, mandatoryOnClick, renderOption);
     return <Modal showCloseButton={false} className={modalClassName} windowClassName={modalWindowClassName} onCloseClick={onModalCloseClick}>
         {optionEls}

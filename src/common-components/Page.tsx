@@ -3,11 +3,17 @@ import StaticSafeAreaInsets from 'react-native-static-safe-area-insets';
 // @ts-ignore
 import * as styles from "../style/common-components/page.scss";
 import Div from "./Div";
-import {SafeAreaView, ScrollView, Text, Animated} from "react-native";
+import {SafeAreaView, ScrollView, Text, Animated, StyleProp, ViewStyle} from "react-native";
 import BottomNavigation from "./BottomNavigation";
 import appEventBus from "../services/appEventBus";
 
-const Page: React.FC<PropsWithChildren<{pageName: string, className?: any, modal?: ReactNode}>> = ({pageName, children, className = null, modal}) => {
+type Prop = PropsWithChildren<{
+    pageName: string,
+    className?: StyleProp<ViewStyle>,
+    modal?: ReactNode
+}>;
+
+function Page({pageName, children, className = null, modal}: Prop){
     const bottom = StaticSafeAreaInsets?.safeAreaInsetsBottom ?? 10;
     const bottomPosition = {bottom};
     const bottomStyle = {...styles.bottomNavigation, ...bottomPosition};

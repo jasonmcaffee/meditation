@@ -3,14 +3,10 @@ import {Pressable, StyleProp, ViewStyle, View} from "react-native";
 //@ts-ignore
 import * as styles from '../style/common-components/scheduled-sound-builder.scss';
 
-type Props = {
+type Prop = {};
 
-};
-
-function ScheduledSoundBuilder({}: Props) {
-    return <View style={styles.scheduledSoundBuilder}>
-
-    </View>;
+function ScheduledSoundBuilder({}: Prop) {
+    return <View style={styles.scheduledSoundBuilder}></View>;
 }
 
 export default ScheduledSoundBuilder;

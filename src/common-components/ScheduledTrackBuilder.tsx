@@ -6,14 +6,12 @@ import ScheduledTrack from "../models/ScheduledTrack";
 import ScheduledSoundBuilder from "./ScheduledSoundBuilder";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/faPlus";
 
-type Props = {
+type Prop = {
     scheduledTrack: ScheduledTrack
 };
 
-function ScheduledTrackBuilder({scheduledTrack}: Props) {
-    return <View>
-
-    </View>
+function ScheduledTrackBuilder({scheduledTrack}: Prop) {
+    return <View></View>
 }
 
 export default ScheduledTrackBuilder;

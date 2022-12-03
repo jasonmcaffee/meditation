@@ -1,11 +1,19 @@
 import React, {PropsWithChildren} from "react";
-import {TouchableOpacity, Text} from "react-native";
+import {TouchableOpacity, Text, StyleProp, ViewStyle} from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 //@ts-ignore
 import * as styles from '../style/common-components/dropdown.scss';
 import Div from "./Div";
 
-const DropDown: React.FC<PropsWithChildren<{value?: any, className?: any, onSelected: (item: any)=> void, data: Array<any>, label?: string}>> = ({value, label, children, className = null, onSelected, data}) => {
+type Prop = PropsWithChildren<{
+    value?: any,
+    className?: StyleProp<ViewStyle>,
+    onSelected: (item: any)=> void,
+    data: Array<any>,
+    label?: string
+}>;
+
+function DropDown({value, label, children, className = null, onSelected, data}: Prop){
 
     return <Div className={className}>
         <SelectDropdown

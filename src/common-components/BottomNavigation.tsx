@@ -10,6 +10,7 @@ import {faVihara} from "@fortawesome/free-solid-svg-icons/faVihara";
 // @ts-ignore
 import * as styles from '../style/common-components/bottom-navigation.scss';
 import appEventBus from "../services/appEventBus";
+
 const BottomNavigation = ({className}: {className?: string}) =>{
     const [currentPage, setCurrentPage] = useState(appEventBus.navigation.goToPage().get());
     useEffect(() => {

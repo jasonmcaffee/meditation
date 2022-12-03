@@ -6,11 +6,11 @@ import Div from "../../common-components/Div";
 import Modal from "../../common-components/Modal";
 import IMeditationSession, {getFormattedDuration} from "../../models/IMeditationSession";
 import IconButton from "../../common-components/IconButton";
-type Prop = React.FC<PropsWithChildren<{
+type Prop = PropsWithChildren<{
     onCloseClick?: ()=> void,
     onSaveClick?: (notes: string, rating: number)=> void,
     meditationSession: IMeditationSession,
-}>>;
+}>;
 import {faSave} from "@fortawesome/free-solid-svg-icons/faSave";
 import Button from "../../common-components/Button";
 // import StarRating from "react-native-star-rating-widget/lib/typescript";
@@ -26,7 +26,7 @@ import StarRating from 'react-native-star-rating-widget';
  * @param onCloseClick
  * @constructor
  */
-const FinishSessionModal: Prop = ({meditationSession, children, onCloseClick, onSaveClick}) => {
+function FinishSessionModal({meditationSession, children, onCloseClick, onSaveClick}: Prop) {
     const [notes, setNotes] = useState<string>(meditationSession.notes);
     const [rating, setRating] = useState(0);
     const [selectedIndex, setSelectedIndex] = useState(0);
