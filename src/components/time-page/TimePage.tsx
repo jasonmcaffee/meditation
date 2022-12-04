@@ -60,7 +60,7 @@ function TimePage(){
                     </Div>
                 </Div>
                 <Div className={styles.rowTwo}>
-                    <TrackModalSelector options={timePage.scheduledTrackOptions} currentOption={state.selectedScheduledTrackOption} onOptionRowClick={o => state.selectedScheduledTrackOption = o}/>
+                    <TrackModalSelector options={timePage.scheduledTrackOptions} currentOption={state.selectedScheduledTrackOption} onOptionRowClick={o => timePage.setSelectedScheduledTrackOption(o) }/>
                     {/*<TDropDown currentOption={state.selectedScheduledTrackOption} options={timePage.scheduledTrackOptions} onSelected={o => state.selectedScheduledTrackOption = o }/>*/}
                     <Div className={styles.timerButtons}>
                         <Div className={styles.timerButtonsColumn}>

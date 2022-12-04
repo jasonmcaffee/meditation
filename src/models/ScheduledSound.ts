@@ -32,6 +32,7 @@ export default class ScheduledSound {
     }
 
     async play(playImmediately = this.playImmediately){
+        console.log(`sound play isPause: ${this.isPaused} playEveryNms: ${this.playEveryNms} playImmediately: ${this.playImmediately} shouldLoop: ${this.shouldLoop} `, this.currentSound);
         if(this.playEveryNms){
             if(this.playImmediately){
                 if(this.isPaused){
@@ -39,6 +40,7 @@ export default class ScheduledSound {
                     this.currentSound?.play();
                 }else{
                     this.currentSound = this.currentSound || await audioPlayer.playFile(this.soundOption.file, this.volume, this.shouldLoop);
+                    console.log(`playing sound after creating new one.`)
                     this.currentSound.play();
                 }
             }else if(this.isPaused){

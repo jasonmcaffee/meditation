@@ -2,19 +2,15 @@
 
 - modal select box for tracks
 -- group tracks together
--- have a description for each track
+-- group sounds by type.  e.g. metal bowl strike, metal bowl ring, chimes.  Perhaps use a tag for grouping?  or just use sub objects.
 
-- don't allow switching tracks after play has been pressed.
-- cancel/destroy all sounds in current track when track is switched (because they have time info stored)
-
-
+- fix play/pause issue with scheduled sounds.  Soft Stream with Strike Every Minute chimes go off unexpectedly after multiple play pause presses.
 
 
 - set alarm time to 0 after the alarm has gone off
 - sound settings modal
-- show modal event?
 
-- group sounds by type.  e.g. metal bowl strike, metal bowl ring, chimes.  Perhaps use a tag for grouping?  or just use sub objects.
+
 - android
 -- file system write ENOENT
 -- fix font

@@ -17,9 +17,8 @@ const App = () => {
     const [modal, setModal] = useState<ReactNode>();
     useEffect(()=>{
         return appEventBus.app.showModal().on(modalToShow =>{
-            console.log(`showing modal`, modalToShow);
             setModal(modalToShow);
-        })
+        });
     }, []);
 
     return (

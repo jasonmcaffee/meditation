@@ -52,7 +52,7 @@ export const scheduledTrackOptionsArray: IScheduledTrackOption[] = [
         ])
     },
     {
-        label: 'Soft Stream with Metal Bowl Singing.',
+        label: 'Soft Stream with Metal Bowl Singing',
         description: `Soft stream with metal bowl signing on loop.  Chime rings every 5 minutes.  Bowl strike every minute`,
         value: streamAndBowlAndChime,
     },

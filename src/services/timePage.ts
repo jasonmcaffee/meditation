@@ -5,7 +5,7 @@ import IMeditationSession from "../models/IMeditationSession";
 import meditationSessionRepository from "../repository/meditationSessionRepository";
 import {pageState} from "../react-utils/proxyUseState";
 import {soundOptionsArray} from "../config/soundFiles";
-import {scheduledTrackOptionsArray} from "../config/scheduledTracks";
+import {IScheduledTrackOption, scheduledTrackOptionsArray} from "../config/scheduledTracks";
 
 class TimePage{
     setAlarmMinutes = (m: number) => {};
@@ -33,13 +33,21 @@ class TimePage{
         this.pageState!.selectedScheduledTrackOption.value.playPause();
     }
 
+    setSelectedScheduledTrackOption(scheduledTrackOption: IScheduledTrackOption){
+        this.pageState?.selectedScheduledTrackOption.value.stop();
+        this.pageState!.selectedScheduledTrackOption = scheduledTrackOption;
+        if(stopwatch.isRunning){
+            scheduledTrackOption.value.play(); //this.pageState!.selectedScheduledTrackOption still represents the old one for some reason.
+        }
+    }
+
     //when the finish button is pressed, show a modal and prompt for notes, rating, etc.
     finishSession(){
         const durationMs = stopwatch.getCurrentDurationMs();
         const createdDateMs = stopwatch.getStartTimeMs();
         this.pageState!.selectedScheduledTrackOption.value.stop();
         stopwatch.reset();
-        this.pageState!.meditationSession = createMeditationSessionBasedOnDurationData(durationMs, createdDateMs);;
+        this.pageState!.meditationSession = createMeditationSessionBasedOnDurationData(durationMs, createdDateMs);
         //show modal
         this.pageState!.shouldDisplayFinishSessionModal = true;
     }
