@@ -23,11 +23,18 @@ function TrackModalSelector({currentOption, className = null, options, renderOpt
     //update state and close modal.
     function mandatoryOnOptionClick(option: IScheduledTrackOption){
         appEventBus.app.showModal().set(null);
+        appEventBus.hapticFeedback.light().set(true);
         onOptionRowClick && onOptionRowClick(option);
     }
 
-    const onModalSelectorClick = ()=> appEventBus.app.showModal().set(modalEl);
-    const onModalCloseClick = ()=> appEventBus.app.showModal().set(null);
+    const onModalSelectorClick = ()=> {
+        appEventBus.app.showModal().set(modalEl);
+        appEventBus.hapticFeedback.light().set(true);
+    }
+    const onModalCloseClick = ()=> {
+        appEventBus.app.showModal().set(null);
+        appEventBus.hapticFeedback.light().set(true);
+    }
 
     const modalEl = createModal(options, mandatoryOnOptionClick, renderOption, onModalCloseClick, styles.trackModal, styles.modalWindow);
 

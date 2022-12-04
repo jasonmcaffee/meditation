@@ -4,6 +4,7 @@ import SelectDropdown from "react-native-select-dropdown";
 //@ts-ignore
 import * as styles from '../style/common-components/dropdown.scss';
 import Div from "./Div";
+import appEventBus from "../services/appEventBus";
 
 type Props = PropsWithChildren<{
     value?: any,
@@ -17,6 +18,7 @@ function DropDown({value, label, children, className = null, onSelected, data}: 
 
     return <Div className={className}>
         <SelectDropdown
+            onFocus={() => appEventBus.hapticFeedback.light().set(true)}
             buttonStyle={styles.buttonStyle}
             buttonTextStyle={styles.buttonTextStyle}
             dropdownStyle={styles.dropDownStyle}
@@ -32,6 +34,7 @@ function DropDown({value, label, children, className = null, onSelected, data}: 
             data={data}
             onSelect={(selectedItem, index) => {
                 console.log(selectedItem, index);
+                appEventBus.hapticFeedback.light().set(true);
                 onSelected(selectedItem);
             }}
             buttonTextAfterSelection={(selectedItem, index) => {

@@ -23,12 +23,16 @@ function BottomNavigation({className}: Props){
         return createUnregisterFunction(appEventBus.navigation.goToPage().on(setCurrentPage));
     }, []);
 
+    function onClickGoToPage(page: string){
+        appEventBus.hapticFeedback.light().set(true);
+        appEventBus.navigation.goToPage().set(page);
+    }
     return (
         <Div className={[styles.bottomNavigation, className]}>
-            <Div className={currentPage == "Timer" ? styles.navigationItemActive : styles.navigationItem}  onClick={()=> appEventBus.navigation.goToPage().set('Timer')}>
+            <Div className={currentPage == "Timer" ? styles.navigationItemActive : styles.navigationItem}  onClick={()=> onClickGoToPage('Timer')}>
                 <FontAwesomeIcon style={currentPage == "Timer" ? styles.navigationIconActive: styles.navigationIcon} icon={faOm} size={30}/>
             </Div>
-            <Div className={currentPage == "Sessions" ? styles.navigationItemActive : styles.navigationItem} onClick={()=> appEventBus.navigation.goToPage().set('Sessions')}>
+            <Div className={currentPage == "Sessions" ? styles.navigationItemActive : styles.navigationItem} onClick={()=> onClickGoToPage('Sessions')}>
                 <FontAwesomeIcon style={currentPage == "Sessions" ? styles.navigationIconActive : styles.navigationIcon} icon={faVihara} size={30}/>
             </Div>
         </Div>

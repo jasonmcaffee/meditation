@@ -3,6 +3,7 @@ import React, {PropsWithChildren} from "react";
 import * as styles from "../style/common-components/button.scss";
 import Div from "./Div";
 import {StyleProp, Text, ViewStyle} from "react-native";
+import appEventBus from "../services/appEventBus";
 
 type Props = PropsWithChildren<{
     className?: StyleProp<ViewStyle>,
@@ -14,7 +15,11 @@ type Props = PropsWithChildren<{
 function Button({children, className = null, onClick, text, style2}: Props){
     const style = [ style2 ? styles.buttonStyle2 : styles.button, className];
     const textEl = text == null ? null : <Text style={styles.buttonText}>{text}</Text>
-    return <Div className={style} onClick={onClick}>{textEl}{children}</Div>;
+    function hapticOnClick(){
+        appEventBus.hapticFeedback.heavy().set(true);
+        onClick && onClick();
+    }
+    return <Div className={style} onClick={hapticOnClick}>{textEl}{children}</Div>;
 }
 
 export default Button;

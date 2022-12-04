@@ -4,6 +4,7 @@ import MeditationSessionsPage from "./src/components/meditation-sessions-page/Me
 import "react-native-gesture-handler";
 import './src/services/audioNotifications';
 import "./src/services/appEventBus";
+import "./src/services/hapticFeedback";
 import appEventBus from "./src/services/appEventBus";
 
 //have a single instance to prevent flash

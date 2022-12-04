@@ -4,6 +4,7 @@ import {Pressable, StyleProp, ViewStyle} from "react-native";
 import * as styles from '../style/common-components/t-dropdown.scss';
 import Div from "./Div";
 import SelectDropdown from "react-native-select-dropdown";
+import appEventBus from "../services/appEventBus";
 
 export interface IDropDownOption<TValue> {
     value: TValue;
@@ -35,6 +36,7 @@ function TDropDown<TValue, TOption extends IDropDownOption<TValue>>({className =
             data={options}
             onSelect={(selectedItem, index) => {
                 console.log(selectedItem, index);
+                appEventBus.hapticFeedback.light().set(true);
                 onSelected(selectedItem);
             }}
             buttonTextAfterSelection={(selectedItem, index) => {

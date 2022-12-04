@@ -6,6 +6,7 @@ import {faOm} from "@fortawesome/free-solid-svg-icons/faOm";
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import {IconDefinition} from "@fortawesome/free-solid-svg-icons";
 import {StyleProp, ViewStyle} from "react-native";
+import appEventBus from "../services/appEventBus";
 
 type Props = PropsWithChildren<{
     className?: StyleProp<ViewStyle>,
@@ -18,7 +19,11 @@ type Props = PropsWithChildren<{
 function Button({children, className = null, iconClassName = null, onClick, icon=faOm, size=20}: Props){
     const style = [styles.iconButton, className];
     const iconStyle = [styles.icon, iconClassName];
-    return <Div className={style} onClick={onClick}>
+    function hapticOnClick(){
+        appEventBus.hapticFeedback.heavy().set(true);
+        onClick && onClick();
+    }
+    return <Div className={style} onClick={hapticOnClick}>
         {children}
         <FontAwesomeIcon style={iconStyle} icon={icon} size={size}/>
     </Div>;

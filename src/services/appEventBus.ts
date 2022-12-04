@@ -19,6 +19,11 @@ class AppEvents{
     app = {
         showModal: {} as ReactNode
     }
+    hapticFeedback = {
+        light: false,
+        medium: false,
+        heavy: false,
+    }
 }
 
 const appEventBus = createObserverProxy(new AppEvents());
