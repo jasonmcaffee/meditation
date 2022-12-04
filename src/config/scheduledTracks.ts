@@ -26,7 +26,7 @@ export interface IScheduledTrackOption {
 }
 
 export const scheduledTrackOptionsArray: IScheduledTrackOption[] = [
-    {label: 'Background Audio', value: scheduledTrackNone, description: `No background audio.`},
+    {label: 'No Background Audio', value: scheduledTrackNone, description: `No background audio.`},
     {
         label: 'Metal Bowl Singing Long',
         description: `Metal bowl signs on loop for 3:17.  Chime plays every 5 minutes.`,

@@ -26,11 +26,18 @@
   //@extend .defaultOptionRow;
   border-bottom: 1px solid white;
   //redundant but needed
-  border-bottom-color: white;
-  border-bottom-width: 1px;
-  margin-bottom: 10px;
+  //border-bottom-color: white;
+  //border-bottom-width: 1px;
+  //margin-bottom: 10px;
 }
 
-.trackDefaultOptionRowText{
+.trackLabelText{
   @extend .defaultOptionRowText;
+  //font-size: 22px;
+  color: $iconButtonColor;
+}
+
+.trackDescriptionText{
+  @extend .defaultOptionRowText;
+  font-size: 15px;
 }

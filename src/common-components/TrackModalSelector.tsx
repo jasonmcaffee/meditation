@@ -2,6 +2,9 @@ import React, {PropsWithChildren} from "react";
 import {Pressable, StyleProp, ViewStyle, Text, View} from "react-native";
 //@ts-ignore
 import * as styles from '../style/common-components/track-modal-selector.scss';
+import  '../style/common-components/modal-selector.scss';
+import  '../style/common.scss';
+
 import Div from "./Div";
 import Modal from "./Modal";
 import appEventBus from "../services/appEventBus";
@@ -38,6 +41,11 @@ function TrackModalSelector({currentOption, className = null, options, renderOpt
 
     const modalEl = createModal(options, mandatoryOnOptionClick, renderOption, onModalCloseClick, styles.trackModal, styles.modalWindow);
 
+    //TODO: JUST FOR DEVELOPMENT ONLY DUE TO METRO NOT REFRESHING.
+    // if(appEventBus.app.showModal().get() !== null){
+    //     appEventBus.app.showModal().set(modalEl);
+    // }
+
     return <Pressable onPress={onModalSelectorClick} style={[styles.trackModalSelector,className]}>
         <Text style={styles.trackModalSelectorText}>{currentOption.label}</Text>
     </Pressable>;
@@ -62,8 +70,8 @@ function createRenderOptionWrapper(option: IScheduledTrackOption, index: number,
 
 function defaultRenderOption(option: IScheduledTrackOption, onOptionRowClick?: OptionRowClick<IScheduledTrackOption>){
     return <Pressable style={styles.trackDefaultOptionRow} onPress={() => onOptionRowClick && onOptionRowClick(option) }>
-        <Text style={styles.trackDefaultOptionRowText}>{option.label}</Text>
-        <Text style={styles.trackDefaultOptionRowText}>{option.description}</Text>
+        <Text style={styles.trackLabelText}>{option.label}</Text>
+        <Text style={styles.trackDescriptionText}>{option.description}</Text>
     </Pressable>
 }
 
