@@ -1,4 +1,5 @@
 
+- save preferences/current selections to disk and reload when app loads
 
 - modal select box for tracks
 -- group tracks together
