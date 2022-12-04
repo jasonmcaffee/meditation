@@ -22,23 +22,44 @@ const streamAndSoftStrike = new ScheduledTrack([softStreamLoop, metalBowlStrikeS
 export interface IScheduledTrackOption {
     value: ScheduledTrack;
     label: string;
+    description?: string;
 }
 
 export const scheduledTrackOptionsArray: IScheduledTrackOption[] = [
-    {label: 'None', value: scheduledTrackNone},
-    {label: 'Metal Bowl Singing Long', value: new ScheduledTrack([
-        f(metalBowlSingGoodLongWooden, undefined, true, true),
-        chimeEvery5Minutes
-    ])},
-    {label: 'Strong Stream', value: new ScheduledTrack([
-        f(strongStream, undefined, true, true),
-        metalBowlStrikeSoft6Every5Minutes,
-    ])},
-    {label: 'Medium Stream', value: new ScheduledTrack([
-        f(mediumStream, undefined, true, true),
-        metalBowlStrikeSoft6Every5Minutes
-    ])},
-    {label: 'Soft Stream with Metal Bowl Singing. Chime at 5 minutes. Bowl strike every minute', value: streamAndBowlAndChime},
-    {label: 'Soft Stream with Strike Every Minute', value: streamAndSoftStrike},
+    {label: 'Background Audio', value: scheduledTrackNone, description: `No background audio.`},
+    {
+        label: 'Metal Bowl Singing Long',
+        description: `Metal bowl signs on loop for 3:17.  Chime plays every 5 minutes.`,
+        value: new ScheduledTrack([
+            f(metalBowlSingGoodLongWooden, undefined, true, true),
+            chimeEvery5Minutes
+        ])
+    },
+    {
+        label: 'Strong Stream',
+        description: `Loud stream plays on loop for 4:50.  Soft metal bowl strike every 5 minutes.`,
+        value: new ScheduledTrack([
+            f(strongStream, undefined, true, true),
+            metalBowlStrikeSoft6Every5Minutes,
+        ])
+    },
+    {
+        label: 'Medium Stream',
+        description: `Medium stream plays on loop for 7:23.  Soft metal bowl strike every 5 minutes.`,
+        value: new ScheduledTrack([
+            f(mediumStream, undefined, true, true),
+            metalBowlStrikeSoft6Every5Minutes
+        ])
+    },
+    {
+        label: 'Soft Stream with Metal Bowl Singing.',
+        description: `Soft stream with metal bowl signing on loop.  Chime rings every 5 minutes.  Bowl strike every minute`,
+        value: streamAndBowlAndChime,
+    },
+    {
+        label: 'Soft Stream with Strike Every Minute',
+        description: `Soft stream plays on loop.  Soft bowl strike every minute`,
+        value: streamAndSoftStrike
+    },
 ]
 

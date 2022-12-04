@@ -5,7 +5,7 @@ import * as styles from '../style/common-components/modal-selector.scss';
 import Modal from "./Modal";
 import appEventBus from "../services/appEventBus";
 
-export interface IDropDownOption<TValue> {
+interface IDropDownOption<TValue> {
     value: TValue;
     label: string;
 }

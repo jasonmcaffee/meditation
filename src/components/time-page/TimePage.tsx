@@ -20,6 +20,7 @@ import createUnregisterFunction from "../../react-utils/createUnregisterFunction
 import SoundSelectDropDown from "../../common-components/SoundSelectDropDown";
 import TDropDown from "../../common-components/TDropDown";
 import ModalSelector from "../../common-components/ModalSelector";
+import TrackModalSelector from "../../common-components/TrackModalSelector";
 
 function TimePage(){
     const state = timePage.usePageState();
@@ -59,7 +60,7 @@ function TimePage(){
                     </Div>
                 </Div>
                 <Div className={styles.rowTwo}>
-                    <ModalSelector options={timePage.scheduledTrackOptions} currentOption={state.selectedScheduledTrackOption} onOptionRowClick={o => state.selectedScheduledTrackOption = o}/>
+                    <TrackModalSelector options={timePage.scheduledTrackOptions} currentOption={state.selectedScheduledTrackOption} onOptionRowClick={o => state.selectedScheduledTrackOption = o}/>
                     {/*<TDropDown currentOption={state.selectedScheduledTrackOption} options={timePage.scheduledTrackOptions} onSelected={o => state.selectedScheduledTrackOption = o }/>*/}
                     <Div className={styles.timerButtons}>
                         <Div className={styles.timerButtonsColumn}>
