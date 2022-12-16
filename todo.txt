@@ -1,3 +1,7 @@
+-better sounds
+-- white noise dhamapada
+
+- bluetooth volume controls don't work
 
 - save preferences/current selections to disk and reload when app loads
 

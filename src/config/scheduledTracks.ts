@@ -18,7 +18,8 @@ const softStreamLoop = new ScheduledSound({soundOption: softStream, shouldLoop: 
 const chimeEvery5Minutes = new ScheduledSound({soundOption: chime, playEveryNms: 5 * 60 * 1000, playImmediately: true});
 const scheduledTrackNone = new ScheduledTrack();
 const streamAndBowlAndChime = new ScheduledTrack([metalBowlSingQuietEveryMinute, softStreamLoop, chimeEvery5Minutes]);
-const streamAndSoftStrike = new ScheduledTrack([softStreamLoop, metalBowlStrikeSoft6Every1Minute, chimeEvery5Minutes])
+const streamAndSoftStrike = new ScheduledTrack([softStreamLoop, metalBowlStrikeSoft6Every1Minute, chimeEvery5Minutes]);
+
 export interface IScheduledTrackOption {
     value: ScheduledTrack;
     label: string;
@@ -27,6 +28,13 @@ export interface IScheduledTrackOption {
 
 export const scheduledTrackOptionsArray: IScheduledTrackOption[] = [
     {label: 'No Background Audio', value: scheduledTrackNone, description: `No background audio.`},
+    {
+      label: 'Metal Bowl Strike Every Minute',
+      description: 'A soft metal bowl strike done every minute',
+      value: new ScheduledTrack([
+          metalBowlStrikeSoft6Every1Minute
+      ])
+    },
     {
         label: 'Metal Bowl Singing Long',
         description: `Metal bowl signs on loop for 3:17.  Chime plays every 5 minutes.`,
