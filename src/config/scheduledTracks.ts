@@ -21,21 +21,36 @@ const streamAndBowlAndChime = new ScheduledTrack([metalBowlSingQuietEveryMinute,
 const streamAndSoftStrike = new ScheduledTrack([softStreamLoop, metalBowlStrikeSoft6Every1Minute, chimeEvery5Minutes]);
 
 export interface IScheduledTrackOption {
+    id: string; //needed for serialization when saving user prefs.
     value: ScheduledTrack;
     label: string;
     description?: string;
 }
 
+export function scheduledTrackOptionToJson(scheduledTrackOption: IScheduledTrackOption){
+    const json = {id: scheduledTrackOption.id};
+    return json;
+}
+
+export function scheduledTrackOptionFromJson(json: object): IScheduledTrackOption | undefined{
+    // @ts-ignore
+    const id = json && json.id ? json.id : '1';
+    const result = scheduledTrackOptionsArray.find(i => i.id = id);
+    return result;
+}
+
 export const scheduledTrackOptionsArray: IScheduledTrackOption[] = [
-    {label: 'No Background Audio', value: scheduledTrackNone, description: `No background audio.`},
+    {id: '1', label: 'No Background Audio', value: scheduledTrackNone, description: `No background audio.`},
     {
-      label: 'Metal Bowl Strike Every Minute',
-      description: 'A soft metal bowl strike done every minute',
-      value: new ScheduledTrack([
-          metalBowlStrikeSoft6Every1Minute
-      ])
+        id: '2',
+        label: 'Metal Bowl Strike Every Minute',
+        description: 'A soft metal bowl strike done every minute',
+        value: new ScheduledTrack([
+            metalBowlStrikeSoft6Every1Minute
+        ])
     },
     {
+        id: '3',
         label: 'Metal Bowl Singing Long',
         description: `Metal bowl signs on loop for 3:17.  Chime plays every 5 minutes.`,
         value: new ScheduledTrack([
@@ -44,6 +59,7 @@ export const scheduledTrackOptionsArray: IScheduledTrackOption[] = [
         ])
     },
     {
+        id: '4',
         label: 'Strong Stream',
         description: `Loud stream plays on loop for 4:50.  Soft metal bowl strike every 5 minutes.`,
         value: new ScheduledTrack([
@@ -52,6 +68,7 @@ export const scheduledTrackOptionsArray: IScheduledTrackOption[] = [
         ])
     },
     {
+        id: '5',
         label: 'Medium Stream',
         description: `Medium stream plays on loop for 7:23.  Soft metal bowl strike every 5 minutes.`,
         value: new ScheduledTrack([
@@ -60,11 +77,13 @@ export const scheduledTrackOptionsArray: IScheduledTrackOption[] = [
         ])
     },
     {
+        id: '6',
         label: 'Soft Stream with Metal Bowl Singing',
         description: `Soft stream with metal bowl signing on loop.  Chime rings every 5 minutes.  Bowl strike every minute`,
         value: streamAndBowlAndChime,
     },
     {
+        id: '7',
         label: 'Soft Stream with Strike Every Minute',
         description: `Soft stream plays on loop.  Soft bowl strike every minute`,
         value: streamAndSoftStrike
