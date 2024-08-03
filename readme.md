@@ -69,6 +69,44 @@ brew install cocoapods
 cd ios && pod install && cd ..
 ```
 
+##### Sonoma Notes:
+
+Downgrade ruby:
+
+``` 
+brew install rbenv
+rbenv install 2.6.8
+rbenv global 2.6.8
+```
+Even when downgrading to ruby 2.6.8, you'll get an error with RNGestureHandler.podspec
+
+File.exists? function doesn't exist.
+
+Replace that line with File.exist? in 
+
+node_modules/react-native-gesture-handler/RNGestureHandler.podspec
+
+```
+isUserApp = File.exist?(File.join(__dir__, "..", "..", "node_modules", "react-native", "package.json"))
+```
+
+RCT-Folly issue:
+```
+The following build commands failed:
+CompileC /Users/jason/Library/Developer/Xcode/DerivedData/meditation-dkyonmzfhxsgflbvkbebykakufzj/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/RCT-Folly.build/Objects-normal/x86_64/json.o /Users/jason/Documents/dev/meditation/ios/Pods/RCT-Folly/folly/json.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'RCT-Folly' from project 'Pods')
+```
+Fix: https://github.com/facebook/react-native/issues/37748
+- Select Pods > Build Settings > In section Apple Clang - Preprocessing > under Macro section
+- add in release & debug _LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION
+
+TODO: THIS GETS REMOVED WHEN YOU DO A POD UPDATE
+
+Other fix related to objective-c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'React-Codegen' from project 'Pods')
+https://github.com/facebook/react-native/issues/36739
+
+Fix:
+https://github.com/travis-mark/lrn/commit/015854716feadd61a904d5a603b027426472f863
+
 #### Install Assets
 For fonts
 ```shell
