@@ -58,11 +58,33 @@ function MyComponent(){
 ## Setup
 This app is written in React Native, with Typescript and SASS.
 
+### ruby
+This project requires ruby 2.7.5, which requires openssl 1.1
+
+```shell
+rbenv install 2.7.5
+```
+
 ### ios
 #### Install Xcode and command line tools
 #### Install cocoapods
 ```shell
-brew install cocoapods
+gem install securerandom -v 0.3.2
+gem install activesupport -v 7.1.5.1
+gem install cocoapods
+```
+
+If you run into issues with pod not being found, run bundle install from the root of the project
+```shell
+bundle install
+```
+
+Boost verification bug
+
+node_modules/react-native/third-party-podspecs/
+```
+ spec.source = { :http => 'https://archives.boost.io/release/1.76.0/source/boost_1_76_0.tar.bz2',
+                  :sha256 => 'f0397ba6e982c4450f27bf32a2a83292aba035b827a5623a14636ea583318c41' }
 ```
 #### Install pods
 ```shell
